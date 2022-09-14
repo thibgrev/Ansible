@@ -1,0 +1,26 @@
+- name: Suppression de la machine "{{ nomVM }}" dans le RHN
+  hosts: "{{ nomVM }}"
+  gather_facts: no
+  tasks:
+
+   - name: Suppression de l entree "{{ nomVM }}" dans le RHN
+     ignore_errors: yes
+     command: subscription-manager unregister
+     #Remarque: le module subscription-manager avec "state=absent" ne fonctionne pas.
+
+   - name: Suppression de la machine "{{ nomVM }}" dans Red Hat Insights
+     ignore_errors: yes
+     command: insights-client --unregister
+    #Pas de module pour faire ca et le role galaxy ne permet juste de faire le register, pas le unregister
+
+- name: Suppression de la VM, de son entree dans l inventaire Ansible et de son entree dans le fichier hosts 
+  hosts: localhost
+  connection: local
+  gather_facts: no  
+  vars_files:
+    - ../vault_file.yml 
+
+  roles:
+    - ../Roles/vmware_remove_VM
+    - ../Roles/inventory_remove_host
+    - ../Roles/dns_remove_host

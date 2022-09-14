@@ -1,0 +1,81 @@
+---
+- name: Deploiement de la machine  "{{ nomVM }}"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../vault_file.yml
+  tasks:
+
+    - name: Machine "RHEL" identifiee, affichage des variables a utiliser
+      debug:
+        msg: Le repertoire  et le pool de ressource VMWare nommes "Red Hat" seront utlises
+      when: vmware_TemplateOS.find("RHEL") != -1
+
+    - name: Definition des variables si RHEL
+      set_fact:
+         vmware_folder: Red Hat
+         resource_pool: Red Hat
+      when: vmware_TemplateOS.find("RHEL") != -1
+
+    - name: Machine "Windows" identifiee, affichage des variables a utiliser
+      debug:
+        msg: Le repertoire  et le pool de ressource VMWare nommes "Microsoft" seront utlises
+      when: vmware_TemplateOS.find("W") != -1
+
+    - name: Definition des variables si W
+      set_fact:
+        vmware_folder: Microsoft
+        resource_pool: Microsoft
+      when: vmware_TemplateOS.find("W") != -1
+  roles:
+    - ../Roles/vmware_deploy_VM
+    - ../Roles/inventory_add_host
+    - ../Roles/vmware_get_ipv4_of_VM
+    - ../Roles/dns_add_host
+    - ../Roles/rhel_set_ansible_connexion_config
+  vars:
+    - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
+    - vmware_TemplateOS: RHEL9
+    - nomVM: vm-redhat-e
+    - vmware_folder: aDefinir
+    - resource_pool: aDefinir
+
+- name: Changement du hostname de la nouvelle machine deployee
+  hosts: "{{ nomVM }}"
+  gather_facts: no
+  vars_files:
+    - ../vault_file.yml
+  tasks:
+    - name: Changement du hostname
+      hostname:
+        name: "{{ nomVM }}"
+        use: systemd
+    
+    - name: Reboot de la machine "{{ nomVM}}"
+      reboot:
+
+    - name: Enregistrement de la machine "{{ nomVM }}" sur le RHN, via le compte "{{ RHN_compte }}" avec auto attach
+      community.general.redhat_subscription:
+        state: present
+        username: "{{ RHN_compte }}"
+        password: "{{ RHN_password }}"
+        auto_attach: true
+      
+- name: Enregistrement de la machine sur Red Hat Insight 
+  hosts: "{{ nomVM }}"
+  vars_files:
+    - ../vault_file.yml
+  roles:
+        - /root/.ansible/roles/RedHatInsights.insights-client
+  vars:
+    redhat_portal_username: "{{ RHN_compte }}"
+    redhat_portal_password: "{{ RHN_password }}"
+
+- name: Mise à jour du système (yum update \*)
+  hosts: "{{ nomVM }}"
+  tasks:
+    - name: Mise a jour
+      yum:
+        state: latest
+        name: "*"

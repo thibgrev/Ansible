@@ -1,0 +1,58 @@
+---
+- name: Creation d'une VM a partir d'un template sur VMWare
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Deploiement de la VM
+    vmware_guest:
+      hostname: 10.50.51.5
+      username: administrator@vsphere.local
+      password: VMware1!
+      validate_certs: False
+      name: "{{ nomVM }}"
+      template: RHEL9
+      datacenter: vSAN Datacenter
+      folder: Red Hat
+      state: poweredon
+      wait_for_ip_address: yes
+      resource_pool: Red Hat
+
+- name: Ajout de la mahine "{{ nomVM }}" dans l inventaire d Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - ../Roles/inventory_add_host
+
+- name: Recuperation de l adresse IP de la nouvelle VM "{{ nomVM}}"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - ../Roles/vmware_get_ipv4_of_VM
+
+- name: ajout de l entree dans le fichier host d Ansible "{{ ipVM}} {{ nomVM}}"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - ../Roles/dns_add_host
+  vars:
+    ipVM: "{{ listeInfoVM.instance.ipv4 }}"
+
+- name: Ajout des informations necessaires pour que Ansible se connecte sur une cible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - ../Roles/rhel_set_ansible_connexion_config
+
+- name: Changement du hostname de la nouvelle machine deployee
+  hosts: "{{ nomVM }}"
+  gather_facts: no
+  tasks:
+    - name: Changement du hostname
+      hostname:
+        name: "{{ nomVM }}"
+

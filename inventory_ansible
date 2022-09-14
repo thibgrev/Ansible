@@ -1,0 +1,13 @@
+[datacenter:children]
+red_hat
+windows
+
+[red_hat]
+vm-redhat-ocp
+vm-redhat-d
+vm-redhat-smtp
+vm-redhat-c
+vm-redhat-b
+vm-redhat-a
+
+[windows]

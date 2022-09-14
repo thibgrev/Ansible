@@ -1,0 +1,34 @@
+---
+- name: Suppression de la VM "{{ nomVM }}"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Suppression de la VM "{{ nomVM }}"
+    vmware_guest:
+      hostname: 10.50.51.5
+      username: administrator@vsphere.local
+      password: VMware1!
+      validate_certs: False
+      name: "{{ nomVM }}"
+      template: RHEL9
+      datacenter: vSAN Datacenter
+      folder: Red Hat
+      state: absent
+      wait_for_ip_address: yes
+      resource_pool: Red Hat
+      force: yes
+
+- name: Suppression de la mahine "{{ nomVM }}" dans l inventaire d Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - ../Roles/inventory_remove_host
+
+- name: Suppression de l entree dans le fichier host d Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - ../Roles/dns_remove_host

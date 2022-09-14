@@ -1,0 +1,8 @@
+- name: ajout d un hote dans le fichier inventaire d Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    nomVM: 10.50.51.101 vm-redhat-a
+  roles:
+    - ../Roles/dns_add_host

@@ -1,0 +1,18 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+     - name: un
+       set_fact:
+         vmware_folder: Red Hat
+         resource_pool: Red Hat
+       when: vmware_TemplateOS.find("RHEL") != -1
+
+     - name: deux
+       set_fact:
+         vmware_folder: Microsoft
+         resource_pool: Microsoft
+       when: vmware_TemplateOS.find("W") != -1
+
+     - name: test
+       debug:
+         msg: Variable "{{ vmware_folder }}"

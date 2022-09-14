@@ -1,0 +1,11 @@
+- name: Ajout de la machine "{{ nomVM }}" dans le groupe "{{ groupeVM }}"
+  lineinfile:
+      line: "{{ nomVM }}"
+      path: "{{ fichierInventaire }}"
+      state: present
+      insertafter: "{{ groupeVM }}"
+
+- name: Ajour de la machine "{{ nomVM }}" dans le fichier inventaire en memoire
+  add_host:
+      name: "{{ nomVM }}"
+      group: "{{ groupeVM }}"
