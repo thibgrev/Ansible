@@ -1,7 +1,0 @@
-- name: ajout d un hote dans le fichier inventaire d Ansible
-  hosts: localhost
-  connection: local
-  gather_facts: no
-
-  roles:
-    - ../Roles/inventory_remove_host

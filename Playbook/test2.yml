@@ -1,6 +1,0 @@
-- name: Changement du hostname car systeme Red Hat detecte
-  hosts: localhost
-  vars:
-    nomVM: vm-redhat-tg
-  roles:
-    - /root/Ansible/Roles/zz-test_delegateTo

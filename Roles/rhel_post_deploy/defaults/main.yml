@@ -1,0 +1,7 @@
+DNS_file: /etc/hosts
+compte: root
+userAnsible: ansible_user
+clePublique_AnsibleUser: /root/.ssh/ansible_user.pub
+clePublique_Root: /root/.ssh/root.pub
+fichierInventaire: /root/Ansible/inventory_ansible
+fichierSudoers: /root/Ansible/Roles/vmware_deploy_and_configure/files/99-Ansible_user

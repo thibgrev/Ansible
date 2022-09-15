@@ -1,9 +1,0 @@
-- name: Suppression des informations utilisees par  Ansible pour se connecter a une cible
-  hosts: localhost
-  connection: local
-  gather_facts: no
-  vars:
-    nomVM: 10.50.51.101
-
-  roles:
-    - ../Roles/rhel_remove_ansible_connexion_config

@@ -1,7 +1,0 @@
-- name: Mise à jour du système (yum update \*)
-  yum:
-    state: latest
-    name: "*"
-  when: nomVM.find("redhat") != -1
-  delegate_to: "{{ item }}"
-  with_items: "{{ nomVM }}"

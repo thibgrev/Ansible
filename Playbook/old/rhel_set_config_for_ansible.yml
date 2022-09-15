@@ -1,9 +1,0 @@
-- name: Ajout des informations necessaires pour que Ansible se connecte sur une cible
-  hosts: localhost
-  connection: local
-  gather_facts: no
-  vars:
-    nomVM: 10.50.51.101
-
-  roles:
-    - ../Roles/rhel_set_ansible_connexion_config
