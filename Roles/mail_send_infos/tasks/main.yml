@@ -1,9 +1,0 @@
-- mail:
-    host: smtp.live.com
-    port: 465
-    username: "{{ smtp_username}}"
-    password: "{{ smtp_password }}"
-    to: az@az.com
-    subject: Sujet du mail d'Ansible 
-    body: 'System {{ ansible_hostname }} has been successfully provisioned.'
-  delegate_to: localhost

@@ -1,0 +1,4 @@
+#Taches a faire pour deployer des VMs et les configurer
+- include_tasks: hostname_change_and_reboot.yml
+- include_tasks: add_host_in_website.yml
+- include_tasks: system_update.yml

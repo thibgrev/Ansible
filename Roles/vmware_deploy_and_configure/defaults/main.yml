@@ -1,5 +1,9 @@
-nomVM: nomDeLaVm
+
+file: /etc/hosts
+  #ipVM: 8.8.8.8
 compte: root
 userAnsible: ansible_user
 clePublique_AnsibleUser: /root/.ssh/ansible_user.pub
 clePublique_Root: /root/.ssh/root.pub
+fichierInventaire: /root/Ansible/inventory_ansible
+

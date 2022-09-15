@@ -1,6 +1,8 @@
 - hosts: localhost
-  gather_facts: yes
-  tasks:
-   - name: Affichage de certains facts
-     debug:
-       msg: Variable - "{{ ansible_facts.ansible_all_ipv4_addresses }}"
+  gather_facts: no
+  vars_files:
+    - ../vault_file.yml
+  vars:
+    nomVM: vm-redhat-f
+  roles:
+    - ../Roles/zz-test_delegateTo

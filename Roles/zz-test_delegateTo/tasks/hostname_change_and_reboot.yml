@@ -1,0 +1,11 @@
+- name: Changement du hostname car systeme Red Hat detecte
+  hostname:
+    name: "{{ nomVM }}"
+    use: systemd
+  delegate_to: "{{ item }}"
+  with_items: "{{ nomVM }}"
+
+- name: Reboot de la machine "{{ nomVM}}" car systeme Red Hat detecte
+  reboot:
+  delegate_to: "{{ item }}"
+  with_items: "{{ nomVM }}"

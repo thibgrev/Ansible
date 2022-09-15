@@ -3,7 +3,7 @@ red_hat
 windows
 
 [red_hat]
-vm-windows-b
+vm-redhat-tg
 vm-redhat-f
 vm-redhat-e
 vm-redhat-ocp

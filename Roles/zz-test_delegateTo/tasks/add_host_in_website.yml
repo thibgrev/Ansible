@@ -1,0 +1,17 @@
+- name: Enregistrement de la machine "{{ nomVM }}" sur le RHN, via le compte "{{ RHN_compte }}" avec auto attach
+  community.general.redhat_subscription:
+    state: present
+    username: "{{ RHN_compte }}"
+    password: "{{ RHN_password }}"
+    auto_attach: true
+  when: nomVM.find("redhat") != -1
+  delegate_to: "{{ nomVM }}"
+
+- name: Enregistrement de la machine sur Red Hat Insight
+  roles:
+        - /root/.ansible/roles/RedHatInsights.insights-client
+  vars:
+    redhat_portal_username: "{{ RHN_compte }}"
+    redhat_portal_password: "{{ RHN_password }}"
+  when: nomVM.find("redhat") != -1
+  delegate_to: "{{ nomVM }}"

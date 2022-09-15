@@ -1,18 +1,18 @@
-- name: Definition des variables si "redhat" est trouve dans le nom de la VM
-  set_fact:
-    vmware_folder: Red Hat
-    vmware_resource_pool: Red Hat
-    vmware_TemplateOS: RHEL9
-  when: nomVM.find("redhat") != -1
+#- name: Definition des variables si "redhat" est trouve dans le nom de la VM
+#set_fact:
+#vmware_folder: Red Hat
+#vmware_resource_pool: Red Hat
+#vmware_TemplateOS: RHEL9
+#when: nomVM.find("redhat") != -1
 
-- name: Definition des variables si windows est trouve dans le nom de la VM
-  set_fact:
-    vmware_folder: Microsoft
-    vmware_resource_pool: Microsoft
-    vmware_TemplateOS: W2022
-  when: nomVM.find("windows") != -1
+#- name: Definition des variables si "windows" est trouve dans le nom de la VM
+#set_fact:
+#vmware_folder: Microsoft
+#vmware_resource_pool: Microsoft
+#vmware_TemplateOS: W2022
+#when: nomVM.find("windows") != -1
 
-- name: Deploiement de la VM "{{ nomVM }}"
+- name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
   vmware_guest:
     hostname: "{{ vmware_hostname }}"
     username: "{{ vmware_username }}"
@@ -27,7 +27,7 @@
     resource_pool: Red Hat
   when: nomVM.find("redhat") != -1
 
-- name: Deploiement de la VM "{{ nomVM }}"
+- name: Deploiement de la VM "{{ nomVM }} - Machine Windows detectee"
   vmware_guest:
     validate_certs: False
     username: "{{ vmware_username }}"
