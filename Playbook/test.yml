@@ -1,39 +1,6 @@
 - hosts: localhost
-  gather_facts: no
-  vars:
-    vm_hostname: vm-windows-test
+  gather_facts: yes
   tasks:
-   - name: Deploy VM in vCenter, VM name is "{{ vm_hostname }}"
-     vmware_guest:
-      validate_certs: False
-      username: administrator@vsphere.local
-      password: VMware1!
-      hostname: 10.50.51.5
-      datacenter: vSAN Datacenter
-      name: "{{ vm_hostname }}"
-      template: W2022
-        #cluster: "{{ survey_cluster }}"
-      resource_pool: Microsoft
-      state: poweredon
-      wait_for_ip_address: yes
-      #annotation: "{{ annotation }}"
-      folder: Microsoft
-      customization:
-        domain: bsclab.local
-        joindomain: bsclab.local
-        domainadmin: administrator@bsclab.local
-        domainadminpassword: azerty@12345
-        password: azerty@12345
-        timezone: 105
-      hardware:
-        memory_mb: 4096
-        num_cpus: 4
-        hotadd_memory: true
-        hotadd_cpu: true
-      networks:
-      - name: VM Network
-        connectde: yes
-        start_connected: true
-        type: dhcp
-     delegate_to: localhost
-     register: deploy
+   - name: Affichage de certains facts
+     debug:
+       msg: Variable - "{{ ansible_facts.ansible_all_ipv4_addresses }}"

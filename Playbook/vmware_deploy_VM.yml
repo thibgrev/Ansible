@@ -5,41 +5,15 @@
   gather_facts: no
   vars_files:
     - ../vault_file.yml
-  tasks:
-
-    - name: Machine "RHEL" identifiee, affichage des variables a utiliser
-      debug:
-        msg: Le repertoire  et le pool de ressource VMWare nommes "Red Hat" seront utlises
-      when: vmware_TemplateOS.find("RHEL") != -1
-
-    - name: Definition des variables si RHEL
-      set_fact:
-         vmware_folder: Red Hat
-         resource_pool: Red Hat
-      when: vmware_TemplateOS.find("RHEL") != -1
-
-    - name: Machine "Windows" identifiee, affichage des variables a utiliser
-      debug:
-        msg: Le repertoire  et le pool de ressource VMWare nommes "Microsoft" seront utlises
-      when: vmware_TemplateOS.find("W") != -1
-
-    - name: Definition des variables si W
-      set_fact:
-        vmware_folder: Microsoft
-        resource_pool: Microsoft
-      when: vmware_TemplateOS.find("W") != -1
+  
   roles:
-    - ../Roles/vmware_deploy_VM
+    - ../Roles/role_deploy_VM
     - ../Roles/inventory_add_host
     - ../Roles/vmware_get_ipv4_of_VM
     - ../Roles/dns_add_host
     - ../Roles/rhel_set_ansible_connexion_config
   vars:
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
-    - vmware_TemplateOS: RHEL9
-    - nomVM: vm-redhat-e
-    - vmware_folder: aDefinir
-    - resource_pool: aDefinir
 
 - name: Changement du hostname de la nouvelle machine deployee
   hosts: "{{ nomVM }}"
