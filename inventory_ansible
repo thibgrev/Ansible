@@ -3,8 +3,7 @@ red_hat
 windows
 
 [red_hat]
+vm-redhat-setup
 vm-redhat-aap
-vm-redhat-aapv2
-vm-redhat-ocp
 
 [windows]
