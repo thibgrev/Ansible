@@ -1,20 +1,6 @@
 - hosts: localhost
   gather_facts: no
-  vars_files:
-    ../vault_file.yml
-  vars:
-    nomVM: vm-redhat-testNetwork
   tasks:
     - name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
-      vmware_guest:
-        hostname: "{{ vmware_hostname }}"
-        username: "{{ vmware_username }}"
-        password: "{{ vmware_password }}"
-        validate_certs: False
-        name: "{{ nomVM }}"
-        template: RHEL9
-        datacenter: "{{ vmware_datacenter }}"
-        folder: Red Hat
-        state: poweredon
-        wait_for_ip_address: yes
-        resource_pool: Red Hat
+      debug:
+        msg: Affichage du debug
