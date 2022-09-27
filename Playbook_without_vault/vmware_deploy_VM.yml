@@ -1,0 +1,20 @@
+---
+- name: Deploiement de la machine  "{{ nomVM }}"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  roles:
+    - ../Roles/vmware_deploy_and_configure_Ansible_connection
+
+- name: Configuration de la machine "{{ nomVM }}" qui vient d etre deployee
+  hosts: "{{ nomVM }}"
+  connection: ssh
+  gather_facts: yes
+
+  roles:
+    - ../Roles/rhel_post_deploy
+    - ../../.ansible/roles/RedHatInsights.insights-client
+  vars:
+    redhat_portal_username: "{{ RHN_compte }}"
+    redhat_portal_password: "{{ RHN_password }}"

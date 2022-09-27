@@ -1,0 +1,6 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
+      debug:
+        msg: Affichage du debug

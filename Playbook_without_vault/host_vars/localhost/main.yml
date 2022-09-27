@@ -1,0 +1,15 @@
+#Varibales liees au VCenter
+vmware_hostname: 10.50.51.5
+vmware_datacenter: vSAN Datacenter
+hostname: prout
+  #Remarque: les compte et mot de passe sans dans le fichier VAULT 
+
+#Variables liees aux machines Red Hat sur le VCenter
+vmware_RedHat_folder: Red Hat
+vmware_RedHat_resource_pool: Red Hat
+vmware_RedHat_template: RHEL9
+
+#Variables liees aux machines Microsoft sur le VCenter
+vmware_Windows_folder: Microsoft
+vmware_Windows_resource_pool: Microsoft
+vmware_Windows_template: W2022
