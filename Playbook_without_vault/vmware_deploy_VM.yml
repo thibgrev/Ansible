@@ -13,7 +13,7 @@
   gather_facts: yes
 
   roles:
-    - ../Roles/rhel_post_deploy
+    #- ../Roles/rhel_post_deploy
       #- ../../.ansible/roles/RedHatInsights.insights-client
   vars:
     redhat_portal_username: "{{ RHN_compte }}"
