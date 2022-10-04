@@ -1,5 +1,21 @@
+<<<<<<< HEAD
 - hosts: localhost
   gather_facts: no
   tasks:
     - name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
       command: hostname
+=======
+- hosts: "{{ nomVM }}"
+  tasks:
+    - name: Recuperation des informations de la machine {{ nomVM }}
+      ansible.builtin.setup:
+        filter:
+          - 'ansible_distribution'
+          - 'ansible_machine_id'
+          - 'ansible_*_mb'
+      register: donnees
+
+    - name: Affichage des resultats
+      debug:
+        msg: "{{ donnees }}"
+>>>>>>> aabcda224a373e8ce462c061fd24d0438f3630b5

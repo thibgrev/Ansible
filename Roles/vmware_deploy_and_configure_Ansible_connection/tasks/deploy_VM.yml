@@ -30,11 +30,6 @@
       num_cpus: 4
       hotadd_memory: true
       hotadd_cpu: true
-    networks:
-    - name: VM Network
-      connected: yes
-      start_connected: true
-      type: dhcp
   when: nomVM.find("redhat") != -1
 
 - name: Deploiement de la VM "{{ nomVM }} - Machine Windows detectee"
