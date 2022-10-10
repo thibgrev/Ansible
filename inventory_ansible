@@ -3,7 +3,15 @@ red_hat
 windows
 
 [red_hat]
+vm-redhat-con
+vm-redhat-hub
+vm-redhat-exe
+vm-redhat-cat
+vm-redhat-test
 vm-redhat-setup
+vm-redhat-test2
 vm-redhat-aap
 
 [windows]
+srvad1.bsclab.local
+

@@ -4,12 +4,12 @@
 - name: Creation de l utilisateur {{ userAnsible }} pour que Ansible puisse se connecter, sur {{ nomVM }}
   shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'useradd {{ userAnsible }}'
   register: sortie_creation
-  #ignore_errors: yes
+  ignore_errors: yes
   when: nomVM.find("redhat") != -1
 
 - name: Modification du password de {{ userAnsible }} sur {{ nomVM }}
   shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'echo {{ ansible_user_password }} | passwd --stdin {{ userAnsible }}'
-    #register: sortie_modification_password
+  #register: sortie_modification_password
   when: nomVM.find("redhat") != -1
 
 - name: Ajout de la cle publique {{ clePublique_AnsibleUser }} de {{ userAnsible }} sur la machine {{ nomVM }}
