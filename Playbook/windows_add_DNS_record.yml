@@ -6,9 +6,9 @@
     
     - name: Creation de l entree dans le DNS
       win_dns_record:
-        name: "{{ nomVM }}"
+        name: "{{ nomDNS }}"
         type: "A"
-        value: "{{ ipVM }}"
+        value: "{{ ipDNS }}"
         zone: "bsclab.local"
         state: present
         computer_name: srvAD1
