@@ -1,0 +1,10 @@
+- hosts: "{{ VM }}"
+  gather_facts: no
+  tasks:
+    - name: creation de l utilisateur test
+      user:
+        name: user_test
+        comment: Utilisateur test cree par AAP
+        groups: wheel
+        state: present
+        umask: 0021 
