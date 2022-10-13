@@ -3,20 +3,12 @@
   become: false
   gather_facts: no
   tasks:
-    #
-    #- name: Creation de l entree dans le DNS
-      #win_dns_record:
-        #name: test.bsclab.local
-          #type: "A"
-          #value: "10.50.51.26"
-          #zone: "bsclab.local"
-          #state: present
-          #computer_name: srvAD1
-
-    - name: Set Windows description, owner and organization
-      ansible.windows.win_command: hostname
-      register: result
-
-    - name: Affichage du resultat
-      debug:
-        msg: "{{ result.stdout }}"
+    
+    - name: Creation de l entree dans le DNS
+      win_dns_record:
+        name: test-TG
+        type: "A"
+        value: "10.50.51.26"
+        zone: "bsclab.local"
+        state: present
+        computer_name: srvAD1
