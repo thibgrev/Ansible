@@ -2,4 +2,5 @@
   gather_facts: no
   tasks:
     - name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
-      command: hostname
+      debug:
+        msg: "test"
