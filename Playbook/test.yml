@@ -1,6 +1,14 @@
 - hosts: localhost
   gather_facts: no
+  connection: local
   tasks:
     - name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
       debug:
         msg: "test"
+    - name: Changement du prompt
+      shell: "ls -l /etc/"
+      register: resul
+
+    - name: Affichage de la VAR
+      debug:
+        msg: "{{ resul }}"

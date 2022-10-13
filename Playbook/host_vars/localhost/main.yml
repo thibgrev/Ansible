@@ -13,3 +13,4 @@ vmware_RedHat_template: RHEL9
 vmware_Windows_folder: Microsoft
 vmware_Windows_resource_pool: Microsoft
 vmware_Windows_template: W2022
+
