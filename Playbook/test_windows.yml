@@ -1,5 +1,0 @@
-- name: Teste de connexion sur une machine Windows
-  hosts: srvad1.bsclab.local
-  tasks:
-    - name: le paquet 7zip est il present
-      win_shell: ipconfig
