@@ -1,0 +1,7 @@
+- name: Suppression de l utilisateur utilise par Ansible
+  shell: command sshpass -p {{ root_password }} ssh {{ compte }}@{{ nomVM }} 'userdel -f {{ userAnsible }}'
+  register: sortie
+
+- name: Affichage du resultat de la commande de suppression de {{ userAnsible }} sur {{ nomVM }}
+  debug:
+    msg: "{{ sortie.stdout_lines }}"

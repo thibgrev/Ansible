@@ -1,0 +1,6 @@
+- name: Suppression de la machine "{{ nomVM }}" present dans le groupe "{{ groupeVM }}"
+  lineinfile:
+      line: "{{ nomVM }}"
+      path: "{{ fichierInventaire }}"
+      state: absent
+      insertafter: "{{ groupeVM }}"

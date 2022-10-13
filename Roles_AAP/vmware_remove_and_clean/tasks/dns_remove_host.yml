@@ -1,0 +1,5 @@
+- name: Suppression de la machine "{{ nomVM }}" dans le groupe fichier hosts "{{ DNS_file }}"
+  lineinfile:
+      search_string: "{{ nomVM }}"
+      path: "{{ DNS_file }}"
+      state: absent
