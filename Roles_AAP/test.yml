@@ -1,4 +1,0 @@
-- hosts: "{{ VM }}"
-  gather_facts: no
-  roles:
-    - Roles/rhel_set_banner 
