@@ -5,10 +5,15 @@
       ansible.builtin.dnf:
         name: httpd
         state: latest
-        
+
     - name: Enable et ON du service HTTPD
       ansible.builtin.service:
         name: httpd
-        state: latest
+        state: restarted
         enabled: yes
-        
+    
+    - name: Ajout de la page d accueil
+      copy:
+        srv: index.html
+        dest: /var/www/html/
+        force: yes
