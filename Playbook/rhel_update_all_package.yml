@@ -1,0 +1,7 @@
+- hosts: "{{ VM }}"
+  gather_facts: no
+  tasks:
+    - name: Update de tous les packages
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest

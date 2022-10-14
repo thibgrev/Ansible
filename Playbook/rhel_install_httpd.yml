@@ -1,0 +1,27 @@
+- hosts: "{{ VM }}"
+  gather_facts: no
+  tasks:
+    - name: Installation de HTTPD
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+
+    - name: Enable et ON du service HTTPD
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: yes
+    
+    - name: Ajout de la page d accueil
+      copy:
+        src: index.html
+        dest: /var/www/html/
+        force: yes
+
+    - name: configuration du firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        zone: public
+        immediate: yes

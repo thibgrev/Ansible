@@ -1,7 +1,16 @@
-- hosts: localhost
+- name: test
+  hosts: "{{ VM  }}"
+  become: false
   gather_facts: no
-  connection: local
+  vars_files:
+    - ../vault_file.yml
   tasks:
-    - name: Deploiement de la VM "{{ nomVM }} - Machine Red Hat detectee"
-      debug:
-        msg: "test"
+
+    - name: Creation de l entree dans le DNS
+      win_dns_record:
+        name: "{{ nomDNS }}"
+        type: "A"
+        value: "{{ ipDNS }}"
+        zone: "bsclab.local"
+        state: present
+        computer_name: "{{ VM  }}"
