@@ -1,5 +1,5 @@
 - name: test
-  hosts: srvAD1
+  hosts: srvAD1.BSCLAB.LOCAL
   become: false
   gather_facts: no
   tasks:
