@@ -3,7 +3,7 @@
   become: false
   gather_facts: no
   vars_files:
-    - vault_file.yml
+    - ../vault_file.yml
   tasks:
 
     - name: Creation de l entree dans le DNS
