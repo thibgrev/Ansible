@@ -9,7 +9,7 @@
     - name: Enable et ON du service HTTPD
       ansible.builtin.service:
         name: httpd
-        state: restarted
+        state: started
         enabled: yes
     
     - name: Ajout de la page d accueil
