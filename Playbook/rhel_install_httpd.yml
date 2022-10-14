@@ -20,7 +20,7 @@
 
     - name: configuration du firewall
       firewalld:
-        service: httpd
+        service: http
         permanent: yes
         state: enabled
         zone: public
