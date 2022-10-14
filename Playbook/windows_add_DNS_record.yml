@@ -1,5 +1,5 @@
 - name: test
-  hosts: srvAD1.BSCLAB.LOCAL
+  hosts: "{{ VM  }}"
   become: false
   gather_facts: no
   tasks:
