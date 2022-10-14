@@ -11,4 +11,4 @@
         value: "{{ ipDNS }}"
         zone: "bsclab.local"
         state: present
-        computer_name: srvAD1
+        computer_name: "{{ VM  }}"
