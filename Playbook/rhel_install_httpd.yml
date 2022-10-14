@@ -1,0 +1,7 @@
+- hosts: "{{ VM }}"
+  gather_facts: no
+  tasks:
+    - name: Installation de HTTPD
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
