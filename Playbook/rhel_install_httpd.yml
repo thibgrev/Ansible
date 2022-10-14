@@ -14,6 +14,6 @@
     
     - name: Ajout de la page d accueil
       copy:
-        srv: index.html
+        src: index.html
         dest: /var/www/html/
         force: yes
