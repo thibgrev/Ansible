@@ -1,0 +1,3 @@
+fichierInventaire: /root/inventory_ansible
+nomVM: nomNonDonne
+groupeVM: red_hat

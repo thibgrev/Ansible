@@ -1,0 +1,27 @@
+#- name: Ajout de la machine "{{ nomVM }}" dans le groupe Red Hat"
+#lineinfile:
+#      line: "{{ nomVM }}"
+#      path: "{{ fichierInventaire }}"
+#      state: present
+#      insertafter: red_hat
+#  when: nomVM.find("redhat") != -1
+
+#- name: Ajout de la machine "{{ nomVM }}" dans le groupe Microsoft"
+#  lineinfile:
+#      line: "{{ nomVM }}"
+#      path: "{{ fichierInventaire }}"
+#      state: present
+#      insertafter: windows
+#  when: nomVM.find("windows") != -1
+
+- name: Ajout de la machine "{{ nomVM }}" dans le fichier inventaire en memoire
+  add_host:
+      name: "{{ nomVM }}"
+      group: red_hat
+  when: nomVM.find("redhat") != -1
+
+- name: Ajout de la machine "{{ nomVM }}" dans le fichier inventaire en memoire
+  add_host:
+      name: "{{ nomVM }}"
+      group: windows
+  when: nomVM.find("windows") != -1

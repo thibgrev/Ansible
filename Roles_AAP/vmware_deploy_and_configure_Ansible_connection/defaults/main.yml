@@ -1,0 +1,6 @@
+compte: root
+userAnsible: ansible_user
+clePublique_AnsibleUser: ../files/ansible_user.pub
+clePublique_Root: ../files/root.pub
+fichierSudoers: ../files/99-Ansible_user
+ansible_user_password: azerty@12345

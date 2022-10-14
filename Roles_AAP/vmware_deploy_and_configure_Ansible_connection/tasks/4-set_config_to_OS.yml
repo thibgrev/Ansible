@@ -1,0 +1,40 @@
+- name: DEBUG
+  debug:
+    msg: "{{ pwdHashe }}"
+
+- name: Creation de l utilisateur "{{ userAnsible }}"
+  user:
+    name: "{{ userAnsible }}"
+    comment: Utilisateur de Red Hat AAP
+    group: wheel
+    password: "{{ pwdHashe }}"
+    update_password: on_create
+  delegate_to: "{{ item }}"
+  with_items: "{{ ipVM }}"
+
+- name: Ajout de la cle publique pour "{{ userAnsible }}"
+  authorized_key:
+    user: "{{ userAnsible }}"
+    state: present
+    key: "{{ lookup('file', clePublique_AnsibleUser) }}"
+  delegate_to: "{{ item }}"
+  with_items: "{{ ipVM }}"
+
+- name: Ajout de la cle publique pour root
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', clePublique_Root) }}"
+  delegate_to: "{{ item }}"
+  with_items: "{{ ipVM }}"
+
+- name: Deploiement du fichier "{{ fichierSudoers }}"
+  copy:
+    src: "{{ fichierSudoers }}"
+    dest: "/etc/sudoers.d/"
+    owner: root
+    group: root
+    mode: '0740'
+    force: yes
+  delegate_to: "{{ item }}"
+  with_items: "{{ ipVM }}"
