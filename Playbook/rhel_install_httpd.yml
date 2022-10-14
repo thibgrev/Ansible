@@ -17,3 +17,10 @@
         src: index.html
         dest: /var/www/html/
         force: yes
+
+    - name: configuration du firewall
+      firewalld:
+        service: httpd
+        permanent: yes
+        state: enabled
+        zone: public
