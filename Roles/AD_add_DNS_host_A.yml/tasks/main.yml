@@ -1,0 +1,1 @@
+- include_tasks: add_host_A.yml

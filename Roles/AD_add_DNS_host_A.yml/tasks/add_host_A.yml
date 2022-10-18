@@ -1,0 +1,8 @@
+- name: Creation de l entree "{{ nomDNS }}" (De type "{{ type }}") dans le DNS, zone "{{ zone }}", pointant vers l adresse IP "{{ IP }}"
+  win_dns_record:
+    name: "{{ nomDNS }}"
+    type: "{{ type }}"
+    value: "{{ IP }}"
+    zone: "{{ zone }}"
+    state: present
+    computer_name: "{{ VM  }}"

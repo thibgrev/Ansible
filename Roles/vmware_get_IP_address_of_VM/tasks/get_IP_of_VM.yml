@@ -1,0 +1,15 @@
+- name: Recuperation de toutes les informations de la VM nommee {{ nomVM }}
+  community.vmware.vmware_guest_info:
+    name: "{{ nomVM }}"
+    datacenter: "{{ vmware_datacenter }}"
+    hostname: "{{ vmware_hostname }}"
+    username: "{{ vmware_username }}"
+    password: "{{ vmware_password }}"
+    validate_certs: False
+  register: listeInfoVM
+
+- name: Affichage de l adresse IP de la VM nomme {{ nomVM }}
+  debug:
+    msg: "L adresse IPv4 de {{ nomVM }} st {{ ipVM }}."
+  vars:
+    ipVM: "{{ listeInfoVM.instance.ipv4 }}"
