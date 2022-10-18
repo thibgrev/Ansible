@@ -3,5 +3,5 @@
   gather_facts: no
   vars_files:
     - ../vault_file.yml
-  tasks:
-    - roles: ../Roles/AD_add_DNS_host_A
+  roles:
+    - ../Roles/AD_add_DNS_host_A
