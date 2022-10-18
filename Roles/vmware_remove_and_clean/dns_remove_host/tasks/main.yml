@@ -1,5 +1,0 @@
-- name: Suppression de la machine "{{ nomVM }}" dans le groupe fichier hosts "{{ file }}"
-  lineinfile:
-      search_string: "{{ nomVM }}"
-      path: "{{ file }}"
-      state: absent
