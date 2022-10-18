@@ -1,1 +1,5 @@
+#  A minima, il faut personaliser les variables:
+#    IP: adresse IP de l entree DNS qui sera cree
+#    nomDNS: nom de l entree DNS qui sera cree
+
 - include_tasks: add_host_A.yml
