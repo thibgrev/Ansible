@@ -2,6 +2,8 @@
   hosts: "{{ VM  }}"
   become: false
   gather_facts: no
+  vars_fils:
+    - ../vault_file.yml
   tasks:
     
     - name: Creation de l entree dans le DNS
