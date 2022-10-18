@@ -8,14 +8,3 @@
   delegate_to: "{{ item }}"
   with_items: "{{ nomVM }}"
   when: nomVM.find("redhat") != -1
-
-- name: Enregistrement de la machine sur Red Hat Insight
-  #connection: ssh
-  roles:
-        - /root/.ansible/roles/RedHatInsights.insights-client
-  vars:
-    redhat_portal_username: "{{ RHN_compte }}"
-    redhat_portal_password: "{{ RHN_password }}"
-  delegate_to: "{{ item }}"
-  with_items: "{{ nomVM }}"
-  when: nomVM.find("redhat") != -1
