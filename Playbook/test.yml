@@ -3,5 +3,6 @@
   gather_facts: no
   vars_files:
     - ../vault_file.yml
+  become: false
   roles:
     - ../Roles/AD_add_DNS_host_A
