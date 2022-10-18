@@ -1,0 +1,4 @@
+- name: sshd_service_restart
+  service:
+    name: sshd
+    state: reloaded

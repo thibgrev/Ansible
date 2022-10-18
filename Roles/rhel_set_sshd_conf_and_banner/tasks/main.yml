@@ -6,15 +6,17 @@
     group: root
     mode: 0644
 
-- name: Copie du fichier banner sur le cible
-  copy:
-    src: ../file/banner
-    dest: /etc/
-    owner: root
-    group: root
-    mode: 0644
+#- name: Copie du fichier banner sur le cible
+  #copy:
+    #src: ../file/banner
+    #dest: /etc/
+    #owner: root
+    #group: root
+    #mode: 0644
 
-- name: Reload du service SSHD
-  service:
-    name: sshd
-    state: reloaded
+- name: Creation de la banniere sur la cible 
+  template:
+    src: ../templates/banner.j2
+    dest: /etc/banner
+  notify:
+    sshd_service_restart
