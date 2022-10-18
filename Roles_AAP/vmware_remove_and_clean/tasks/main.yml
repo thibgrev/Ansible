@@ -1,3 +1,0 @@
-- include_tasks: vmware_remove_VM.yml
-  #- include_tasks: dns_remove_host.yml
-  #- include_tasks: inventory_remove_host.yml

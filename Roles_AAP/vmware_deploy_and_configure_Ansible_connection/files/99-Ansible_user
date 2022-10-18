@@ -1,2 +1,0 @@
-## Allows user Ansible to do sudoers
-%wheel  ALL=(ALL)       NOPASSWD:ALL

@@ -6,6 +6,6 @@
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
 - include_tasks: add_host_in_inventory.yml
 - include_tasks: set_config_to_OS.yml
-  #- include_tasks: hostname_change_and_reboot.yml
-  #- include_tasks: add_host_in_website.yml
-  #- include_tasks: system_update.yml
+- include_tasks: hostname_change_and_reboot.yml
+- include_tasks: add_host_in_website.yml
+- include_tasks: system_update.yml

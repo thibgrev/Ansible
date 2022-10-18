@@ -1,5 +1,0 @@
-- name: Suppression de la machine "{{ nomVM }}" dans l inventaire "{{ fichierInventaire }}"
-  lineinfile:
-      line: "{{ nomVM }}"
-      path: "{{ fichierInventaire }}"
-      state: absent

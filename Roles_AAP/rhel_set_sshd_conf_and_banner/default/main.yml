@@ -1,3 +1,0 @@
-sshd_banner_path: /etc/banner
-sshd_conf_file: /etc/ssh
-

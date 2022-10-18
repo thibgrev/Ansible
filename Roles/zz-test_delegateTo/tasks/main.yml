@@ -1,2 +1,0 @@
-#Taches a faire pour deployer des VMs et les configurer
-- include_tasks: website.yml

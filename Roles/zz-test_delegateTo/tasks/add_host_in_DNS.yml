@@ -1,5 +1,0 @@
-- name: Ajout de la machine "{{ nomVM }}" dans le groupe fichier hosts "{{ file }}"
-  lineinfile:
-      line: "{{ipVM}} {{ nomVM }}"
-      path: "{{ file }}"
-      state: present
