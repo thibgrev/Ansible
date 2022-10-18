@@ -1,3 +1,3 @@
-import_tasks:
+- import_tasks:
   - copy_file_sshd_config.yml
   - create_and_copy_banner_file.yml
