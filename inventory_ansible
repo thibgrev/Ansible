@@ -3,6 +3,8 @@ red_hat
 windows
 
 [red_hat]
+vm-redhat-a
+vm-redhat-lg
 vm-redhat-con
 vm-redhat-hub
 vm-redhat-exe

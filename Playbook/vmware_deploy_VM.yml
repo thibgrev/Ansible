@@ -1,4 +1,5 @@
 ---
+# Deploiement de la nouvelle VM via operation sur le Controller Node
 - name: Deploiement de la machine  "{{ nomVM }}"
   hosts: localhost
   connection: local
@@ -9,10 +10,11 @@
   roles:
     - ../Roles/vmware_deploy_and_configure_Ansible_connection
 
+#Changement de host pour realiser les operations sur la nouvelles cibles
 - name: Configuration de la machine "{{ nomVM }}" qui vient d etre deployee
   hosts: "{{ nomVM }}"
   connection: ssh
-  gather_facts: yes
+  gather_facts: no
   vars_files:
     - ../vault_file.yml
 
