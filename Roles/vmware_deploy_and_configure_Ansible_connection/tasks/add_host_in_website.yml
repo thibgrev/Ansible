@@ -10,7 +10,7 @@
   when: nomVM.find("redhat") != -1
 
 - name: Enregistrement de la machine sur Red Hat Insight
-  connection: ssh
+  #connection: ssh
   roles:
         - /root/.ansible/roles/RedHatInsights.insights-client
   vars:
@@ -19,4 +19,3 @@
   delegate_to: "{{ item }}"
   with_items: "{{ nomVM }}"
   when: nomVM.find("redhat") != -1
-  ignore_errors: yes
