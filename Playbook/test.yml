@@ -1,16 +1,7 @@
 - name: test
   hosts: "{{ VM  }}"
-  become: false
   gather_facts: no
   vars_files:
     - ../vault_file.yml
   tasks:
-
-    - name: Creation de l entree dans le DNS
-      win_dns_record:
-        name: "{{ nomDNS }}"
-        type: "A"
-        value: "{{ ipDNS }}"
-        zone: "bsclab.local"
-        state: present
-        computer_name: "{{ VM  }}"
+    - roles: ../Roles/AD_add_DNS_host_A
