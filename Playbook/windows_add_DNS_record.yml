@@ -2,7 +2,7 @@
   hosts: "{{ VM  }}"
   become: false
   gather_facts: no
-  vars_fils:
+  vars_files:
     - ../vault_file.yml
   tasks:
     
