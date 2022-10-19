@@ -1,4 +1,0 @@
-- name: rebootNeeded
-  connection: ssh
-  reboot:
-  delegate_to: "{{ nomVM }}"
