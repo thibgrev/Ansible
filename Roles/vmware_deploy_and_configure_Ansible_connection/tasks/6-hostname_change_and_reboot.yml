@@ -6,3 +6,8 @@
   delegate_to: "{{ item }}"
   with_items: "{{ nomVM }}"
   when: nomVM.find("redhat") != -1
+
+- name: Reboot to modify the hostname 
+  connection: ssh
+  reboot:
+  delegate_to: "{{ nomVM }}" 
