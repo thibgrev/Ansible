@@ -1,5 +1,0 @@
-- name: Add "{{ nomVM }}" in the file "{{ file }}"
-  lineinfile:
-      line: "{{ipVM}} {{ nomVM }}"
-      path: "{{ DNS_file }}"
-      state: present

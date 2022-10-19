@@ -1,19 +1,29 @@
 #1-Deploymnet of the new VM on VCenter system
 - include_tasks: 1-deploy_VM.yml
-#2-Get the IP addresse of the new VM to add DNS entry
-- include_tasks: 2-get_ipv4_address.yml
-#3-Add the DNS entry
-- include_tasks: 3-add_host_in_DNS.yml
+#2-Add the DNS entry
+- include_tasks: 2-add_host_in_DNS.yml
   vars:
     #IP addresse needed to ad the entry in /etc/hosts file
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
-#4-Add the new VM in the inventory file of Ansible
-- include_tasks: 4-add_host_in_inventory.yml
-#5-Configuration os the VM target to permit Ansible to connect on
-- include_tasks: 5-set_config_to_OS.yml
-#6-Change of the hostname of the target and reboot if it is needed
-- include_tasks: 6-hostname_change_and_reboot.yml
-#7-Registration of the new VM on Red Hat portal website and Red Hat Insight, using Galaxy role
-- include_tasks: 7-add_host_in_website.yml
-#8-Upgrade of the system
-- include_tasks: 8-system_update.yml
+#3-Add the new VM in the inventory file of Ansible
+- include_tasks: 3-add_host_in_inventory.yml
+#4-Configuration os the VM target to permit Ansible to connect on
+- include_tasks: 4-set_config_to_OS.yml
+#5-Change of the hostname of the target and reboot if it is needed
+- include_tasks: 5-hostname_change_and_reboot.yml
+#6-Registration of the new VM on Red Hat portal website and Red Hat Insight, using Galaxy role
+- include_tasks: 6-add_host_in_website.yml
+#7-Upgrade of the system
+- include_tasks: 7-system_update.yml
+#8-Clean old entry in DHCP
+- include_tasks: 8-clean_DHCP_entry.yml
+  vars:
+    #IP addresse needed to be sure DHCP entry is good for this IP address
+    - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
+#9-Creation of the entry in the DNS of the domain
+- include_tasks: 9-add_DNS_domain_entry.yml
+  vars:
+    #IP addresse needed to add in the DNS entry
+    - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
+#10-Join the new VM in the Microsoft domain
+- include_tasks: 10-join_Microsoft_domain.yml
