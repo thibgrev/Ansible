@@ -10,7 +10,7 @@
   
   roles:
     #Role used to deply VM on VCenter target and configure Ansible connexion (SSH Key, add user...)
-    - ../Roles/vmware_deploy_and_configure_Ansible_connection
+    - ../Roles/vmware_deploy_RHEL_and_configure_Ansible_connection
 
 #Add the new VM in Red Hat Insight system 
 - name: Add of the new VM named "{{ nomVM }}" in the Red Hat Insight system
