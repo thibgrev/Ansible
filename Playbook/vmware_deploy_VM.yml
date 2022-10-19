@@ -11,16 +11,16 @@
     - ../Roles/vmware_deploy_and_configure_Ansible_connection
 
 #Changement de host pour realiser les operations sur la nouvelles cibles
-- name: Configuration de la machine "{{ nomVM }}" qui vient d etre deployee
-  hosts: "{{ nomVM }}"
-  connection: ssh
-  gather_facts: no
-  vars_files:
-    - ../vault_file.yml
+#- name: Configuration de la machine "{{ nomVM }}" qui vient d etre deployee
+  #hosts: "{{ nomVM }}"
+  #connection: ssh
+  #gather_facts: no
+  #vars_files:
+    #- ../vault_file.yml
 
-  roles:
-    - ../Roles/rhel_post_deploy
-    - ../../.ansible/roles/RedHatInsights.insights-client
-  vars:
-    redhat_portal_username: "{{ RHN_compte }}"
-    redhat_portal_password: "{{ RHN_password }}"
+  #roles:
+    #- ../Roles/rhel_post_deploy
+    #- ../../.ansible/roles/RedHatInsights.insights-client
+  #vars:
+    #redhat_portal_username: "{{ RHN_compte }}"
+    #redhat_portal_password: "{{ RHN_password }}"

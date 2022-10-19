@@ -1,6 +1,0 @@
-- name: Creation de la banniere sur la cible via le template Jinja
-  template:
-    src: ../templates/banner.j2
-    dest: /etc/banner
-  notify:
-    sshd_service_restart
