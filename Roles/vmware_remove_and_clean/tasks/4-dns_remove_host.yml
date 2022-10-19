@@ -3,3 +3,4 @@
       search_string: "{{ nomVM }}"
       path: "{{ DNS_file }}"
       state: absent
+  ignore_errors: yes

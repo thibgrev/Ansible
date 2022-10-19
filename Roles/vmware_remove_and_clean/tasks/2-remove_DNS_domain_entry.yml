@@ -8,7 +8,8 @@
     password: "{{ vmware_password }}"
     validate_certs: False
   register: listeInfoVM
-  
+  ignore_errors: yes
+
 - name: Suppression of the DNS entry in the domain for the VM named "{{ nomVM }}" and IP "{{ ipVM }}"
   become: no
   win_dns_record:
@@ -19,3 +20,4 @@
     state: absent
     computer_name: "{{ domainController }}"
   delegate_to: "{{ domainController }}"
+  ignore_errors: yes

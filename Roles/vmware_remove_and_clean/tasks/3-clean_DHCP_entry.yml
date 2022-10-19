@@ -5,3 +5,4 @@
     ip: "{{ ipVM }}"
     state: absent
   delegate_to: "{{ domainController }}"
+  ignore_errors: yes

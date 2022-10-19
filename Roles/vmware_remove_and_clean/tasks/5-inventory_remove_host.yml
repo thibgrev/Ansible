@@ -3,3 +3,4 @@
       line: "{{ nomVM }}"
       path: "{{ fichierInventaire }}"
       state: absent
+  ignore_errors: yes
