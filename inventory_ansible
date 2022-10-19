@@ -3,9 +3,6 @@ red_hat
 windows
 
 [red_hat]
-vm-redhat-c
-vm-redhat-b
-vm-redhat-a
 vm-redhat-lg
 vm-redhat-con
 vm-redhat-hub
@@ -13,9 +10,7 @@ vm-redhat-exe
 vm-redhat-cat
 vm-redhat-test
 vm-redhat-setup
-vm-redhat-test2
 vm-redhat-aap
 
 [windows]
-srvad1.BSCLAB.LOCAL
-w10.BSCLAB.LOCAL
+srvad1.bsclab.local

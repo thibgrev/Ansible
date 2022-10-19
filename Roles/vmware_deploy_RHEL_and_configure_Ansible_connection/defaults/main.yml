@@ -5,7 +5,6 @@ clePublique_AnsibleUser: /root/.ssh/ansible_user.pub
 clePublique_Root: /root/.ssh/root.pub
 fichierInventaire: /root/Ansible/inventory_ansible
 fichierSudoers: /root/Ansible/Roles/vmware_deploy_RHEL_and_configure_Ansible_connection/files/99-Ansible_user
-reboot: yes
 type: A
 zone: bsclab.local
 domainController: srvad1.bsclab.local

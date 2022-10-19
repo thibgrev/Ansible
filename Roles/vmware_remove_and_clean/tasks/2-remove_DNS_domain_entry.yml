@@ -15,7 +15,6 @@
   win_dns_record:
     name: "{{ nomVM }}"
     type: "{{ type }}"
-    value: "{{ ipVM }}"
     zone: "{{ zone }}"
     state: absent
     computer_name: "{{ domainController }}"

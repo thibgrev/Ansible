@@ -13,5 +13,3 @@
   reboot:
   #The operation has to be done on the target
   delegate_to: "{{ nomVM }}" 
-  #Reboot of the target if variable named reboot is "yes". If "no", the reboot will not be set
-  when: reboot == "yes"
