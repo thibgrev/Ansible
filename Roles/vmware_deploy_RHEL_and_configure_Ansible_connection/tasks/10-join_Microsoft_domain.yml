@@ -1,0 +1,14 @@
+- name: Join the new VM named "{{ nomVM }}" to the Microsoft Domain named "{{ domain }}"
+  connection: ssh
+  shell : echo {{ domain_join_AD_user_password }} | realm join -U {{ domain_join_AD_user }} {{ domain }}
+  #The operation has to be done on the target
+  delegate_to: "{{ nomVM }}"
+
+- name: Move the computer object for "{{ nomVM }}" in the correct OU "{{ computerLinuxOU }}"
+  become: no
+  win_domain_computer:
+    name: "{{ nomVM }}"
+    state: present
+    ou: "{{ computerLinuxOU }}"
+    dns_hostname: "{{ nomVM }}.{{ domain }}"
+  delegate_to: "{{ domainController }}"

@@ -1,0 +1,10 @@
+- name: Add the new VM named "{{ nomVM }}" on the RHN, using Red Hat account "{{ RHN_compte }}", with "auto attach"
+  #SSH connexion use because the operation will ba set on the target
+  connection: ssh
+  community.general.redhat_subscription:
+    state: present
+    username: "{{ RHN_compte }}"
+    password: "{{ RHN_password }}"
+    auto_attach: true
+  #The operation has to be done on the target
+  delegate_to: "{{ nomVM }}"

@@ -1,0 +1,11 @@
+#Create the DNS new VM entry in DNS of the domain
+- name: Creation of the DNS entry in the domain for the new VM named "{{ nomVM }}" and IP "{{ ipVM }}"
+  become: no
+  win_dns_record:
+    name: "{{ nomVM }}"
+    type: "{{ type }}"
+    value: "{{ ipVM }}"
+    zone: "{{ zone }}"
+    state: present
+    computer_name: "{{ domainController }}"
+  delegate_to: "{{ domainController }}"
