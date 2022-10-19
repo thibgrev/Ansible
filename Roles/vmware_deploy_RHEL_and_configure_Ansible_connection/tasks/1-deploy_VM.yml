@@ -1,0 +1,18 @@
+- name: Deployment of "{{ nomVM }}"" on VCenter platform
+  vmware_guest:
+    hostname: "{{ vmware_hostname }}"
+    username: "{{ vmware_username }}"
+    password: "{{ vmware_password }}"
+    validate_certs: False
+    name: "{{ nomVM }}"
+    template: RHEL9
+    datacenter: "{{ vmware_datacenter }}"
+    folder: Red Hat
+    state: poweredon
+    wait_for_ip_address: yes
+    resource_pool: Red Hat
+    hardware:
+      memory_mb: 4096
+      num_cpus: 4
+      hotadd_memory: true
+      hotadd_cpu: true

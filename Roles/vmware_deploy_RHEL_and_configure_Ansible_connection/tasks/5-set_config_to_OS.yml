@@ -1,0 +1,20 @@
+- name: User creation of "{{ userAnsible }}" - User used by Ansible to connect to this new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'useradd {{ userAnsible }}'
+  register: sortie_creation
+  #Ignore error if the User is created and exists
+  ignore_errors: yes
+
+- name: Password change for the user "{{ userAnsible }}" on the new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'echo {{ ansible_user_password }} | passwd --stdin {{ userAnsible }}'
+
+- name: Add public key "{{ clePublique_AnsibleUser }}" for "{{ userAnsible }}" on the new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ root_password }} ssh-copy-id -i {{ clePublique_AnsibleUser }} {{ userAnsible }}@{{ nomVM }}
+
+- name: Add public key "{{ clePublique_Root }}" for "root" on the new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ root_password }} ssh-copy-id -i {{ clePublique_Root }} root@{{ nomVM }}
+
+- name: Add the user "{{ userAnsible }}" in the WHEEL group for using sudo commands
+  shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'usermod -aG wheel {{ userAnsible }}'
+
+- name: Add file "{{ fichierSudoers }}" on the new VM named "{{ nomVM }}" for using sudo without password for WHEEL group
+  shell: command sshpass -p "{{ root_password }}" rsync "{{ fichierSudoers }}" {{ compte }}@{{ nomVM }}:/etc/sudoers.d/
