@@ -6,4 +6,3 @@
   delegate_to: "{{ item }}"
   with_items: "{{ nomVM }}"
   when: nomVM.find("redhat") != -1
-  notify: rebootNeeded
