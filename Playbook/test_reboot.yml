@@ -1,0 +1,8 @@
+- name: test de reboot sur autre machine
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: reboot de vm-redhat-test
+      connection: ssh
+      reboot:
+      delegate_to: vm-redhat-test
