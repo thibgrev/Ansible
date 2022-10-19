@@ -1,0 +1,7 @@
+#Suppression of the DHCP lease for the VM
+- name: Remove entry in DHCP for IP address "{{ ipVM }}"
+  become: no
+  community.windows.win_dhcp_lease:
+    ip: "{{ ipVM }}"
+    state: absent
+  delegate_to: "{{ domainController }}"

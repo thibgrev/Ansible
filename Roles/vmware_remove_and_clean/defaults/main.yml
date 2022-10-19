@@ -1,2 +1,7 @@
 DNS_file: /etc/hosts
 fichierInventaire: /root/Ansible/inventory_ansible
+type: A
+zone: bsclab.local
+domainController: srvad1.bsclab.local
+domain: bsclab.local
+computerLinuxOU: "OU=Linux,OU=Servers,DC=bsclab,DC=local"

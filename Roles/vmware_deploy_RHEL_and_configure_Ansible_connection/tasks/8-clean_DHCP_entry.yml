@@ -1,4 +1,4 @@
-#Sometime, the ld DHCP entry stay on DHCP server. We have to delete this entry
+#Sometime, the old DHCP entry stay on DHCP server. We have to delete this entry
 - name: Remove old entry in DHCP for IP address "{{ ipVM }}"
   become: no
   community.windows.win_dhcp_lease:

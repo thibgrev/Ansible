@@ -1,3 +1,12 @@
-- include_tasks: vmware_remove_VM.yml
-- include_tasks: dns_remove_host.yml
-- include_tasks: inventory_remove_host.yml
+- include_tasks: 1-unjoin_Microsoft_domain.yml
+- include_tasks: 2-remove_DNS_domain_entry.yml
+  vars:
+    #IP addresse needed to delete the DNS entry
+    - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
+- include_tasks: 3-clean_DHCP_entry.yml
+  vars:
+    #IP addresse needed to delete the DNS entry
+    - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
+- include_tasks: 4-dns_remove_host.yml
+- include_tasks: 5-inventory_remove_host.yml
+- include_tasks: 6-vmware_remove_VM.yml
