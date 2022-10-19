@@ -1,7 +1,0 @@
-- name: Changement du hostname car systeme Red Hat detecte
-  hostname:
-    name: "{{ nomVM }}"
-    use: systemd
-
-- name: Reboot de la machine "{{ nomVM}}" car systeme Red Hat detecte
-  reboot:

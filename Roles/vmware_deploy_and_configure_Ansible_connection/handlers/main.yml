@@ -1,0 +1,3 @@
+- name: rebootNeeded
+  reboot:
+  delegate_to: "{{ nomVM }}"
