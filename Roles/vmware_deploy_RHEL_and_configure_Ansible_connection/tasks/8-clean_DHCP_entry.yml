@@ -4,7 +4,7 @@
   community.windows.win_dhcp_lease:
     ip: "{{ ipVM }}"
     state: absent
-  delegate_to: "{{ domainController }}"
+  delegate_to: "{{ vmware_deploy_domain_controller }}"
 
 #To record the new server in DHCP server, we restart the NetworkManager service, using module service
 - name: Restart the NetworkManager service on new VM named "{{ nomVM }}" to add the good entry in DHCP (using module service)

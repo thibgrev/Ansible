@@ -1,12 +1,11 @@
-- name: Add the new VM named "{{ nomVM }}" in the Red Hat group of the inventory
+- name: Add the new VM named "{{ nomVM }}" in the Ansible inventory file "{{ vmware_deploy_ansible_inventory_file }}", in the group named "{{ vmware_deploy_group_for_VM }}"
   lineinfile:
       line: "{{ nomVM }}"
-      path: "{{ fichierInventaire }}"
+      path: "{{ vmware_deploy_ansible_inventory_file }}"
       state: present
-      insertafter: red_hat
+      insertafter: "{{ vmware_deploy_group_for_VM }}"
 
 - name: Add the new VM named "{{ nomVM }}" in the memory inventory file
   add_host:
       name: "{{ nomVM }}"
-      group: red_hat
-  when: nomVM.find("redhat") != -1
+      group: "{{ vmware_deploy_group_for_VM }}"

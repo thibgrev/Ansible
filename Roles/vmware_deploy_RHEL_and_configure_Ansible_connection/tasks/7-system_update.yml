@@ -1,8 +1,8 @@
-- name: Update of the new VM named "{{ nomVM }}" using command-line "yum update *"
+- name: Update of the new VM named "{{ nomVM }}" using module YUM, state "{{ vmware_deploy_update_state }}" and target "*"
   #SSH connexion use because the operation will ba set on the target
   connection: ssh
   yum:
-    state: latest
+    state: "{{ vmware_deploy_update_state }}"
     name: "*"
   #The operation has to be done on the target
   delegate_to: "{{ nomVM }}"

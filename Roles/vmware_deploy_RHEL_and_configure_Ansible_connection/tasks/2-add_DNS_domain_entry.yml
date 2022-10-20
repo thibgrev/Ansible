@@ -1,0 +1,21 @@
+- name: Get the IP address of the new VM named "{{ nomVM }}"
+  community.vmware.vmware_guest_info:
+    name: "{{ nomVM }}"
+    datacenter: "{{ vmware_deploy_vcenter_datacenter }}"
+    hostname: "{{ vmware_deploy_vcenter_hotname }}"
+    username: "{{ vmware_deploy_vcenter_username }}"
+    password: "{{ vmware_deploy_vcenter_password }}"
+    validate_certs: False
+  register: listeInfoVM
+
+#Create the DNS new VM entry in DNS of the domain
+- name: Creation of the DNS entry in the domain for the new VM named "{{ nomVM }}" and IP "{{ ipVM }}"
+  become: no
+  win_dns_record:
+    name: "{{ nomVM }}"
+    type: "{{ vmware_deploy_type }}"
+    value: "{{ ipVM }}"
+    zone: "{{ vmware_deploy_zone }}"
+    state: present
+    computer_name: "{{ vmware_deploy_domain_controller }}"
+  delegate_to: "{{ vmware_deploy_domain_controller }}"

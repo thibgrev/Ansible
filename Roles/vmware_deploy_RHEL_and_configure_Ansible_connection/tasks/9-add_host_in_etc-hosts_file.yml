@@ -1,0 +1,6 @@
+#Add the new entry of the VM in the inventory file for Ansible
+- name: Add "{{ nomVM }}" in the file "{{ vmware_deploy_etc_hosts_file }}"
+  lineinfile:
+      line: "{{ipVM}} {{ nomVM }}"
+      path: "{{ vmware_deploy_etc_hosts_file }}"
+      state: present

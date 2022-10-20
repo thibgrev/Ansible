@@ -1,18 +1,32 @@
-- name: Deployment of "{{ nomVM }}"" on VCenter platform
+- name: Parameters for the new VM to deploy are listed below
+  debug:
+    msg:
+      - "------------------------------------------------------------------------ "
+      - "New VM configuration:"
+      - "->Number of CPUs: {{ vmware_deploy_hardware_cpus }}." 
+      - "->Number of RAM memory: {{ vmware_deploy_hardware_memory }}mb."
+      - "->Hot add for CPUs: {{ vmware_deploy_hardware_cpus_hot_add }}."
+      - "->Hot add for memory: {{ vmware_deploy_hardware_memory_hot_add }}."
+      - "------------------------------------------------------------------------ "
+      - "Information:"
+      - "->Deployment will wait the VM to response before continue to other step."
+      - "------------------------------------------------------------------------" 
+
+- name: Deployment of the new VM named "{{ nomVM }}" on VCenter platform "{{ vmware_deploy_vcenter_hotname }}"
   vmware_guest:
-    hostname: "{{ vmware_hostname }}"
-    username: "{{ vmware_username }}"
-    password: "{{ vmware_password }}"
+    hostname: "{{ vmware_deploy_vcenter_hotname }}"
+    username: "{{ vmware_deploy_vcenter_username }}"
+    password: "{{ vmware_deploy_vcenter_password }}"
     validate_certs: False
     name: "{{ nomVM }}"
-    template: RHEL9
-    datacenter: "{{ vmware_datacenter }}"
-    folder: Red Hat
+    template: "{{ vmware_deploy_template }}"
+    datacenter: "{{ vmware_deploy_vcenter_datacenter }}"
+    folder: "{{ vmware_deploy_folder }}"
     state: poweredon
     wait_for_ip_address: yes
-    resource_pool: Red Hat
+    resource_pool: "{{ vmware_deploy_ressource_pool }}"
     hardware:
-      memory_mb: 4096
-      num_cpus: 4
-      hotadd_memory: true
-      hotadd_cpu: true
+      memory_mb: "{{ vmware_deploy_hardware_memory }}"
+      num_cpus: "{{ vmware_deploy_hardware_cpus }}"
+      hotadd_memory: "{{ vmware_deploy_hardware_memory_hot_add }}"
+      hotadd_cpu: "{{ vmware_deploy_hardware_cpus_hot_add }}"

@@ -1,10 +1,10 @@
 - name: Suppression de la VM "{{ nomVM }}"
   vmware_guest:
-    hostname: "{{ vmware_hostname }}"
-    username: "{{ vmware_username }}"
-    password: "{{ vmware_password }}"
+    hostname: "{{ vault_vmware_hostname }}"
+    username: "{{ vault_vmware_username }}"
+    password: "{{ vault_vmware_password }}"
     validate_certs: False
     name: "{{ nomVM }}"
-    datacenter: "{{ vmware_datacenter }}"
+    datacenter: "{{ vault_vmware_datacenter }}"
     state: absent
     force: yes

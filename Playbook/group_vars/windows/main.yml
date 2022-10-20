@@ -1,5 +1,5 @@
-ansible_user: administrator@BSCLAB.LOCAL
-ansible_password: azerty@12345
+ansible_user: "{{ vault_ansible_user_for_windows }}"
+ansible_password: "{{ vault_ansible_user_for_windows_password }}"
 ansible_connection: winrm
-ansible_port: 5985
-ansible_winrm_transport: kerberos
+ansible_port: "{{ vault_windows_winrm_port }}"
+ansible_winrm_transport: "{{ vault_windows_winrm_auth }}"

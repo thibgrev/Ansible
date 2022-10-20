@@ -1,12 +1,42 @@
-DNS_file: /etc/hosts
-compte: root
-userAnsible: ansible_user
-clePublique_AnsibleUser: /root/.ssh/ansible_user.pub
-clePublique_Root: /root/.ssh/root.pub
-fichierInventaire: /root/Ansible/inventory_ansible
-fichierSudoers: /root/Ansible/Roles/vmware_deploy_RHEL_and_configure_Ansible_connection/files/99-Ansible_user
-type: A
-zone: bsclab.local
-domainController: srvad1.bsclab.local
-domain: bsclab.local
-computerLinuxOU: "OU=Linux,OU=Servers,DC=bsclab,DC=local"
+#Variables for VCenter
+vmware_deploy_vcenter_hotname: "{{ vault_vmware_hostname }}"
+vmware_deploy_vcenter_username: "{{ vault_vmware_username }}"
+vmware_deploy_vcenter_password: "{{ vault_vmware_password }}"
+vmware_deploy_vcenter_datacenter: "{{ vault_vmware_datacenter }}"
+vmware_deploy_template: RHEL9
+vmware_deploy_folder: "Red Hat"  
+vmware_deploy_ressource_pool: "Red Hat"
+vmware_deploy_hardware_memory: 4096
+vmware_deploy_hardware_cpus: 4
+vmware_deploy_hardware_memory_hot_add: true
+vmware_deploy_hardware_cpus_hot_add: true
+#Variables for the hosts file /etc/hosts
+vmware_deploy_etc_hosts_file: /etc/hosts
+#Variables for the Ansible inventory file
+vmware_deploy_ansible_inventory_file: /root/Ansible/inventory_ansible
+vmware_deploy_group_for_VM: red_hat
+#Variables for the OS configuration of the new VM
+vmware_deploy_ansible_user: ansible_user
+vmware_deploy_ansible_user__password: "{{ vault_RHEL_ansible_user_password }}"
+vmware_deploy_root_account: root
+vmware_deploy_root_password: "{{ vault_RHEL_root_password }}"
+vmware_deploy_public_key_root: /root/.ssh/root.pub
+vmware_deploy_public_key_ansible_user: /root/.ssh/ansible_user.pub
+vmware_deploy_sudoers_file: /root/Ansible/Roles/vmware_deploy_RHEL_and_configure_Ansible_connection/files/99-Ansible_user
+#Variables for the hostname change of the new VM
+vmware_deploy_reboot: true
+#Variables for adding the new VM in Red Hat account
+vmware_deploy_RH_account: "{{ vault_redhat_RHN_account }}"
+vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
+#Variables for the update of the new VM
+vmware_deploy_update_state: latest
+#Variables for operations on DHCP server
+vmware_deploy_domain_controller: srvad1.bsclab.local
+#Variables for operations on DNS server
+vmware_deploy_type: A
+vmware_deploy_zone: bsclab.local
+#Variables for adding the new VM in the Microsoft Domain
+vmware_deploy_domain: bsclab.local
+vmware_deploy_domain_join_AD_user: "{{ vault_AD_user_add_computer }}"
+vmware_deploy_domain_join_AD_user_password: "{{ vault_AD_user_add_computer_password }}"
+vmware_deploy_computer_Linux_OU: "OU=Linux,OU=Servers,DC=bsclab,DC=local"

@@ -1,7 +1,7 @@
 #1-Deploymnet of the new VM on VCenter system
 - include_tasks: 1-deploy_VM.yml
-#2-Add the DNS entry
-- include_tasks: 2-add_host_in_DNS.yml
+#2-Add the new entry in the /etc/hosts file
+- include_tasks: 2-add_DNS_domain_entry.yml
   vars:
     #IP addresse needed to ad the entry in /etc/hosts file
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
@@ -21,7 +21,7 @@
     #IP addresse needed to be sure DHCP entry is good for this IP address
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
 #9-Creation of the entry in the DNS of the domain
-- include_tasks: 9-add_DNS_domain_entry.yml
+- include_tasks: 9-add_host_in_etc-hosts_file.yml
   vars:
     #IP addresse needed to add in the DNS entry
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"

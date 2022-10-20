@@ -1,4 +1,39 @@
----
+#Management of the need variables
+- name: Management of the need variables
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    - vmware_deploy_insight_needed: true
+  tasks:
+    - name: Check the "nomVM" variable
+      fail:
+        msg:
+          - "Variable named nomVm is not defined and is mandatory"
+          - "Variable named nomVM will be the name of the new VM deployed using this Playbook"
+      when: nomVM is not defined
+
+    - name: Check the "vmware_deploy_insight_needed" variable
+      debug:
+        msg:
+          - "Variable named vmware_deploy_insight_needed is not set"
+          - "The default value of this variable will be used and is {{ vmware_deploy_insight_needed }}"
+      when: vmware_deploy_insight_needed is true
+
+    - name: Check the "vmware_deploy_insight_needed" variable
+      debug:
+        msg:
+          - "Variable named vmware_deploy_insight_needed have to be true or false"
+          - "The default value of this variable will be used and is true"
+      when: vmware_deploy_insight_needed is not true and vmware_deploy_insight_needed is not false
+      changed_when: vmware_deploy_insight_needed is not true and vmware_deploy_insight_needed is not false
+      notify: reset_vmware_deploy_insight_needed
+
+  handlers:
+    - name: reset_vmware_deploy_insight_needed
+      set_fact:
+        vmware_deploy_insight_needed: true
+
 #Deployment and configure of a new VM Red Hat
 - name: Deployment of "{{ nomVM }}"
   hosts: localhost
@@ -23,8 +58,9 @@
   
   roles:
     #Role used to add the new VM in Red Hat Insight 
-    - ../../.ansible/roles/RedHatInsights.insights-client
+    - role: ../../.ansible/roles/RedHatInsights.insights-client
+      when: vmware_deploy_insight_needed is true
   vars:
     #This variables are needed to add the new VM in Red Hat Insight (Data stored in the Vault file)
-    redhat_portal_username: "{{ RHN_compte }}"
-    redhat_portal_password: "{{ RHN_password }}"
+    redhat_portal_username: "{{ vault_redhat_RHN_account }}"
+    redhat_portal_password: "{{ vault_redhat_RHN_password }}"

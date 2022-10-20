@@ -1,20 +1,19 @@
-- name: User creation of "{{ userAnsible }}" - User used by Ansible to connect to this new VM named "{{ nomVM }}"
-  shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'useradd {{ userAnsible }}'
-  register: sortie_creation
+- name: User creation of "{{ vmware_deploy_ansible_user }}" - User used by Ansible to connect to this new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ vmware_deploy_root_password }} ssh -o StrictHostKeyChecking=no {{ vmware_deploy_root_account }}@{{ nomVM }} 'useradd {{ vmware_deploy_ansible_user }}'
   #Ignore error if the User is created and exists
   ignore_errors: yes
 
-- name: Password change for the user "{{ userAnsible }}" on the new VM named "{{ nomVM }}"
-  shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'echo {{ ansible_user_password }} | passwd --stdin {{ userAnsible }}'
+- name: Password change for the user "{{ vmware_deploy_ansible_user }}" on the new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ vmware_deploy_root_password }} ssh -o StrictHostKeyChecking=no {{ vmware_deploy_root_account }}@{{ nomVM }} 'echo {{ vmware_deploy_ansible_user__password }} | passwd --stdin {{ vmware_deploy_ansible_user }}'
 
-- name: Add public key "{{ clePublique_AnsibleUser }}" for "{{ userAnsible }}" on the new VM named "{{ nomVM }}"
-  shell: command sshpass -p {{ root_password }} ssh-copy-id -i {{ clePublique_AnsibleUser }} {{ userAnsible }}@{{ nomVM }}
+- name: Add public key "{{ vmware_deploy_public_key_ansible_user }}" for "{{ vmware_deploy_ansible_user }}" on the new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ vmware_deploy_root_password }} ssh-copy-id -i {{ vmware_deploy_public_key_ansible_user }} {{ vmware_deploy_ansible_user }}@{{ nomVM }}
 
-- name: Add public key "{{ clePublique_Root }}" for "root" on the new VM named "{{ nomVM }}"
-  shell: command sshpass -p {{ root_password }} ssh-copy-id -i {{ clePublique_Root }} root@{{ nomVM }}
+- name: Add public key "{{ vmware_deploy_public_key_root }}" for "{{ vmware_deploy_root_account }}"  on the new VM named "{{ nomVM }}"
+  shell: command sshpass -p {{ vmware_deploy_root_password }} ssh-copy-id -i {{ vmware_deploy_public_key_root }} {{ vmware_deploy_root_account }}@{{ nomVM }}
 
-- name: Add the user "{{ userAnsible }}" in the WHEEL group for using sudo commands
-  shell: command sshpass -p {{ root_password }} ssh -o StrictHostKeyChecking=no {{ compte }}@{{ nomVM }} 'usermod -aG wheel {{ userAnsible }}'
+- name: Add the user "{{ vmware_deploy_ansible_user }}" in the WHEEL group for using sudo commands
+  shell: command sshpass -p {{ vmware_deploy_root_password }} ssh -o StrictHostKeyChecking=no {{ vmware_deploy_root_account }}@{{ nomVM }} 'usermod -aG wheel {{ vmware_deploy_ansible_user }}'
 
-- name: Add file "{{ fichierSudoers }}" on the new VM named "{{ nomVM }}" for using sudo without password for WHEEL group
-  shell: command sshpass -p "{{ root_password }}" rsync "{{ fichierSudoers }}" {{ compte }}@{{ nomVM }}:/etc/sudoers.d/
+- name: Add the sudoers file "{{ vmware_deploy_sudoers_file }}" on the new VM named "{{ nomVM }}" in the directory "/etc/sudoers.d/"
+  shell: command sshpass -p "{{ vmware_deploy_root_password }}" rsync "{{ vmware_deploy_sudoers_file }}" {{ vmware_deploy_root_account }}@{{ nomVM }}:/etc/sudoers.d/

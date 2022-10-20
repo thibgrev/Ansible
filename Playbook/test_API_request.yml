@@ -1,0 +1,55 @@
+- name: test
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: acces API de AAPv2
+      uri:
+        url: https://10.50.51.108/api/v2/
+        method: GET
+        status_code: 200
+        body_format: json
+        validate_certs: no
+      register: result
+
+    - name: affichage
+      debug:
+        msg: "{{ result.json.inventory }}"
+
+    - name: Retrieve des inventories
+      uri:
+        url: "https://10.50.51.108{{ result.json.inventory }}"
+        body_format: json
+        method: GET
+        validate_certs: no
+        user: admin
+        password: azerty@12345
+        force_basic_auth: yes
+        status_code:
+          - 200
+          - 201
+          - 202
+      register: listeInv
+
+    - name: Record des infos sur tous les inventaires
+      set_fact:
+        inv: "{{ listeInv.json.results }}"
+
+    - name: affichage des inventories
+      debug:
+        msg: "{{ inv }}"
+          
+    - name: update de l'inv
+      uri:
+        url: https://10.50.51.108/api/v2/inventories/2/
+        method: PUT
+        validate_certs: no
+        user: admin
+        password: azerty@12345
+        force_basic_auth: yes
+        body_format: json
+        body:
+          - name: "Inventory"
+          - organization: "1"
+            #body: '{ "name" : "Inventory" "organization": { "id"=1 "name"="Default" "description"=""  } }'
+            #body_format: json

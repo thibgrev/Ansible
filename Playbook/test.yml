@@ -1,13 +1,20 @@
 - name: test
-  hosts: localhost
-  connection: local
+  hosts: vm-redhat-lg
+  connection: ssh
   gather_facts: no
-  vars_files:
-    - ../vault_file.yml
+  vars:
+    - aFaire: false
   tasks:
-    - name: test
-      become: no
-      win_domain_computer:
-        name: vm-redhat-c.bsclab.local
-        state: absent
-      delegate_to: srvad1.bsclab.local
+    - name: afficgae des facts
+      stat:
+        path: /etc/ansible-automation-platform/VERSION
+      register: result
+
+    - name: action a faire?
+      debug:
+        msg: "Resultat: {{ result.stat.exists }}"
+
+    - name: action a faire?
+      debug:
+        msg: Action a faire car le fichier existe
+      when: result.stat.exists is true and aFaire is true
