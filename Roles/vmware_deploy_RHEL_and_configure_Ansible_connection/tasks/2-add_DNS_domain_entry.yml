@@ -1,5 +1,5 @@
 - name: Get the IP address of the new VM named "{{ nomVM }}"
-  community.vmware.vmware_guest_info:
+  vmware_guest_info:
     name: "{{ nomVM }}"
     datacenter: "{{ vmware_deploy_vcenter_datacenter }}"
     hostname: "{{ vmware_deploy_vcenter_hotname }}"

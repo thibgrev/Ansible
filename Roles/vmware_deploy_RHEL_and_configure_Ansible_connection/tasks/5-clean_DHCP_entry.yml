@@ -1,7 +1,7 @@
 #Sometime, the old DHCP entry stay on DHCP server. We have to delete this entry
 - name: Remove old entry in DHCP for IP address "{{ ipVM }}"
   become: no
-  community.windows.win_dhcp_lease:
+  win_dhcp_lease:
     ip: "{{ ipVM }}"
     state: absent
   delegate_to: "{{ vmware_deploy_domain_controller }}"
