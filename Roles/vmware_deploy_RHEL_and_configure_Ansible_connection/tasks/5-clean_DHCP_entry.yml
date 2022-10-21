@@ -1,20 +1,7 @@
 #Sometime, the old DHCP entry stay on DHCP server. We have to delete this entry
 - name: Remove old entry in DHCP for IP address "{{ ipVM }}"
   become: no
-  win_dhcp_lease:
+  community.windows.win_dhcp_lease:
     ip: "{{ ipVM }}"
     state: absent
   delegate_to: "{{ vmware_deploy_domain_controller }}"
-
-#To record the new server in DHCP server, we restart the NetworkManager service, using module service
-- name: Restart the NetworkManager service on new VM named "{{ nomVM }}" to add the good entry in DHCP (using module service)
-  service:
-    name: NetworkManager
-    state: restarted
-  delegate_to: "{{ nomVM }}"
-
-#To record the new server in DHCP server, we restart the NetworkManager service, using command module
-#Using module service, the record is not always done
-- name: Restart the NetworkManager service on new VM named "{{ nomVM }}" to add the good entry in DHCP (using module command)
-  command: "systemctl restart NetworkManager"
-  delegate_to: "{{ nomVM }}"
