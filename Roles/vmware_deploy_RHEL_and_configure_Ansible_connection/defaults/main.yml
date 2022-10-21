@@ -12,7 +12,9 @@ vmware_deploy_hardware_memory_hot_add: true
 vmware_deploy_hardware_cpus_hot_add: true
 #Variables for the hosts file /etc/hosts
 vmware_deploy_etc_hosts_file: /etc/hosts
+vmware_deploy_etc_hosts_file_change_needed: false
 #Variables for the Ansible inventory file
+vmware_deploy_service_AAP: "automation-controller.service"
 vmware_deploy_ansible_inventory_file: /root/Ansible/inventory_ansible
 vmware_deploy_group_for_VM: red_hat
 #Variables for the OS configuration of the new VM

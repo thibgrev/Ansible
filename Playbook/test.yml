@@ -1,20 +1,10 @@
 - name: test
-  hosts: vm-redhat-lg
-  connection: ssh
+  hosts: localhost 
+  connection: no
   gather_facts: no
-  vars:
-    - aFaire: false
+  vars_files:
+    ../vault_file.yml
   tasks:
-    - name: afficgae des facts
-      stat:
-        path: /etc/ansible-automation-platform/VERSION
-      register: result
-
-    - name: action a faire?
-      debug:
-        msg: "Resultat: {{ result.stat.exists }}"
-
-    - name: action a faire?
-      debug:
-        msg: Action a faire car le fichier existe
-      when: result.stat.exists is true and aFaire is true
+    - name: stat module
+      net_ping:
+        dest: vm-redhat-aap

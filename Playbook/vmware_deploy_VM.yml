@@ -3,8 +3,6 @@
   hosts: localhost
   connection: local
   gather_facts: no
-  vars:
-    - vmware_deploy_insight_needed: true
   tasks:
     - name: Check the "nomVM" variable
       fail:
@@ -12,27 +10,6 @@
           - "Variable named nomVm is not defined and is mandatory"
           - "Variable named nomVM will be the name of the new VM deployed using this Playbook"
       when: nomVM is not defined
-
-    - name: Check the "vmware_deploy_insight_needed" variable
-      debug:
-        msg:
-          - "Variable named vmware_deploy_insight_needed is not set"
-          - "The default value of this variable will be used and is {{ vmware_deploy_insight_needed }}"
-      when: vmware_deploy_insight_needed is true
-
-    - name: Check the "vmware_deploy_insight_needed" variable
-      debug:
-        msg:
-          - "Variable named vmware_deploy_insight_needed have to be true or false"
-          - "The default value of this variable will be used and is true"
-      when: vmware_deploy_insight_needed is not true and vmware_deploy_insight_needed is not false
-      changed_when: vmware_deploy_insight_needed is not true and vmware_deploy_insight_needed is not false
-      notify: reset_vmware_deploy_insight_needed
-
-  handlers:
-    - name: reset_vmware_deploy_insight_needed
-      set_fact:
-        vmware_deploy_insight_needed: true
 
 #Deployment and configure of a new VM Red Hat
 - name: Deployment of "{{ nomVM }}"
@@ -46,21 +23,3 @@
   roles:
     #Role used to deply VM on VCenter target and configure Ansible connexion (SSH Key, add user...)
     - ../Roles/vmware_deploy_RHEL_and_configure_Ansible_connection
-
-#Add the new VM in Red Hat Insight system 
-- name: Add of the new VM named "{{ nomVM }}" in the Red Hat Insight system
-  hosts: "{{ nomVM }}"
-  connection: ssh
-  gather_facts: no
-  vars_files:
-    #Vault file is needed because we use password and sensibled data stored in this document
-    - ../vault_file.yml
-  
-  roles:
-    #Role used to add the new VM in Red Hat Insight 
-    - role: ../../.ansible/roles/RedHatInsights.insights-client
-      when: vmware_deploy_insight_needed is true
-  vars:
-    #This variables are needed to add the new VM in Red Hat Insight (Data stored in the Vault file)
-    redhat_portal_username: "{{ vault_redhat_RHN_account }}"
-    redhat_portal_password: "{{ vault_redhat_RHN_password }}"

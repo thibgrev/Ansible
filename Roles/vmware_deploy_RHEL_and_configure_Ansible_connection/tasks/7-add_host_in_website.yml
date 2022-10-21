@@ -1,0 +1,26 @@
+- name: Add the new VM named "{{ nomVM }}" on the RHN, using Red Hat account "{{ vmware_deploy_RH_account }}", with "auto attach"
+  #SSH connexion use because the operation will ba set on the target
+  connection: ssh
+  community.general.redhat_subscription:
+    state: present
+    username: "{{ vmware_deploy_RH_account }}"
+    password: "{{ vmware_deploy_RH_password }}"
+    auto_attach: true
+  #The operation has to be done on the target
+  delegate_to: "{{ nomVM }}"
+
+- name: Suppression of the new VM named "{{ nomVM }}" on the Red Hat Insight system
+  #SSH connexion use because the operation will ba set on the target
+  connection: ssh
+  command: "insights-client --unregister --force"
+  #The operation has to be done on the target
+  delegate_to: "{{ nomVM }}"
+  #Ignore_erros because the new VM could be not included in Red Hat Insight
+  ignore_errors: yes
+
+- name: Add the new VM named "{{ nomVM }}" on the Red Hat Insight system
+  #SSH connexion use because the operation will ba set on the target
+  connection: ssh
+  command: "insights-client --register"
+  #The operation has to be done on the target
+  delegate_to: "{{ nomVM }}"
