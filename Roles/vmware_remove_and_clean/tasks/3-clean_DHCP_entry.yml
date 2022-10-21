@@ -4,5 +4,5 @@
   community.windows.win_dhcp_lease:
     ip: "{{ ipVM }}"
     state: absent
-  delegate_to: "{{ domainController }}"
+  delegate_to: "{{ vmware_remove_domain_controller }}"
   ignore_errors: yes

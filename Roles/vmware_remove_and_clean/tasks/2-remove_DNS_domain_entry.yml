@@ -1,22 +1,20 @@
-#Remove the DNS entry in DNS of the domain
 - name: Get the IP address of the new VM named "{{ nomVM }}"
-  community.vmware.vmware_guest_info:
+  vmware_guest_info:
     name: "{{ nomVM }}"
-    datacenter: "{{ vmware_datacenter }}"
-    hostname: "{{ vmware_hostname }}"
-    username: "{{ vmware_username }}"
-    password: "{{ vmware_password }}"
+    datacenter: "{{ vmware_remove_vcenter_datacenter }}"
+    hostname: "{{ vmware_remove_vcenter_hotname }}"
+    username: "{{ vmware_remove_vcenter_username }}"
+    password: "{{ vmware_remove_vcenter_password }}"
     validate_certs: False
   register: listeInfoVM
-  ignore_errors: yes
 
 - name: Suppression of the DNS entry in the domain for the VM named "{{ nomVM }}" and IP "{{ ipVM }}"
   become: no
   win_dns_record:
     name: "{{ nomVM }}"
-    type: "{{ type }}"
-    zone: "{{ zone }}"
+    type: "{{ vmware_remove_type }}"
+    zone: "{{ vmware_remove_zone }}"
     state: absent
-    computer_name: "{{ domainController }}"
-  delegate_to: "{{ domainController }}"
+    computer_name: "{{ vmware_remove_domain_controller }}"
+  delegate_to: "{{ vmware_remove_domain_controller }}"
   ignore_errors: yes

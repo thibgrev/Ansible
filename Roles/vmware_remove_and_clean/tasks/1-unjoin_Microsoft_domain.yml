@@ -1,14 +1,14 @@
-- name: Unjoin the VM named "{{ nomVM }}" to the Microsoft Domain named "{{ domain }}"
+- name: Unjoin the VM named "{{ nomVM }}" to the Microsoft Domain named "{{ vmware_remove_domain }}"
   connection: ssh
   shell : realm leave
   #The operation has to be done on the target
   delegate_to: "{{ nomVM }}"
   ignore_errors: yes
 
-- name: Suppression of the computer object for "{{ nomVM }}" in the Microsoft Domain "{{ domain }}"
+- name: Suppression of the computer object for "{{ nomVM }}" in the Microsoft Domain "{{ vmware_remove_domain }}"
   become: no
   win_domain_computer:
     name: "{{ nomVM }}"
     state: absent
-  delegate_to: "{{ domainController }}"
+  delegate_to: "{{ vmware_remove_domain_controller }}"
   ignore_errors: yes

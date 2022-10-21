@@ -1,6 +1,6 @@
-- name: Suppression de la machine "{{ nomVM }}" dans le groupe fichier hosts "{{ DNS_file }}"
+- name: Suppression de la machine "{{ nomVM }}" dans le groupe fichier hosts "{{ vmware_remove_etc_hosts_file }}"
   lineinfile:
       search_string: "{{ nomVM }}"
-      path: "{{ DNS_file }}"
+      path: "{{ vmware_remove_etc_hosts_file }}"
       state: absent
   ignore_errors: yes
