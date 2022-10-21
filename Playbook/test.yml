@@ -1,10 +1,17 @@
 - name: test
-  hosts: localhost 
-  connection: no
+  hosts: vm-redhat-aap
   gather_facts: no
-  vars_files:
-    ../vault_file.yml
+  vars:
+    - var: automation-controller.service2
   tasks:
-    - name: stat module
-      net_ping:
-        dest: vm-redhat-aap
+  - name: Analyse of the target to receive the service facts
+    service_facts:
+
+  - name: affichage de la variable
+    debug:
+      msg: "La variable est  {{ var }} !"
+
+  - name: AAP service named "{{ vmware_deploy_service_AAP }}" is not found, it is a Ansible machine
+    debug:
+      msg: "Dedans!"
+    when: var not in ansible_facts.services
