@@ -5,7 +5,7 @@
 2. Task  
 3. Role  
 
-## Realized bu thibgrev for Ansible and AAPv2  
+## Realized by thibgrev for Ansible and AAPv2  
 1. VMWare deployment operational with operations (Add in DNS, clean DHCP, record on RHN, Insight etc...)   
 2. VMWare remove operational with operations (Rmove in DNS, clean DHCP, record on RHN, Insight etc...)  
 
