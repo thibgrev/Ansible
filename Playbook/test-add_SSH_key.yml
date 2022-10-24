@@ -4,7 +4,8 @@
   tasks:
 
     - name: test
-      ansible.posix.authorized_key:
+      #ansible.posix.authorized_key:
+      authorized_key:
         user: ansible_user
         state: present
         key: "{{ lookup('file', '/root/.ssh/ansible_user.pub') }}"
