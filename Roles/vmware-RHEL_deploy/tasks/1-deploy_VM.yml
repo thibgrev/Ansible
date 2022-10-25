@@ -12,13 +12,13 @@
       - "->Deployment will wait the VM to response before continue to other step."
       - "------------------------------------------------------------------------" 
 
-- name: Deployment of the new VM named "{{ nomVM }}" on VCenter platform "{{ vmware_deploy_vcenter_hotname }}"
+- name: Deployment of the new VM named "{{ VMname }}" on VCenter platform "{{ vmware_deploy_vcenter_hotname }}"
   vmware_guest:
     hostname: "{{ vmware_deploy_vcenter_hotname }}"
     username: "{{ vmware_deploy_vcenter_username }}"
     password: "{{ vmware_deploy_vcenter_password }}"
     validate_certs: False
-    name: "{{ nomVM }}"
+    name: "{{ VMname }}"
     template: "{{ vmware_deploy_template }}"
     datacenter: "{{ vmware_deploy_vcenter_datacenter }}"
     folder: "{{ vmware_deploy_folder }}"

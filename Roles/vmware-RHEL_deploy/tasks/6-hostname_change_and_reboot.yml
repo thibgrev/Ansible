@@ -1,16 +1,16 @@
-- name: Change the hostname of the new VM with his real name "{{ nomVM }}"
+- name: Change the hostname of the new VM with his real name "{{ VMname }}"
   #SSH connexion use because the operation will ba set on the target
   connection: ssh
   hostname:
-    name: "{{ nomVM }}"
+    name: "{{ VMname }}"
     use: systemd
   #The operation has to be done on the target
-  delegate_to: "{{ nomVM }}"
+  delegate_to: "{{ VMname }}"
 
-- name: Reboot to modify the hostname of the new VM named "{{ nomVM }}"
+- name: Reboot to modify the hostname of the new VM named "{{ VMname }}"
   #SSH connexion use because the operation will ba set on the target
   connection: ssh
   reboot:
   #The operation has to be done on the target
-  delegate_to: "{{ nomVM }}" 
+  delegate_to: "{{ VMname }}" 
   when: vmware_deploy_reboot is true
