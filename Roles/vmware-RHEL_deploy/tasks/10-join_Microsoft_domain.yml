@@ -1,16 +1,16 @@
-- name: Join the new VM named "{{ nomVM }}" to the Microsoft Domain named "{{ vmware_deploy_domain }}"
+- name: Join the new VM named "{{ VMname }}" to the Microsoft Domain named "{{ vmware_deploy_domain }}"
   connection: ssh
   ignore_errors: true
   shell : echo {{ vmware_deploy_domain_join_AD_user_password }} | realm join -U {{ vmware_deploy_domain_join_AD_user }} {{ vmware_deploy_domain }}
   #The operation has to be done on the target
-  delegate_to: "{{ nomVM }}"
+  delegate_to: "{{ VMname }}"
 
-- name: Move the computer object for "{{ nomVM }}" in the correct OU "{{ vmware_deploy_computer_Linux_OU }}"
+- name: Move the computer object for "{{ VMname }}" in the correct OU "{{ vmware_deploy_computer_Linux_OU }}"
   become: no
   ignore_errors: true
   win_domain_computer:
-    name: "{{ nomVM }}"
+    name: "{{ VMname }}"
     state: present
     ou: "{{ vmware_deploy_computer_Linux_OU }}"
-    dns_hostname: "{{ nomVM }}.{{ vmware_deploy_domain }}"
+    dns_hostname: "{{ VMname }}.{{ vmware_deploy_domain }}"
   delegate_to: "{{ vmware_deploy_domain_controller }}"

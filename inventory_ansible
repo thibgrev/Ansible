@@ -8,7 +8,6 @@ vm-redhat-lg
 vm-redhat-con
 vm-redhat-cat
 vm-redhat-setup
-vm-redhat-aap
 
 [windows]
 srvad1.bsclab.local

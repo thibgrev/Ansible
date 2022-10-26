@@ -20,4 +20,4 @@
     - ../vault_file.yml 
 
   roles:
-    - ../Roles/vmware_remove_and_clean
+    - ../Roles/vmware-RHEL_remove/

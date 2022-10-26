@@ -1,20 +1,20 @@
-- name: Add the new VM named "{{ nomVM }}" in the memory inventory file
+- name: Add the new VM named "{{ VMname }}" in the memory inventory file
   add_host:
-      name: "{{ nomVM }}"
+      name: "{{ VMname }}"
       group: "{{ vmware_deploy_group_for_VM }}"
 
 - name: Analyse of the target to receive the service facts
   service_facts:
-  delegate_to: "{{ nomVM }}"
+  delegate_to: "{{ VMname }}"
 
 - name: AAP service named "{{ vmware_deploy_service_AAP }}" is not found, it is a Ansible machine
   debug:
     msg: "Service {{ vmware_deploy_service_AAP }} not found, inventory file {{ vmware_deploy_ansible_inventory_file }} will be used"
   when: '"{{ vmware_deploy_service_AAP }}" not in ansible_facts.services'
 
-- name: Add the new VM named "{{ nomVM }}" in the Ansible inventory file "{{ vmware_deploy_ansible_inventory_file }}", in the group named "{{ vmware_deploy_group_for_VM }}" because AAP service wasn't found
+- name: Add the new VM named "{{ VMname }}" in the Ansible inventory file "{{ vmware_deploy_ansible_inventory_file }}", in the group named "{{ vmware_deploy_group_for_VM }}" because AAP service wasn't found
   lineinfile:
-    line: "{{ nomVM }}"
+    line: "{{ VMname }}"
     path: "{{ vmware_deploy_ansible_inventory_file }}"
     state: present
     insertafter: "{{ vmware_deploy_group_for_VM }}"
