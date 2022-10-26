@@ -1,6 +1,7 @@
 - name: creation of a new user in Microsoft domain
   hosts: "{{ domain_controller }}"
   become: no
+  gather_facts: no
   vars_files:
     - ../vault_file.yml
   tasks:
