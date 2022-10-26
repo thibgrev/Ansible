@@ -1,7 +1,7 @@
 - name: add user names "{{ user_to_create }}" in the Microsoft domain named "{{ microsoft_domain }}"
   hosts: srvad1.bsclab.local
   vars_files:
-    - ../vault_files.yml
+    - ../vault_file.yml
   tasks:
     - name: creation of the user named "{{ user_to_create }}"
       win_domain_user:
