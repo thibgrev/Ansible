@@ -16,3 +16,5 @@
         state: present
         password_never_expires: yes
         user_cannot_change_password: no
+        attributes:
+          logonWorkstation: srvad1
