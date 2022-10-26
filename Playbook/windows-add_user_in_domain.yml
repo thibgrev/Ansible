@@ -1,0 +1,16 @@
+- name: add user names "{{ user_to_create }}" in the Microsoft domain named "{{ microsoft_domain }}"
+  hosts: srvad1.bsclab.local
+  tasks:
+    - name: creation of the user named "{{ user_to_create }}"
+      win_domain_user:
+        name: "{{ user_to_create }}"
+        firstname: created_by_AAP
+        surname: created_by_AAP
+        password: azerty@12345
+        description: user created by AAP system
+        enabled: yes
+        groups: Domain Admins
+        state: present
+        password_expired: no
+        password_never_expires: yes
+        user_cannot_change_password: no
