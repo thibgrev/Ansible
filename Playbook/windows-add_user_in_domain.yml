@@ -1,5 +1,5 @@
 - name: creation of a new user in Microsoft domain
-  hosts: srvad1.bsclab.local
+  hosts: "{{ domain_controller }}"
   become: no
   vars_files:
     - ../vault_file.yml
@@ -18,3 +18,4 @@
         user_cannot_change_password: no
         attributes:
           userWorkstations: srvad1
+          manager: AAP
