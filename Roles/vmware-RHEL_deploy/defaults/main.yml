@@ -42,3 +42,6 @@ vmware_deploy_domain: bsclab.local
 vmware_deploy_domain_join_AD_user: "{{ vault_AD_user_add_computer }}"
 vmware_deploy_domain_join_AD_user_password: "{{ vault_AD_user_add_computer_password }}"
 vmware_deploy_computer_Linux_OU: "OU=Linux,OU=Servers,DC=bsclab,DC=local"
+#Variable for the RHN acces
+vmware_deploy_RH_account: "{{ vault_redhat_RHN_account }}"
+vmware_deploy_RH_account_password: "{{ vault_redhat_RHN_password }}"
