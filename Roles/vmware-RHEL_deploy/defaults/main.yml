@@ -18,10 +18,10 @@ vmware_deploy_service_AAP: "automation-controller.service"
 vmware_deploy_ansible_inventory_file: /root/Ansible/inventory_ansible
 vmware_deploy_group_for_VM: red_hat
 #Variables for the OS configuration of the new VM
-vmware_deploy_ansible_user: ansible_user
-vmware_deploy_ansible_user__password: "{{ vault_RHEL_ansible_user_password }}"
-vmware_deploy_root_account: root
-vmware_deploy_root_password: "{{ vault_RHEL_root_password }}"
+vmware_deploy_ansible_user: "{{ vault_ansible_user_for_linux }}"
+vmware_deploy_ansible_user__password: "{{ vault_ansible_user_for_linux_password }}"
+vmware_deploy_root_account: "{{ vault_root_user_for_linux }}"
+vmware_deploy_root_password: "{{ vault_root_user_for_linux_password }}"
 vmware_deploy_public_key_root: /root/.ssh/root.pub
 vmware_deploy_public_key_ansible_user: /root/.ssh/ansible_user.pub
 vmware_deploy_sudoers_file: /root/Ansible/Roles/vmware-RHEL_deploy/files/99-Ansible_user

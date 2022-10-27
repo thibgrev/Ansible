@@ -3,6 +3,7 @@ red_hat
 windows
 
 [red_hat]
+vm-redhat-aap
 vm-redhat-test
 vm-redhat-lg
 vm-redhat-con
@@ -10,4 +11,4 @@ vm-redhat-cat
 vm-redhat-setup
 
 [windows]
-srvad1.bsclab.local
+srvAD1.bsclab.local
