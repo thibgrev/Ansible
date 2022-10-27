@@ -3,6 +3,7 @@ red_hat
 windows
 
 [red_hat]
+vm-redhat-b.BSCLAB.LOCAL
 vm-redhat-a.BSCLAB.LOCAL
 vm-redhat-hub.BSCLAB.LOCAL
 vm-redhat-aap.BSCLAB.LOCAL
