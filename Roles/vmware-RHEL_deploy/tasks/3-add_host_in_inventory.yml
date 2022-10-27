@@ -1,6 +1,6 @@
 - name: Add the new VM named "{{ VMname }}" in the memory inventory file
   add_host:
-      name: "{{ VMname }}"
+      name: "{{ VMname }}.BSCLAB.LOCAL"
       group: "{{ vmware_deploy_group_for_VM }}"
 
 - name: Analyse of the target to receive the service facts
@@ -14,7 +14,7 @@
 
 - name: Add the new VM named "{{ VMname }}" in the Ansible inventory file "{{ vmware_deploy_ansible_inventory_file }}", in the group named "{{ vmware_deploy_group_for_VM }}" because AAP service wasn't found
   lineinfile:
-    line: "{{ VMname }}"
+    line: "{{ VMname }}.BSCLAB.LOCAL"
     path: "{{ vmware_deploy_ansible_inventory_file }}"
     state: present
     insertafter: "{{ vmware_deploy_group_for_VM }}"

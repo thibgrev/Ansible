@@ -33,7 +33,7 @@ vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
 #Variables for the update of the new VM
 vmware_deploy_update_state: latest
 #Variables for operations on DHCP server
-vmware_deploy_domain_controller: srvad1.bsclab.local
+vmware_deploy_domain_controller: srvad1.BSCLAB.LOCAL
 #Variables for operations on DNS server
 vmware_deploy_type: A
 vmware_deploy_zone: bsclab.local
