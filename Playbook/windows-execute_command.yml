@@ -1,0 +1,7 @@
+- name: execution of a command on a Windows system
+  hosts: "{{ serverName }}"
+  become: no
+  gather_facts: no
+  tasks:
+    - name: execution of the command "{{ command_to_execute }}" on  the server named "{{ serverName }}"
+      win_command: hostname
