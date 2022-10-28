@@ -6,3 +6,8 @@
   tasks:
     - name: execution of the command "{{ command_to_execute }}" on  the server named "{{ serverName }}"
       command: "{{ command_to_execute }}"
+      register: command_register
+
+    - name: show the result of the command "{{ command_to_execute }}"
+      debug:
+        msg: "{{ command_register.stdout }}"

@@ -9,6 +9,7 @@ vm-redhat-hub.BSCLAB.LOCAL
 vm-redhat-aap.BSCLAB.LOCAL
 vm-redhat-test.BSCLAB.LOCAL
 vm-redhat-setup.BSCLAB.LOCAL
+vm-redhat-ansible.BSCLAB.LOCAL
 
 [windows]
 srvad1.BSCLAB.LOCAL
