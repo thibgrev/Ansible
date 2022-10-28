@@ -106,3 +106,48 @@ removed in version 2.12. Deprecation warnings can be disabled by setting depreca
 }
 2022-10-28 14:35:38,032 p=9844 u=thibgrev n=ansible | PLAY RECAP ******************************************************************************************************************************************************************************************************************
 2022-10-28 14:35:38,032 p=9844 u=thibgrev n=ansible | vm-redhat-ansible.BSCLAB.LOCAL : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-28 14:42:15,577 p=10755 u=thibgrev n=ansible | ERROR! the playbook: Playbook/vmware_deploy_VM.yml could not be found
+2022-10-28 14:43:15,083 p=10929 u=thibgrev n=ansible | [WARNING]: While constructing a mapping from /home/thibgrev/Ansible/Roles/vmware-RHEL_deploy/defaults/main.yml, line 2, column 1, found a duplicate dict key (vmware_deploy_RH_account). Using last defined value only.
+
+2022-10-28 14:43:15,098 p=10929 u=thibgrev n=ansible | PLAY [Management of the need variables] *************************************************************************************************************************************************************************************
+2022-10-28 14:43:15,114 p=10929 u=thibgrev n=ansible | TASK [Check the "VMname" variable] ******************************************************************************************************************************************************************************************
+2022-10-28 14:43:15,159 p=10929 u=thibgrev n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "msg": ["Variable named VMname is not defined and is mandatory", "Variable named VMname will be the name of the new VM deployed using this Playbook"]}
+2022-10-28 14:43:15,160 p=10929 u=thibgrev n=ansible | PLAY RECAP ******************************************************************************************************************************************************************************************************************
+2022-10-28 14:43:15,160 p=10929 u=thibgrev n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-10-28 14:43:51,746 p=11092 u=thibgrev n=ansible | [WARNING]: While constructing a mapping from /home/thibgrev/Ansible/Roles/vmware-RHEL_deploy/defaults/main.yml, line 2, column 1, found a duplicate dict key (vmware_deploy_RH_account). Using last defined value only.
+
+2022-10-28 14:43:51,761 p=11092 u=thibgrev n=ansible | PLAY [Management of the need variables] *************************************************************************************************************************************************************************************
+2022-10-28 14:43:51,778 p=11092 u=thibgrev n=ansible | TASK [Check the "VMname" variable] ******************************************************************************************************************************************************************************************
+2022-10-28 14:43:51,818 p=11092 u=thibgrev n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "msg": ["Variable named VMname is not defined and is mandatory", "Variable named VMname will be the name of the new VM deployed using this Playbook"]}
+2022-10-28 14:43:51,820 p=11092 u=thibgrev n=ansible | PLAY RECAP ******************************************************************************************************************************************************************************************************************
+2022-10-28 14:43:51,821 p=11092 u=thibgrev n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-10-28 14:44:19,953 p=11210 u=thibgrev n=ansible | [WARNING]: While constructing a mapping from /home/thibgrev/Ansible/Roles/vmware-RHEL_deploy/defaults/main.yml, line 2, column 1, found a duplicate dict key (vmware_deploy_RH_account). Using last defined value only.
+
+2022-10-28 14:44:19,970 p=11210 u=thibgrev n=ansible | PLAY [Management of the need variables] *************************************************************************************************************************************************************************************
+2022-10-28 14:44:19,987 p=11210 u=thibgrev n=ansible | TASK [Check the "VMname" variable] ******************************************************************************************************************************************************************************************
+2022-10-28 14:44:20,023 p=11210 u=thibgrev n=ansible | skipping: [localhost]
+2022-10-28 14:44:20,052 p=11210 u=thibgrev n=ansible | PLAY [Deployment of "vm-redhat-tg"] *****************************************************************************************************************************************************************************************
+2022-10-28 14:44:20,066 p=11210 u=thibgrev n=ansible | TASK [../Roles/vmware-RHEL_deploy : include_tasks] **************************************************************************************************************************************************************************
+2022-10-28 14:44:20,094 p=11210 u=thibgrev n=ansible | included: /home/thibgrev/Ansible/Roles/vmware-RHEL_deploy/tasks/1-deploy_VM.yml for localhost
+2022-10-28 14:44:20,101 p=11210 u=thibgrev n=ansible | TASK [../Roles/vmware-RHEL_deploy : Parameters for the new VM to deploy are listed below] ***********************************************************************************************************************************
+2022-10-28 14:44:20,123 p=11210 u=thibgrev n=ansible | ok: [localhost] => {
+    "msg": [
+        "------------------------------------------------------------------------ ",
+        "New VM configuration:",
+        "->Number of CPUs: 4.",
+        "->Number of RAM memory: 4096mb.",
+        "->Hot add for CPUs: True.",
+        "->Hot add for memory: True.",
+        "------------------------------------------------------------------------ ",
+        "Information:",
+        "->Deployment will wait the VM to response before continue to other step.",
+        "------------------------------------------------------------------------"
+    ]
+}
+2022-10-28 14:44:20,130 p=11210 u=thibgrev n=ansible | TASK [../Roles/vmware-RHEL_deploy : Deployment of the new VM named "vm-redhat-tg" on VCenter platform "10.50.51.5"] *********************************************************************************************************
+2022-10-28 14:44:20,385 p=11210 u=thibgrev n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "sudo: il est nécessaire de saisir un mot de passe\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2022-10-28 14:44:20,387 p=11210 u=thibgrev n=ansible | PLAY RECAP ******************************************************************************************************************************************************************************************************************
+2022-10-28 14:44:20,387 p=11210 u=thibgrev n=ansible | localhost                  : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-10-28 14:54:28,923 p=11643 u=thibgrev n=ansible | Decryption successful
+2022-10-28 14:54:53,537 p=11699 u=thibgrev n=ansible | Encryption successful
+2022-10-28 14:55:12,021 p=11775 u=thibgrev n=ansible | ERROR! Decryption failed (no vault secrets were found that could decrypt) for /home/thibgrev/Ansible/vault_file.yml
