@@ -18,7 +18,7 @@
         dest: /var/www/html/
         force: yes
 
-    - name: Firewall configuration
+    - name: Firewall configurationans name
       firewalld:
         service: http
         permanent: yes
