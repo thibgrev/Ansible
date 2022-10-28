@@ -7,3 +7,8 @@
   tasks:
     - name: execution of the command "{{ command_to_execute }}" on  the server named "{{ serverName }}"
       win_command: "{{ command_to_execute }}"
+      register: command_result
+
+    - name: Result show
+      debug:
+        msg: command_result.stdout
