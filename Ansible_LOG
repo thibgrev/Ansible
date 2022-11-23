@@ -164,3 +164,9 @@ defined value only.
 2022-11-23 14:56:54,615 p=2466 u=thibgrev n=ansible | [WARNING]: While constructing a mapping from /home/thibgrev/Ansible/Roles/vmware-RHEL_deploy/defaults/main.yml, line 2, column 1, found a duplicate dict key (vmware_deploy_RH_account). Using last defined value only.
 
 2022-11-23 14:56:54,648 p=2466 u=thibgrev n=ansible | playbook: Playbook/test-lint.yml
+2022-11-23 15:58:17,291 p=3136 u=thibgrev n=ansible | [WARNING]: While constructing a mapping from
+/home/thibgrev/Ansible/Roles/vmware-RHEL_deploy/defaults/main.yml, line 2,
+column 1, found a duplicate dict key (vmware_deploy_RH_account). Using last
+defined value only.
+
+2022-11-23 15:58:17,312 p=3136 u=thibgrev n=ansible | playbook: Playbook/test-lint.yml
