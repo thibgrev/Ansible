@@ -11,6 +11,10 @@
           - "Variable named VMname will be the name of the new VM deployed using this Playbook"
       when: VMname is not defined
 
+      - name: test
+      debugger:
+        msg: "ok"
+
 # Deployment and configure of a new VM Red Hat
 - name: Deployment of "{{ VMname }}"
   hosts: localhost
