@@ -170,3 +170,81 @@ column 1, found a duplicate dict key (vmware_deploy_RH_account). Using last
 defined value only.
 
 2022-11-23 15:58:17,312 p=3136 u=thibgrev n=ansible | playbook: Playbook/test-lint.yml
+2023-02-11 17:04:06,854 p=405729 u=root n=ansible | vm-redhat-hub.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: no such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-hub.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:04:06,871 p=405729 u=root n=ansible | vm-redhat-b.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: no such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-b.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:04:10,646 p=405729 u=root n=ansible | vm-redhat-aap.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added 'vm-redhat-aap.bsclab.local' (ED25519) to the list of known hosts.\r\nno such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-aap.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:04:16,531 p=405729 u=root n=ansible | vm-redhat-a.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: connect to host vm-redhat-a.bsclab.local port 22: Connection timed out",
+    "unreachable": true
+}
+2023-02-11 17:04:20,710 p=405729 u=root n=ansible | srvad1.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: connect to host srvad1.bsclab.local port 22: Connection timed out",
+    "unreachable": true
+}
+2023-02-11 17:05:11,561 p=405729 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2023-02-11 17:06:53,059 p=405776 u=root n=ansible | bastion.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname bastion.bsclab.local: Name or service not known",
+    "unreachable": true
+}
+2023-02-11 17:06:53,106 p=405776 u=root n=ansible | vm-redhat-b.BSCAL.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname vm-redhat-b.bscal.local: Name or service not known",
+    "unreachable": true
+}
+2023-02-11 17:06:53,386 p=405776 u=root n=ansible | vm-redhat-hub.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: no such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-hub.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:06:53,404 p=405776 u=root n=ansible | vm-redhat-aap.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: no such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-aap.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:07:08,046 p=405776 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2023-02-11 17:25:49,198 p=406719 u=root n=ansible | vm-redhat-b.BSCAL.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname vm-redhat-b.bscal.local: Name or service not known",
+    "unreachable": true
+}
+2023-02-11 17:26:06,736 p=406728 u=root n=ansible | vm-redhat-b.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added 'vm-redhat-b.bsclab.local' (ED25519) to the list of known hosts.\r\nno such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-b.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:26:09,506 p=406736 u=root n=ansible | vm-redhat-b.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: no such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-b.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:27:25,021 p=406780 u=root n=ansible | ERROR! Decryption failed (no vault secrets were found that could decrypt) on /root/Ansible/vault_file.yml
+2023-02-11 17:27:48,617 p=406785 u=root n=ansible | ERROR! Decryption failed (no vault secrets were found that could decrypt) for /root/Ansible/vault_file.yml
+2023-02-11 17:27:55,508 p=406788 u=root n=ansible | ERROR! Decryption failed (no vault secrets were found that could decrypt) for /root/Ansible/vault_file.yml
+2023-02-11 17:28:15,645 p=406794 u=root n=ansible | ERROR! Decryption failed (no vault secrets were found that could decrypt) for /root/Ansible/vault_file.yml
+2023-02-11 17:32:47,448 p=406861 u=root n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: vm-redhat-b
+
+2023-02-11 17:32:47,448 p=406861 u=root n=ansible | [WARNING]: No hosts matched, nothing to do
+
+2023-02-11 17:32:57,028 p=406865 u=root n=ansible | vm-redhat-b.BSCLAB.LOCAL | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: no such identity: /home/thibgrev/.ssh/ansible_user: No such file or directory\r\nansible_user@vm-redhat-b.bsclab.local: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+2023-02-11 17:34:32,277 p=406915 u=root n=ansible | ERROR! Decryption failed (no vault secrets were found that could decrypt) on /root/Ansible/vault_file.yml
