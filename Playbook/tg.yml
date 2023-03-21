@@ -1,5 +1,6 @@
 - name: test
   hosts: localhost
+  gather_facts: no
   tasks:
   - name: "install NGinx packages on RHEL"
     ansible.builtin.debug:

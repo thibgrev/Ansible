@@ -212,3 +212,60 @@ The offending line appears to be:
       ^ here
 
 2023-03-21 11:50:38,804 p=12395 u=thibgrev n=ansible | playbook: Playbook/test.yml
+2023-03-21 12:02:11,888 p=12614 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: red_hat
+
+2023-03-21 12:02:11,889 p=12614 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: windows
+
+2023-03-21 12:02:12,005 p=12614 u=thibgrev n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/thibgrev/Ansible/Playbook/test-wisdom.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+    - name: "Install NGinx server and start"
+      ^ here
+
+2023-03-21 12:02:25,603 p=12670 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: red_hat
+
+2023-03-21 12:02:25,603 p=12670 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: windows
+
+2023-03-21 12:02:25,708 p=12670 u=thibgrev n=ansible | PLAY [test] ***********************************************************************************************************************************************************
+2023-03-21 12:02:25,721 p=12670 u=thibgrev n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************
+2023-03-21 12:02:26,084 p=12670 u=thibgrev n=ansible | fatal: [localhost]: FAILED! => {"ansible_facts": {}, "changed": false, "failed_modules": {"ansible.legacy.setup": {"failed": true, "module_stderr": "sudo: a password is required\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}}, "msg": "The following modules failed to execute: ansible.legacy.setup\n"}
+2023-03-21 12:02:26,085 p=12670 u=thibgrev n=ansible | PLAY RECAP ************************************************************************************************************************************************************
+2023-03-21 12:02:26,085 p=12670 u=thibgrev n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-03-21 12:02:39,509 p=12751 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: windows
+
+2023-03-21 12:02:39,510 p=12751 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: red_hat
+
+2023-03-21 12:02:39,639 p=12751 u=thibgrev n=ansible | playbook: Playbook/tg.yml
+2023-03-21 12:02:41,044 p=12770 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: windows
+
+2023-03-21 12:02:41,044 p=12770 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: red_hat
+
+2023-03-21 12:02:41,134 p=12770 u=thibgrev n=ansible | PLAY [test] ***********************************************************************************************************************************************************
+2023-03-21 12:02:41,144 p=12770 u=thibgrev n=ansible | TASK [install NGinx packages on RHEL] *********************************************************************************************************************************
+2023-03-21 12:02:41,152 p=12770 u=thibgrev n=ansible | ok: [localhost] => {
+    "msg": "yessssssssssssssssss"
+}
+2023-03-21 12:02:41,156 p=12770 u=thibgrev n=ansible | PLAY RECAP ************************************************************************************************************************************************************
+2023-03-21 12:02:41,156 p=12770 u=thibgrev n=ansible | localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-21 11:02:46,625 p=10 u=root n=ansible | {"/usr/share/ansible/collections/ansible_collections": {"kubernetes.core": {"version": "2.3.2"}, "redhatinsights.insights": {"version": "1.0.7"}, "containers.podman": {"version": "1.9.4"}, "ansible.posix": {"version": "1.4.0"}, "ansible.windows": {"version": "1.11.1"}, "theforeman.foreman": {"version": "3.6.0"}, "awx.awx": {"version": "21.7.0"}}}
+2023-03-21 11:02:47,345 p=17 u=root n=ansible | [WARNING]: Found both group and host with same name: red_hat
+
+2023-03-21 11:02:47,345 p=17 u=root n=ansible | [WARNING]: Found both group and host with same name: windows
+
+2023-03-21 11:02:47,491 p=17 u=root n=ansible | PLAY [test] ********************************************************************
+2023-03-21 11:02:47,506 p=17 u=root n=ansible | TASK [install NGinx packages on RHEL] ******************************************
+2023-03-21 11:02:47,531 p=17 u=root n=ansible | ok: [localhost] => {
+    "msg": "yessssssssssssssssss"
+}
+2023-03-21 11:02:47,542 p=17 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-03-21 11:02:47,542 p=17 u=root n=ansible | localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-21 12:04:12,571 p=13036 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: windows
+
+2023-03-21 12:04:12,571 p=13036 u=thibgrev n=ansible | [WARNING]: Found both group and host with same name: red_hat
+
+2023-03-21 12:04:12,706 p=13036 u=thibgrev n=ansible | playbook: Playbook/tg.yml
