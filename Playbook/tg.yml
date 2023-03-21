@@ -1,0 +1,6 @@
+- name: test
+  hosts: localhost
+  tasks:
+  - name: "install NGinx packages on RHEL"
+    ansible.builtin.debug:
+      msg: "yessssssssssssssssss"
