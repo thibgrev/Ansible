@@ -1,0 +1,6 @@
+- name: test wisdom fonctionnality
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+    - name: "Install NGinx server and start"

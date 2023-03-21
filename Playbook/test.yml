@@ -1,0 +1,6 @@
+- name: test
+  hosts: all
+  tasks:
+    - name: install of NGinx software
+      ansible.builtin.service:
+        name: 
