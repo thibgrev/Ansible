@@ -4,3 +4,12 @@
   tasks:
 
     - name: "Install NGinx server and start"
+      ansible.builtin.dnf:
+        name:
+          - NGinx
+        state: latest
+      
+    - name: "Start and enable nginx service"
+      ansible.builtin.service:
+        state: started
+        enabled: true
