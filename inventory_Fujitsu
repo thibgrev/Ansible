@@ -1,0 +1,7 @@
+[fujitsu:children]
+windows
+rhel
+
+[windows]
+
+[rhel]
