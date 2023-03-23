@@ -1,6 +1,6 @@
 - name: test
-  hosts: all
+  hosts: localhost
   tasks:
-    - name: install of NGinx software
-      ansible.builtin.service:
-        name: 
+    - name: debug module
+      ansible.builtin.debug:
+        msg: test
