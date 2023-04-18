@@ -1,0 +1,20 @@
+- name: Clusters_Info playbook
+  hosts: localhost
+  gather_facts: false
+  collections:
+    - nutanix.ncp
+  module_defaults:
+    group/nutanix.ncp.ntnx:
+      nutanix_host: 10.80.100.10
+      nutanix_username: admin
+      nutanix_password: Lenovo2022!
+      validate_certs: false
+
+  tasks:
+  - name: test getting all clusters
+    ntnx_clusters_info:
+    register: clusters
+
+  - name: affichage
+    ansible.builtin.debug:
+      var: clusters
