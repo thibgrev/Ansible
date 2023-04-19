@@ -1,5 +1,7 @@
+#Variables used to connnect to Windows target
+#Sensible variables are stored in the vault file for security
+ansible_winrm_port: 5985
+ansible_connection: winrm
 ansible_user: "{{ vault_ansible_user_for_windows }}"
 ansible_password: "{{ vault_ansible_user_for_windows_password }}"
-ansible_connection: winrm
-ansible_port: "{{ vault_windows_winrm_port }}"
-ansible_winrm_transport: "{{ vault_windows_winrm_auth }}"
+ansible_winrm_server_cert_validation: ignore

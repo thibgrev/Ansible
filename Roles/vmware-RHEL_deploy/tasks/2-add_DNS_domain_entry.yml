@@ -10,10 +10,9 @@
 
 #Create the DNS new VM entry in DNS of the domain
 - name: Creation of the DNS entry in the domain for the new VM named "{{ VMname }}" and IP "{{ ipVM }}"
-  become: no
-  win_dns_record:
+  community.windows.win_dns_record:
     name: "{{ VMname }}"
-    type: "{{ vmware_deploy_type }}"
+    type: A #"{{ vmware_deploy_type }}"
     value: "{{ ipVM }}"
     zone: "{{ vmware_deploy_zone }}"
     state: present

@@ -1,0 +1,8 @@
+- name: test
+  hosts: srvAD1.BSCLAB.LOCAL
+  become: no
+  gather_facts: no
+  tasks:
+
+    - name: Execute a command in the remote shell, stdout goes to the specified file on the remote
+      ansible.windows.win_shell: hostname

@@ -1,4 +1,6 @@
 ansible_winrm_port: 5985 
 ansible_connection: winrm
-ansible_user: administrator@bsclab.local
+ansible_user: administrator@BSCLAB.LOCAL
 ansible_password: azerty@12345
+ansible_winrm_server_cert_validation: ignore
+#ansible_winrm_transport: basic

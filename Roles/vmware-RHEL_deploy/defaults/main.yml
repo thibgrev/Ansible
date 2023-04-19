@@ -15,7 +15,7 @@ vmware_deploy_etc_hosts_file: /etc/hosts
 vmware_deploy_etc_hosts_file_change_needed: false
 #Variables for the Ansible inventory file
 vmware_deploy_service_AAP: "automation-controller.service"
-vmware_deploy_ansible_inventory_file: /root/Ansible/inventory_ansible
+vmware_deploy_ansible_inventory_file: /root/Ansible/inventory_Fujitsu
 vmware_deploy_group_for_VM: red_hat
 #Variables for the OS configuration of the new VM
 vmware_deploy_ansible_user: "{{ vault_ansible_user_for_linux }}"
@@ -33,7 +33,7 @@ vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
 #Variables for the update of the new VM
 vmware_deploy_update_state: latest
 #Variables for operations on DHCP server
-vmware_deploy_domain_controller: srvad1.BSCLAB.LOCAL
+vmware_deploy_domain_controller: srvAD1.BSCLAB.LOCAL
 #Variables for operations on DNS server
 vmware_deploy_type: A
 vmware_deploy_zone: bsclab.local
@@ -42,6 +42,3 @@ vmware_deploy_domain: bsclab.local
 vmware_deploy_domain_join_AD_user: "{{ vault_AD_user_add_computer }}"
 vmware_deploy_domain_join_AD_user_password: "{{ vault_AD_user_add_computer_password }}"
 vmware_deploy_computer_Linux_OU: "OU=Linux,OU=Servers,DC=bsclab,DC=local"
-#Variable for the RHN acces
-vmware_deploy_RH_account: "{{ vault_redhat_RHN_account }}"
-vmware_deploy_RH_account_password: "{{ vault_redhat_RHN_password }}"
