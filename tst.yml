@@ -1,17 +1,8 @@
 - name: test
-  hosts: localhost
+  hosts: 10.50.51.105
   gather_facts: no
-  vars:
-    vmware_deploy_type: A
-    vmware_deploy_zone: bsclab.local
   tasks:
-
-  - name: Creation of the DNS entry
-    delegate_to: srvAD1.BSCLAB.LOCAL
-    community.windows.win_dns_record:
-      name: vm-redhat-a
-      type: "A"
-      value: 10.50.51.124
-      zone: bsclab.local
-      state: present
-      computer_name: srvAD1.BSCLAB.LOCAL
+    - name: Change the hostname of the new VM with his real name "{{ VMname }}"
+      hostname:
+        name: vm-redhat-a
+        use: systemd
