@@ -1,6 +1,8 @@
 - name: test
   hosts: "{{ nomVM }}"
   gather_facts: no
+  include_files:
+    - secret.yml
   tasks:
     - name: Change the hostname of the new VM with his real name "{{ VMname }}"
       hostname:
