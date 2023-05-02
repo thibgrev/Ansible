@@ -6,3 +6,6 @@
       hostname:
         name: vm-redhat-a
         use: systemd
+
+    - name: reboot
+      reboot:
