@@ -1,13 +1,26 @@
-- name: test
-  hosts: "{{ nomVM }}"
+- name: Change the hostname of a target
+  hosts: localhost
   gather_facts: no
+  become: true
   vars_files:
     secret.yml
   tasks:
-    - name: Change the hostname of the new VM with his real name "{{ VMname }}"
+
+    - name: Check if needed variables are set
+      ansible.builtin.assert:
+        that:
+          - nomVM is defined
+          - nouveauNomVM is defined
+        fail_msg: Needed variables nomVM and nouveauNomVM has to be set. Stop of the process
+        success_msg: Needed variables are set. Process can start
+
+
+    - name: Change the hostname of "{{ nomVM }}" to "{{ nouveauNomVM }}"
+      delegate_to: "{{ nomVM }}"
       hostname:
         name: "{{ nouveauNomVM  }}"
         use: systemd
 
-    - name: reboot
+    - name: Reboot to apply changes
+      delegate_to: "{{ nomVM }}"
       reboot:

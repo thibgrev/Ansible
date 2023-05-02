@@ -7,5 +7,5 @@ srvAD1.BSCLAB.LOCAL
 
 [rhel]
 vm-redhat-ansible
-vm-redhat-a.BSCLAB.LOCAL
+vm-redhat-a
 10.50.51.105
