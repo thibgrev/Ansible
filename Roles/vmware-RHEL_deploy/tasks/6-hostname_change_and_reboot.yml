@@ -1,6 +1,7 @@
 - name: Change the hostname of the new VM with his real name "{{ VMname }}"
   #SSH connexion use because the operation will ba set on the target
   connection: ssh
+  become: true
   hostname:
     name: "{{ VMname }}"
     use: systemd
@@ -10,6 +11,7 @@
 - name: Reboot to modify the hostname of the new VM named "{{ VMname }}"
   #SSH connexion use because the operation will ba set on the target
   connection: ssh
+  become: true
   reboot:
   #The operation has to be done on the target
   delegate_to: "{{ VMname }}" 

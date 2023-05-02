@@ -1,10 +1,10 @@
 - name: test
-  hosts: 10.50.51.105
+  hosts: "{{ nomVM }}"
   gather_facts: no
   tasks:
     - name: Change the hostname of the new VM with his real name "{{ VMname }}"
       hostname:
-        name: vm-redhat-a
+        name: "{{ nouveauNomVM  }}"
         use: systemd
 
     - name: reboot
