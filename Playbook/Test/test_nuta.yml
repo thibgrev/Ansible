@@ -3,7 +3,8 @@
   gather_facts: false
   collections:
     - nutanix.ncp
-  module_defaults:
+  #module_defaults:
+  module_args:
     group/nutanix.ncp.ntnx:
       nutanix_host: 10.80.100.10
       nutanix_username: admin
