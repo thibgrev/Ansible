@@ -4,11 +4,10 @@
 
   tasks:
   - name: Get the VMWare cluster infos
-    vmware_cluster_info:
-      hostname: vcsa.fuji.bsctdas.local
-      username: administrator@vsphere.local
-      password: VMware1!
-      datacenter: "vSAN Datacenter"
+    vmware.vmware_rest.vcenter_datacenter_info:
+      vcenter_hostname: vcsa.fuji.bsctdas.local
+      vcenter_username: administrator@vsphere.local
+      vcenter_password: VMware1!
     register: cluster_infos
 
   - name: Informations print
