@@ -1,0 +1,16 @@
+- name: Show VMWare cluster infos using custom execution Environment
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - name: Get the VMWare cluster infos
+    community.vmware.vmware_cluster_info:
+      hostname: vcsa.fuji.bsctdas.local
+      username: administrator@vsphere.local
+      password: VMware1!
+      datacenter: "vSAN Datacenter"
+    register: cluster_infos
+
+  - name: Informations print
+    ansible.builtin.debug:
+      var: cluster_infos
