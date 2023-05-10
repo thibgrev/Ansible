@@ -1,6 +1,9 @@
-- name: test
+- name: Show value of a variable (Use for testing)
   hosts: localhost
+  gather_facts: no
+  vars:
+    var_to_show: "Result is OK. Varibale is shown!"
   tasks:
-    - name: debug module
+    - name: Show value of a variable (Use for testing)
       ansible.builtin.debug:
-        msg: test
+        msg: "{{ var_to_show }}"
