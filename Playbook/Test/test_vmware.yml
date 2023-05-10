@@ -4,7 +4,7 @@
 
   tasks:
   - name: Get the VMWare cluster infos
-    community.vmware.vmware_cluster_info:
+    vmware_cluster_info:
       hostname: vcsa.fuji.bsctdas.local
       username: administrator@vsphere.local
       password: VMware1!
