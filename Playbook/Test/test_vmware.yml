@@ -8,6 +8,7 @@
       vcenter_hostname: vcsa.fuji.bsctdas.local
       vcenter_username: administrator@vsphere.local
       vcenter_password: VMware1!
+      vcenter_validate_certs: no
     register: cluster_infos
 
   - name: Informations print
