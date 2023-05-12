@@ -6,8 +6,8 @@
   module_defaults:
     group/nutanix.ncp.ntnx:
       nutanix_host: 10.80.100.10
-      nutanix_username: admin
-      nutanix_password: Nutanix2023_PC
+      nutanix_username: tgrevellec
+      nutanix_password: Nutanix2023_PC-TG
       validate_certs: false
 
   tasks:
