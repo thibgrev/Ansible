@@ -1,0 +1,23 @@
+- name: create VM on stack VMWare for Instana 
+  gather_facts: no
+  hosts: localhost
+  tasks:
+
+    - name: deploiement 
+      vmware_guest:
+        hostname: "vcsa.fuji.bsctdas.local"
+        username: "administrator@vsphere.local"
+        password: "VMware1!"
+        validate_certs: False
+        name: vm-redhat-instana
+        template: RHEL9
+        datacenter: "vSAN Datacenter"
+        folder: "Red Hat"
+        state: poweredon
+        wait_for_ip_address: yes
+        resource_pool: "Red Hat"
+        hardware:
+          memory_mb: 65536
+          num_cpus: 16
+          hotadd_memory: yes
+          hotadd_cpu: yes
