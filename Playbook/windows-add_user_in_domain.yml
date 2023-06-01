@@ -1,22 +1,26 @@
-- name: creation of a new user in Microsoft domain
-  hosts: "{{ domain_controller }}"
+- name: Creation of a user named "{{ username }}" in the Microsoft domain and AD "{{ vault_AD_computer_name }}"
+  hosts: "{{ vault_AD_DomainController_Name }}"
   become: no
   gather_facts: no
   vars_files:
-    - ../vault_file.yml
+    - ../secret.yml
   tasks:
-    - name: creation of the user named "{{ user_to_create }}" in the domain named "{{ microsoft_domain }}"
+
+    - name: Test the needed variable which has to be set
+      when: username is not defined
+      ansible.builtin.fail:
+        msg:
+          Problem: needed variable name username and vault_AD_DomainController_Name are not set
+
+    - name: Creation of the user named tg "{{ username }}"
       win_domain_user:
-        name: "{{ user_to_create }}"
+        name: "{{ username }}"
         firstname: created_by_AAP
         surname: created_by_AAP
-        password: azerty@12345
+        password: "{{ username_password }}"
         description: user created by AAP system
         enabled: yes
-        groups: Domain Admins
+        #groups: Domain Admins
         state: present
         password_never_expires: yes
-        user_cannot_change_password: no
-        attributes:
-          userWorkstations: srvad1
-          manager: AAP
+        user_cannot_change_password: yes
