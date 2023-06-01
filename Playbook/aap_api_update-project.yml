@@ -1,0 +1,14 @@
+- name: update project on AAP system
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+    - name: update the projects ID 8
+      uri:
+        url: https://10.50.51.103/api/v2/projects/8/update/
+        return_content: false
+        user: admin
+        password: azerty@12345
+        method: POST
+        validate_certs: no
+        force_basic_auth: true
