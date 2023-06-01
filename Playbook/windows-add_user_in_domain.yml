@@ -18,7 +18,7 @@
         msg:
           Problem: The user password data is not set. It is mandatory.
 
-    - name: Creation of the user named tg "{{ username }}"
+    - name: Creation of the user named "{{ username }}"
       win_domain_user:
         name: "{{ username }}"
         firstname: "{{ firstname}}"
@@ -30,3 +30,4 @@
         state: present
         password_never_expires: "{{ password_never_expires }}"
         user_cannot_change_password: "{{ user_cannot_change_password }}"
+        update_password: when_changed
