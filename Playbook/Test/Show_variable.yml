@@ -6,4 +6,4 @@
   tasks:
     - name: Show value of a variable (Use for testing)
       ansible.builtin.debug:
-        msg: "The variable is {{ var_to_show }} !"
+        msg: "The variable is {{ var_to_show.stdout }} !"
