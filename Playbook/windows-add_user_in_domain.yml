@@ -25,9 +25,9 @@
         surname: "{{ surname | default('surname') }}"
         password: "{{ username_password }}"
         description: "{{ description | default('User created by AAP system') }}"
-        enabled: "{{ enabled | default('yes') }} | bool"
+        enabled: yes
         groups: users
         state: present
-        password_never_expires: "{{ password_never_expires | default('yes') | bool }}"
-        user_cannot_change_password: "{{ user_cannot_change_password | default('yes') |bool }}"
+        password_never_expires: yes
+        user_cannot_change_password: no
         update_password: when_changed
