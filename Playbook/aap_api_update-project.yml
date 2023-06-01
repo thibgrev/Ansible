@@ -2,16 +2,21 @@
   hosts: localhost
   gather_facts: no
   vars_files:
+    #Vault file is use to have credentials info to connect to the API of AAP
     - ../secret.yml
   tasks:
 
     - name: update the projects ID 8
       uri:
-        url: https://10.50.51.103/api/v2/projects/8/update/
+        url: "{{ vault_AAP_API_address }}/projects/8/update/"
         return_content: false
         user: "{{ vault_AAP_API_username }}"
         password: "{{ vault_AAP_API_password }}"
+        #Method have to be POST in order to launch the update
         method: POST
+        #Certificat on AAP is auto-signed. We have to ignore it
         validate_certs: no
+        #Auth has to be BASIC in order to work 
         force_basic_auth: true
+        #HTML code 202 is receive. The job is OK but not finished. It is not an issue. This code is a good code. 
         status_code: [200, 202]
