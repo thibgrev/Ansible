@@ -3,8 +3,7 @@
   become: no
   gather_facts: no
   vars_files:
-    #Vault file is needed because we use password and sensibled data stored in this document
-    - ../secret.yml
+    - ../../secret.yml
   tasks:
 
     - name: Execute a command in the remote shell, stdout goes to the specified file on the remote
