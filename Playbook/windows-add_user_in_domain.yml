@@ -6,11 +6,17 @@
     - ../secret.yml
   tasks:
 
-    - name: Test the needed variable which has to be set
+    - name: Test if the username is set
       when: username is not defined
       ansible.builtin.fail:
         msg:
-          Problem: needed variable name username and vault_AD_DomainController_Name are not set
+          Problem: The username data is not set. It is mandatory.
+
+    - name: Test if the password of the user is set
+      when: username_password is not defined
+      ansible.builtin.fail:
+        msg:
+          Problem: The user password data is not set. It is mandatory.
 
     - name: Creation of the user named tg "{{ username }}"
       win_domain_user:
