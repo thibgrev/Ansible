@@ -21,6 +21,7 @@
     - name: Creation of the user named "{{ username }}"
       win_domain_user:
         name: "{{ username }}"
+        sam_account_name: "{{ username }}"
         firstname: "{{ firstname | default('firstname') }}"
         surname: "{{ surname | default('surname') }}"
         password: "{{ username_password }}"
@@ -31,3 +32,8 @@
         password_never_expires: yes
         user_cannot_change_password: yes
         update_password: when_changed
+        email: none@none.com
+        display_name: "{{ username }}"
+        attributes:
+          telephoneNumber: 2626
+          initials: AAP
