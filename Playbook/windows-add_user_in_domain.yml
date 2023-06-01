@@ -21,13 +21,13 @@
     - name: Creation of the user named "{{ username }}"
       win_domain_user:
         name: "{{ username }}"
-        firstname: "{{ firstname}}"
-        surname: "{{ surname}}"
+        firstname: "{{ firstname | default('firstname') }}"
+        surname: "{{ surname | default('surname') }}"
         password: "{{ username_password }}"
-        description: "{{ description }}"
-        enabled: "{{ enabled }}"
+        description: "{{ description | default('User created by AAP system') }}"
+        enabled: "{{ enabled | default('yes') }}"
         groups: users
         state: present
-        password_never_expires: "{{ password_never_expires }}"
-        user_cannot_change_password: "{{ user_cannot_change_password }}"
+        password_never_expires: "{{ password_never_expires | default('yes') }}"
+        user_cannot_change_password: "{{ user_cannot_change_password | default('yes') }}"
         update_password: when_changed
