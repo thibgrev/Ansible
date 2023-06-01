@@ -21,12 +21,12 @@
     - name: Creation of the user named tg "{{ username }}"
       win_domain_user:
         name: "{{ username }}"
-        firstname: created_by_AAP
-        surname: created_by_AAP
+        firstname: "{{ firstname}}"
+        surname: "{{ surname}}"
         password: "{{ username_password }}"
-        description: user created by AAP system
-        enabled: yes
-        #groups: Domain Admins
+        description: "{{ description }}"
+        enabled: "{{ enabled }}"
+        groups: "{{ groups }}"
         state: present
-        password_never_expires: yes
-        user_cannot_change_password: yes
+        password_never_expires: "{{ password_never_expires }}"
+        user_cannot_change_password: "{{ user_cannot_change_password }}"
