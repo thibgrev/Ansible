@@ -29,5 +29,5 @@
         groups: users
         state: present
         password_never_expires: yes
-        user_cannot_change_password: no
+        user_cannot_change_password: yes
         update_password: when_changed
