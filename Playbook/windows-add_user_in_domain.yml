@@ -26,7 +26,7 @@
         password: "{{ username_password }}"
         description: "{{ description }}"
         enabled: "{{ enabled }}"
-        groups: "{{ groups }}"
+        groups: users
         state: present
         password_never_expires: "{{ password_never_expires }}"
         user_cannot_change_password: "{{ user_cannot_change_password }}"
