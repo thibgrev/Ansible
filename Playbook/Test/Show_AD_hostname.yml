@@ -6,5 +6,5 @@
     - ../../secret.yml
   tasks:
 
-    - name: Execute a command in the remote shell, stdout goes to the specified file on the remote
-      ansible.windows.win_shell: hostname
+    - name: execute the "hostname" command on windows target
+      ansible.windows.win_command: hostname
