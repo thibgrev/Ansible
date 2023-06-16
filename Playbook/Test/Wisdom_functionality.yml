@@ -9,7 +9,9 @@
           - NGinx
         state: latest
       
-    - name: "Start and enable nginx service"
-      ansible.builtin.service:
-        state: started
-        enabled: true
+    - name: install a web server
+      ansible.builtin.package:
+        name:
+          - httpd
+          - firewalld
+        state: latest
