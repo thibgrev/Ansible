@@ -1,7 +1,0 @@
-[nutanix:children]
-windows
-rhel
-
-[windows]
-
-[rhel]
