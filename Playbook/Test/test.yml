@@ -10,3 +10,11 @@
       ansible.builtin.apt:
         name: '*'
         state: latest
+
+    - name: get the localhost name of the computer
+      ansible.builtin.shell: hostname
+      register: _hostname
+    
+    - name: show the _hostname variable
+      ansible.builtin.debug:
+        var: _hostname.stdout
