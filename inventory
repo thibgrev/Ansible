@@ -9,3 +9,6 @@ srvAD1.BSCLAB.LOCAL
 vm-redhat-ansible
 vm-redhat-a
 vm-redhat-tg.BSCLAB.LOCAL
+
+[ubuntu]
+localhost

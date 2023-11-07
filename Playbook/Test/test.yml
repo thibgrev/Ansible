@@ -1,0 +1,12 @@
+- name: test playbook with LighSpeed
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - name: install all the available update
+      become: true
+      ansible.builtin.apt:
+        name: '*'
+        state: latest
