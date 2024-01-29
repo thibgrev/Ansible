@@ -17,4 +17,4 @@
     
     - name: show the _hostname variable
       ansible.builtin.debug:
-        var: _hostname.stdout
+        var: _hostname.stdout 
