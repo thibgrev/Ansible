@@ -26,7 +26,7 @@
         vcenter_validate_certs: False
         name: "{{ VMname }}"
         placement:
-          folder: "{{ lookup('vmware.vmware_rest.folder_moid', '/DCA/Environnement/tgrevellec') }}"
+          folder: "group-v52554"
           datacenter: "DCA"
         state: present
         power_on: true
