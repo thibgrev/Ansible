@@ -15,3 +15,4 @@
       num_cpus: 4 #"{{ vmware_deploy_hardware_cpus }}"
       hotadd_memory: "true"
       hotadd_cpu: "true"
+      
