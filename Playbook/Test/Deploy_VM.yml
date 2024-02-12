@@ -7,10 +7,10 @@
     
     - name: create the VM
       vmware.vmware_rest.vcenter_vm:
-        hostname: "dcavcsa1a.dca.scc"
-        username: "tgrevellec"
-        password: 'Tb"%c[[V@7__=.Neu\\y'
-        validate_certs: False
+        vcenter_hostname: "dcavcsa1a.dca.scc"
+        vcenter_username: "tgrevellec"
+        vcenter_password: 'Tb"%c[[V@7__=.Neu\\y'
+        vcenter_validate_certs: False
         name: "{{ VMname }}"
         template: "tg-template-rhel9"
         datacenter: "DCA"
