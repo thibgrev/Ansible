@@ -12,9 +12,10 @@
         vcenter_password: 'Tb"%c[[V@7__=.Neu\\y'
         vcenter_validate_certs: False
         name: "{{ VMname }}"
-        template: "tg-template-rhel9"
-        datacenter: "DCA"
-        folder: "tgrevellec"
+        placement:
+          folder: "tgrevellec"
+          datacenter: "DCA"
+        template_library_item:: "tg-template-rhel9"
         state: present
         power_on: true
         wait_for_ip_address: yes
