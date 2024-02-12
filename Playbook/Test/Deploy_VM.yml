@@ -5,6 +5,15 @@
 
   tasks:
     
+    - name: Build a list of all the folders with the type VIRTUAL_MACHINE and called vm
+      vmware.vmware_rest.vcenter_folder_info:
+        filter_type: VIRTUAL_MACHINE
+      register: my_folders
+
+    - name: show
+      ansible.builtin.debug:
+        var: my_folders
+
     - name: create the VM
       vmware.vmware_rest.vcenter_vm:
         vcenter_hostname: "dcavcsa1a.dca.scc"
