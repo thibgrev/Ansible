@@ -1,4 +1,7 @@
 - name: Deployment of the new VM named "{{ VMname }}"
+  hosts: localhost
+  gather_facts: no
+  become: no
   vmware_guest:
     hostname: "dcavcsa1a.dca.scc"
     username: "tgrevellec"
