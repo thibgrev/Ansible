@@ -7,6 +7,10 @@
     
     - name: Build a list of all the folders with the type VIRTUAL_MACHINE and called vm
       vmware.vmware_rest.vcenter_folder_info:
+        vcenter_hostname: "dcavcsa1a.dca.scc"
+        vcenter_username: "tgrevellec"
+        vcenter_password: 'Tb"%c[[V@7__=.Neu\\y'
+        vcenter_validate_certs: False
         filter_type: VIRTUAL_MACHINE
       register: my_folders
 
