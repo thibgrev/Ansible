@@ -13,7 +13,7 @@
         vcenter_validate_certs: False
         name: "{{ VMname }}"
         placement:
-          folder: "Environnement/tgrevellec"
+          folder: "/DCA/Environnement/tgrevellec"
           datacenter: "DCA"
         state: present
         power_on: true
