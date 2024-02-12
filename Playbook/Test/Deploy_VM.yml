@@ -19,8 +19,3 @@
         state: present
         power_on: true
         wait_for_ip_address: yes
-        hardware:
-          memory_mb: 2048 #"{{ vmware_deploy_hardware_memory }}"
-          num_cpus: 4 #"{{ vmware_deploy_hardware_cpus }}"
-          hotadd_memory: "true"
-          hotadd_cpu: "true"
