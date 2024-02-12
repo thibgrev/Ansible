@@ -15,6 +15,5 @@
         placement:
           folder: "tgrevellec"
           datacenter: "DCA"
-        template_library_item: "tg-template-rhel9"
         state: present
         power_on: true
