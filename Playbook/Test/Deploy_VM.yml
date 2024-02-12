@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: no
   become: no
-  vmware_guest:
+  vmware.vmware_rest.vcenter_vm:
     hostname: "dcavcsa1a.dca.scc"
     username: "tgrevellec"
     password: 'Tb"%c[[V@7__=.Neu\\y'
