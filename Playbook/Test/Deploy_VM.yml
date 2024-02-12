@@ -25,6 +25,7 @@
         vcenter_password: 'Tb"%c[[V@7__=.Neu\\y'
         vcenter_validate_certs: False
         name: "{{ VMname }}"
+        guest_OS: RHEL_9_64
         placement:
           folder: "group-v52554"
           datacenter: "DCA"
