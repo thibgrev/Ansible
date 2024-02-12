@@ -2,20 +2,22 @@
   hosts: localhost
   gather_facts: no
   become: no
-  vmware.vmware_rest.vcenter_vm:
-    hostname: "dcavcsa1a.dca.scc"
-    username: "tgrevellec"
-    password: 'Tb"%c[[V@7__=.Neu\\y'
-    validate_certs: False
-    name: "{{ VMname }}"
-    template: "tg-template-rhel9"
-    datacenter: "DCA"
-    folder: "tgrevellec"
-    state: poweredon
-    wait_for_ip_address: yes
-    hardware:
-      memory_mb: 2048 #"{{ vmware_deploy_hardware_memory }}"
-      num_cpus: 4 #"{{ vmware_deploy_hardware_cpus }}"
-      hotadd_memory: "true"
-      hotadd_cpu: "true"
+
+  tasks:
+    vmware.vmware_rest.vcenter_vm:
+      hostname: "dcavcsa1a.dca.scc"
+      username: "tgrevellec"
+      password: 'Tb"%c[[V@7__=.Neu\\y'
+      validate_certs: False
+      name: "{{ VMname }}"
+      template: "tg-template-rhel9"
+      datacenter: "DCA"
+      folder: "tgrevellec"
+      state: poweredon
+      wait_for_ip_address: yes
+      hardware:
+        memory_mb: 2048 #"{{ vmware_deploy_hardware_memory }}"
+        num_cpus: 4 #"{{ vmware_deploy_hardware_cpus }}"
+        hotadd_memory: "true"
+        hotadd_cpu: "true"
       
