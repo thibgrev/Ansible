@@ -1,5 +1,5 @@
 - name: test
-  hosts: "{{ vM }}"
+  hosts: "{{ VM }}"
   become: no
   gather_facts: no
    
