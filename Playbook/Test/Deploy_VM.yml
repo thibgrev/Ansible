@@ -23,8 +23,8 @@
     #- name: create the VM
       #vmware.vmware_rest.vcenter_vm:
         #vcenter_hostname: "{{ vault_vmware_hostname }}"
-        vvcenter_username: "{{ vault_vmware_username }}"
-        vvcenter_password: "{{ vault_vmware_password }}"
+        #vcenter_username: "{{ vault_vmware_username }}"
+        #vcenter_password: "{{ vault_vmware_password }}"
         #vcenter_validate_certs: False
         #name: "{{ VMname }}"
         #guest_OS: RHEL_9_64
