@@ -1,14 +1,14 @@
-[fujitsu:children]
+[datacenter:children]
+linux
 windows
-rhel
+
+[linux]
+tg-debian.thibgrev.fr
+tg-ubuntu.thibgrev.fr
+tg-setup.thibgrev.fr
+tg-alma-ansible.thibgrev.fr
+tg-aap.thibgrev.fr
 
 [windows]
-srvAD1.BSCLAB.LOCAL
-
-[rhel]
-vm-redhat-ansible
-vm-redhat-a
-vm-redhat-tg.BSCLAB.LOCAL
-
-[ubuntu]
-localhost
+tg-srvad.thibgrev.fr
+tg-w10.thibgrev.fr
