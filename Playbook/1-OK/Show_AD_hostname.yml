@@ -3,7 +3,7 @@
   become: no
   gather_facts: no
   vars_files:
-    - ../../secret.yml
+    - ../../vault/secret.yml
 
   tasks:
 

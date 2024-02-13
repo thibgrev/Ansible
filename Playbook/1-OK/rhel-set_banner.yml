@@ -1,0 +1,7 @@
+- hosts: "{{ VM }}"
+  gather_facts: no
+  vars_files:
+    - ../../vault/secret.yml
+
+  roles:
+    - ../../Roles//RHEL-set_sshd_conf_and_banner/
