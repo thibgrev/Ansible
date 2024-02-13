@@ -4,4 +4,4 @@
     - ../../Vault/secret.yml
 
   roles:
-    - ../../Roles//RHEL-set_sshd_conf_and_banner/
+    - ../../Roles/1-OK/RHEL-set_sshd_conf_and_banner/
