@@ -2,14 +2,16 @@
   hosts: localhost
   gather_facts: no
   become: no
+  vars_files:
+    - /var/lib/awx/projects/Ansible_loc_projects/secret.yml
 
   tasks:
     
     - name: Build a list of all the folders with the type VIRTUAL_MACHINE and called vm
       vmware.vmware_rest.vcenter_folder_info:
-        vcenter_hostname: "dcavcsa1a.dca.scc"
-        vcenter_username: "tgrevellec"
-        vcenter_password: 'Tb"%c[[V@7__=.Neu\\y'
+        vcenter_hostname: "{{ vault_vmware_hostname }}"
+        vcenter_username: "{{ vault_vmware_username }}"
+        vcenter_password: "{{ vault_vmware_password }}"
         vcenter_validate_certs: False
         #filter_type: VIRTUAL_MACHINE
       register: my_folders
@@ -20,9 +22,9 @@
 
     - name: create the VM
       vmware.vmware_rest.vcenter_vm:
-        vcenter_hostname: "dcavcsa1a.dca.scc"
-        vcenter_username: "tgrevellec"
-        vcenter_password: 'Tb"%c[[V@7__=.Neu\\y'
+        vcenter_hostname: "{{ vault_vmware_hostname }}"
+        vcenter_username: "{{ vault_vmware_username }}"
+        vcenter_password: "{{ vault_vmware_password }}"
         vcenter_validate_certs: False
         name: "{{ VMname }}"
         guest_OS: RHEL_9_64
