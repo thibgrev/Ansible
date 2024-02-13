@@ -1,9 +1,8 @@
 - name: test
-  hosts: srvAD1.BSCLAB.LOCAL
+  hosts: "{{ vM }}"
   become: no
   gather_facts: no
-  vars_files:
-    - ../../secret.yml
+   
   tasks:
 
     - name: execute the "hostname" command on windows target
