@@ -3,7 +3,7 @@
   gather_facts: no
   become: no
   vars_files:
-    - /var/lib/awx/projects/Ansible_loc_projects/secret.yml
+    - ../../secret.yml
 
   tasks:
     
