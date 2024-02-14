@@ -4,15 +4,16 @@
   become: no
   vars_files:
     - ../../Vault/secret.yml
+  vars:
+    vcenter_hostname: "{{ vault_vmware_hostname }}"
+    vcenter_username: "{{ vault_vmware_username }}"
+    vcenter_password: "{{ vault_vmware_password }}"
+    vcenter_validate_certs: False
 
   tasks:
     
     - name: Build a list of all the folders with the type VIRTUAL_MACHINE and called vm
-      vmware.vmware_rest.vcenter_folder_info:
-        vcenter_hostname: "{{ vault_vmware_hostname }}"
-        vcenter_username: "{{ vault_vmware_username }}"
-        vcenter_password: "{{ vault_vmware_password }}"
-        vcenter_validate_certs: False
+      vmware.vmware_rest.vcenter_folder_info:   
         #filter_type: VIRTUAL_MACHINE
       register: my_folders
 
@@ -20,16 +21,12 @@
       ansible.builtin.debug:
         var: my_folders
 
-    #- name: create the VM
-      #vmware.vmware_rest.vcenter_vm:
-        #vcenter_hostname: "{{ vault_vmware_hostname }}"
-        #vcenter_username: "{{ vault_vmware_username }}"
-        #vcenter_password: "{{ vault_vmware_password }}"
-        #vcenter_validate_certs: False
-        #name: "{{ VMname }}"
-        #guest_OS: RHEL_9_64
-        #placement:
-          #folder: "group-v52554"
-          #datacenter: "DCA"
-        #state: present
-        #power_on: true
+    - name: create the VM
+      vmware.vmware_rest.vcenter_vm:
+        name: "{{ VMname }}"
+        guest_OS: RHEL_9_64
+        placement:
+          folder: "group-v52554"
+          datacenter: "DCA"
+        state: present
+        power_on: true
