@@ -49,15 +49,6 @@
       ansible.builtin.debug:
         var: my_cluster
 
-    - name: Get the list of items of the NFS library
-      vmware.vmware_rest.content_library_item_info:
-        library_id: '{{ nfs_lib.id }}'
-      register: lib_items
-
-    - name: Use the name to identify the item
-      set_fact:
-        my_template_item: "{{ lib_items.value | selectattr('name', 'equalto', 'tg-template-rhel9')|first }}"
-
     - name: create the VM
       vmware.vmware_rest.vcenter_vm:
         vcenter_hostname: "{{ vcenter }}"
@@ -73,5 +64,3 @@
           cluster: "domain-c11"
         state: present
         power_on: true
-        library: '{{ nfs_lib.id }}'
-        template_library_item: '{{ my_template_item.id }}'
