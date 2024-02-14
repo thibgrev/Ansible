@@ -37,6 +37,18 @@
       ansible.builtin.debug:
         var: my_datastores
 
+    - name: Recup infos CLUSTER
+      vmware.vmware_rest.vcenter_cluster_info:
+        vcenter_hostname: "{{ vcenter }}"
+        vcenter_username: "{{ username }}"
+        vcenter_password: "{{ password }}"
+        vcenter_validate_certs: "{{ cert }}"
+      register: my_cluster
+
+    - name: CLUSTER
+      ansible.builtin.debug:
+        var: my_cluster
+
     - name: create the VM
       vmware.vmware_rest.vcenter_vm:
         vcenter_hostname: "{{ vcenter }}"
