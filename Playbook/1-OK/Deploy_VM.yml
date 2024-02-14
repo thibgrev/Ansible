@@ -11,43 +11,6 @@
     cert: False
 
   tasks:
-    
-    - name: Recup infos FOLDER
-      vmware.vmware_rest.vcenter_folder_info:   
-        vcenter_hostname: "{{ vcenter }}"
-        vcenter_username: "{{ username }}"
-        vcenter_password: "{{ password }}"
-        vcenter_validate_certs: "{{ cert }}"
-        #filter_type: VIRTUAL_MACHINE
-      register: my_folders
-
-    - name: FOLDER
-      ansible.builtin.debug:
-        var: my_folders
-
-    - name: Recup infos DATASTORE
-      vmware.vmware_rest.vcenter_datastore_info:
-        vcenter_hostname: "{{ vcenter }}"
-        vcenter_username: "{{ username }}"
-        vcenter_password: "{{ password }}"
-        vcenter_validate_certs: "{{ cert }}"
-      register: my_datastores
-
-    - name: DATASTORE
-      ansible.builtin.debug:
-        var: my_datastores
-
-    - name: Recup infos CLUSTER
-      vmware.vmware_rest.vcenter_cluster_info:
-        vcenter_hostname: "{{ vcenter }}"
-        vcenter_username: "{{ username }}"
-        vcenter_password: "{{ password }}"
-        vcenter_validate_certs: "{{ cert }}"
-      register: my_cluster
-
-    - name: CLUSTER
-      ansible.builtin.debug:
-        var: my_cluster
 
     - name: create the VM
       vmware.vmware_rest.vcenter_vm:
