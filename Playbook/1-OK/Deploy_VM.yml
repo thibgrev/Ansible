@@ -49,6 +49,11 @@
       ansible.builtin.debug:
         var: my_cluster
 
+    - name: Get the list of items of the NFS library
+      vmware.vmware_rest.content_library_item_info:
+        library_id: '{{ nfs_lib.id }}'
+      register: lib_items
+
     - name: Use the name to identify the item
       set_fact:
         my_template_item: "{{ lib_items.value | selectattr('name', 'equalto', 'tg-template-rhel9')|first }}"
