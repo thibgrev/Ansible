@@ -64,3 +64,5 @@
           cluster: "domain-c11"
         state: present
         power_on: true
+        template_library_item: "tg-template-rhel9
+"""
