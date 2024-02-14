@@ -49,5 +49,6 @@
           folder: "group-v52554"
           datacenter: "DCA"
           datastore: "datastore-12316"
+          cluster: "PROD"
         state: present
         power_on: true
