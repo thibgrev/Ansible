@@ -12,6 +12,7 @@
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
+        validate_certs: no
         datacenter: datacenter_name
       register: vcenter_folder_info
 
