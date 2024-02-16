@@ -39,7 +39,7 @@
 
     - name: Suppression ligne UUID dans le fichier reseau
       ansible.builtin.lineinfile:
-        path: fichier_reseau_a_modifier.path
+        path: "{{ fichier_reseau_a_modifier.path }}"
         line: "UUID="
         state: absent
 
