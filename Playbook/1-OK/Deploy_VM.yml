@@ -1,29 +1,26 @@
-- name: Deployment of the new VM named "{{ VMname }}"
+- name: Deploiement de la VM nommee "{{ VMname }}"
   hosts: localhost
   gather_facts: no
   become: no
   vars_files:
     - ../../Vault/secret.yml
-  vars:
-    vcenter: "{{ vault_vmware_hostname }}"
-    username: "{{ vault_vmware_username }}"
-    password: "{{ vault_vmware_password }}"
-    cert: False
 
   tasks:
 
-    - name: create the VM
-      vmware.vmware_rest.vcenter_vm:
-        vcenter_hostname: "{{ vcenter }}"
-        vcenter_username: "{{ username }}"
-        vcenter_password: "{{ password }}"
-        vcenter_validate_certs: "{{ cert }}"
+    - name: Creation de la VM
+      community.vmware.vmware_guest:
+        hostname: "{{ vault_vmware_hostname }}"
+        username: "{{ vault_vmware_username }}"
+        password: "{{ vault_vmware_password }}"
+        folder: /grevellec
         name: "{{ VMname }}"
-        guest_OS: RHEL_9_64
-        placement:
-          folder: "group-v52554"
-          datacenter: "DCA"
-          datastore: "datastore-12316"
-          cluster: "domain-c11"
-        state: present
-        power_on: true
+        state: poweredon
+        template: tg-template-rhel_9
+        hardware:
+          memory_mb: 2048
+          num_cpus: 2
+          num_cpu_cores_per_socket: 2
+          hotadd_cpu: true
+          hotremove_cpu: true
+          hotadd_memory: false
+        wait_for_ip_address: true
