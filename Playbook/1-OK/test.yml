@@ -14,9 +14,7 @@
     - name: Affichage des donnees liees a la recup du fichier reseau
       ansible.builtin.debug:
         var: fichier_reseau_a_modifier
-        verbosity: 2
 
     - name: Affichage 2
       ansible.builtin.debug:
         msg: fichier_reseau_a_modifier.stdout
-        verbosity: 2
