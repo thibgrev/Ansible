@@ -14,7 +14,6 @@
         password: "{{ vault_vmware_password }}"
         datacenter: "DCA"
         validate_certs: no
-        datacenter: datacenter_name
       register: vcenter_folder_info
 
     - name: show
