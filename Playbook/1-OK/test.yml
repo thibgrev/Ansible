@@ -17,4 +17,4 @@
 
     - name: Affichage 2
       ansible.builtin.debug:
-        msg: "{{ fichier_reseau_a_modifier.files.path }}"
+        msg: "{{ fichier_reseau_a_modifier.files }}"
