@@ -20,26 +20,15 @@
       ansible.builtin.shell:
         cmd: "subscription-manager clean"
 
-    - name: Recuperation du nom de fichier de l interface reseau
-      register: fichier_reseau_a_modifier
-      ansible.builtin.find:
-        paths: /etc/NetworkManager/system-connections
-        patterns: 'ens*.nmconnection'
-
-    - name: Affichage des donnees liees a la recup du fichier reseau
-      ansible.builtin.debug:
-        var: fichier_reseau_a_modifier
-        verbosity: 2
-
     - name: Suppression ligne HWADDR dans le fichier reseau
       ansible.builtin.lineinfile:
-        path: fichier_reseau_a_modifier.path
+        path: "/etc/NetworkManager/system-connections/ens192.nmconnection"
         line: "HWADDR="
         state: absent
 
     - name: Suppression ligne UUID dans le fichier reseau
       ansible.builtin.lineinfile:
-        path: "{{ fichier_reseau_a_modifier.path }}"
+        path: "/etc/NetworkManager/system-connections/ens192.nmconnection"
         line: "UUID="
         state: absent
 
