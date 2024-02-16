@@ -5,11 +5,6 @@
   
   tasks:
 
-    - name: Desenregistrement
-      ignore_errors: true
-      ansible.builtin.shell:
-        cmd: "subscription-manager unregister"
-    
     - name: Recuperation du nom de fichier de l interface reseau
       register: fichier_reseau_a_modifier
       ansible.builtin.find:
@@ -23,5 +18,5 @@
 
     - name: Affichage 2
       ansible.builtin.debug:
-        msg: fichier_reseau_a_modifier.path
+        msg: fichier_reseau_a_modifier.stdout
         verbosity: 2
