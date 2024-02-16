@@ -69,6 +69,5 @@
         mode: "0644"
 
     - name: Arret de la machine
-      ansible.builtin.reboot:
-        search_paths:
-          - '/usr/sbin/poweroff'
+      ansible.builtin.shell:
+        cmd: "poweroff -f"
