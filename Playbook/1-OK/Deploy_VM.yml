@@ -7,19 +7,6 @@
 
   tasks:
 
-    - name: Provide information about vCenter folders
-      community.vmware.vmware_folder_info:
-        hostname: "{{ vault_vmware_hostname }}"
-        username: "{{ vault_vmware_username }}"
-        password: "{{ vault_vmware_password }}"
-        datacenter: "DCA"
-        validate_certs: no
-      register: vcenter_folder_info
-
-    - name: show
-      ansible.builtin.debug:
-        var: vcenter_folder_info
-
     - name: Creation de la VM
       community.vmware.vmware_guest:
         hostname: "{{ vault_vmware_hostname }}"
