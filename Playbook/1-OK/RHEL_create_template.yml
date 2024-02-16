@@ -26,12 +26,16 @@
         paths: /etc/NetworkManager/system-connections
         patterns: 'ens*.nmconnection'
 
-    - name: Suppression des lignes dans le fichier reseau
+    - name: Suppression ligne HWADDR dans le fichier reseau
       ansible.builtin.lineinfile:
         path: fichier_reseau_a_modifier.path
-        line:
-          "HWADDR="
-          "UUID="
+        line: "HWADDR="
+        state: absent
+
+    - name: Suppression ligne UUID dans le fichier reseau
+      ansible.builtin.lineinfile:
+        path: fichier_reseau_a_modifier.path
+        line: "UUID="
         state: absent
 
     - name: Suppression des lignes dans le fichier hosts
