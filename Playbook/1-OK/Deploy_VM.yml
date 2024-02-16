@@ -14,7 +14,7 @@
         password: "{{ vault_vmware_password }}"
         datacenter: "DCA"
         validate_certs: no
-        folder: /grevellec
+        folder: /DCA/Environnement/grevellec
         name: "{{ VMname }}"
         state: poweredon
         template: tg-template-rhel_9
