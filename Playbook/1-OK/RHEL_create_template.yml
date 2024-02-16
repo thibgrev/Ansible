@@ -1,0 +1,74 @@
+- hosts: "{{ VM }}"
+  gather_facts: no
+  vars_files:
+    - ../../Vault/secret.yml
+  
+  tasks:
+
+    - name: Desenregistrement
+      ignore_errors: true
+      ansible.builtin.shell:
+        cmd: "subscription-manager unregister"
+
+    - name: Suppression
+      ignore_errors: true
+      ansible.builtin.shell:
+        cmd: "subscription-manager remove --all"
+
+    - name: Clean
+      ignore_errors: true
+      ansible.builtin.shell:
+        cmd: "subscription-manager clean"
+
+    - name: Recuperation du nom de fichier de l interface reseau
+      register: fichier_reseau_a_modifier
+      ansible.builtin.find:
+        paths: /etc/NetworkManager/system-connections
+        patterns: 'ens*.nmconnection'
+
+    - name: Suppression des lignes dans le fichier reseau
+      ansible.builtin.lineinfile:
+        path: fichier_reseau_a_modifier.path
+        line:
+          "HWADDR="
+          "UUID="
+        state: absent
+
+    - name: Suppression des lignes dans le fichier hosts
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "*"
+        state: absent
+
+    - name: Suppression des lignes dans le fichier resolv
+      ansible.builtin.lineinfile:
+        path: /etc/resolv.conf
+        line: "*"
+        state: absent
+
+    - name: Suppression du fichier MAC ADDRESS
+      ansible.builtin.file:
+        path: /etc/udev/rules.d/70-persistent-*
+        state: absent
+
+    - name: Changement du hostname
+      ansible.builtin.shell:
+        cmd: "hostnamectl set-hostname localhost.localdomain"
+
+    - name: Suppression des cles SSH
+      ansible.builtin.shell:
+        cmd: "rm -rf /etc/ssh/ssh_host_*"
+
+    - name: Suppression du fichier machine-id
+      ansible.builtin.file:
+        path: /etc/machine-id 
+        state: absent
+
+    - name: Creation du fichier machine-id
+      ansible.builtin.file:
+        path: /etc/machine-id 
+        state: touch
+        mode: "0644"
+
+    - name: Arret de la machine
+       community.general.shutdown:
