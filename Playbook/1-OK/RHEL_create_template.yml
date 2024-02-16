@@ -68,5 +68,6 @@
         state: touch
         mode: "0644"
 
-    #- name: Arret de la machine
-      #community.general.shutdown:
+    - name: Arret de la machine
+      ansible.builtin.shell:
+        cmd: "poweroff -h now"
