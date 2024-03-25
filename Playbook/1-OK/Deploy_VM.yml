@@ -34,4 +34,5 @@
         networks:
         - name: tgrevellec
           device_type: vmxnet3
+          connected: true
         wait_for_ip_address: true
