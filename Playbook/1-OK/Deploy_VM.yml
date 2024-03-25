@@ -19,11 +19,12 @@
         state: poweredon
         template: tg-template-rhel_9
         customization:
-          #domain: thibgrev.fr
-          #domainadmin: administrateur@THIBGREV.FR
-          #domainadminpassword: "azerty@12345"
+          domain: thibgrev.fr
+          domainadmin: administrateur@THIBGREV.FR
+          domainadminpassword: "azerty@12345"
           hostname: "{{ VMname }}"
-          #joindomain: thibgrev.fr
+          existing_vm: true
+          joindomain: thibgrev.fr
         hardware:
           memory_mb: 2048
           num_cpus: 2
