@@ -32,6 +32,6 @@
           hotremove_cpu: true
           hotadd_memory: false
         networks:
-        - name: tgrevellec
+        - dvswitch_name: tgrevellec
           device_type: vmxnet3
         wait_for_ip_address: true
