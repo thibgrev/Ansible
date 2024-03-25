@@ -1,0 +1,19 @@
+- name: Suppression de la VM nommee "{{ VMname }}"
+  hosts: localhost
+  gather_facts: no
+  become: no
+  vars_files:
+    - ../../Vault/secret.yml
+
+  tasks:
+
+    - name: Suppression de la VM "{{ VMname }}"
+      community.vmware.vmware_guest:
+        hostname: "{{ vault_vmware_hostname }}"
+        username: "{{ vault_vmware_username }}"
+        password: "{{ vault_vmware_password }}"
+        datacenter: "DCA"
+        validate_certs: no
+        folder: "/DCA/vm/Environnement/tgrevellec"
+        name: "{{ VMname }}"
+        state: absent
