@@ -23,7 +23,6 @@
           domainadmin: administrateur@THIBGREV.FR
           domainadminpassword: "azerty@12345"
           hostname: "{{ VMname }}"
-          existing_vm: true
           joindomain: thibgrev.fr
         hardware:
           memory_mb: 2048
