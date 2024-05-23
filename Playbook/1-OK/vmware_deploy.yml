@@ -17,9 +17,9 @@
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
-        datacenter: "DCA"
+        datacenter: "{{ vault_vmware_datacenter }}"
         validate_certs: no
-        folder: "/DCA/vm/Environnement/tgrevellec"
+        folder: "{{ vault_vmware_folder }}"
         name: "{{ VMname }}"
         state: poweredon
         template: "{{ template_of_VM }}"
