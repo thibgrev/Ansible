@@ -7,14 +7,17 @@
 
   tasks:
 
-    - name: Get all portgroups in dvswitch vDS
-      community.vmware.vmware_dvs_portgroup_find:
+    - name: Recup info
+      community.vmware.vmware_vswitch_info:
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
         validate_certs: no
-        dvswitch: 'tgrevellec'
-      delegate_to: localhost
+      register: all_hosts_vswitch_info
+
+    - name: affichage
+      ansible.builtin.debug:
+        var: all_hosts_vswitch_info
   
     - name: Creation de la VM
       community.vmware.vmware_guest:
