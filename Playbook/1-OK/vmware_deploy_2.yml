@@ -8,7 +8,7 @@
   tasks:
 
     - name: Clone the template
-      vmware_guest:
+      community.vmware.vmware_guest:
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
@@ -20,3 +20,9 @@
         state: poweredon
         cluster: "PROD"
         wait_for_ip_address: yes
+        hardware:
+          memory_mb: 4096
+          num_cpus: 2
+          num_cpu_cores_per_socket: 4
+          hotadd_cpu: true
+          hotadd_memory: true
