@@ -24,7 +24,6 @@
     folder: "{{ vmware_deploy_folder }}"
     state: poweredon
     wait_for_ip_address: yes
-    resource_pool: "{{ vmware_deploy_ressource_pool }}"
     hardware:
       memory_mb: 65536 #"{{ vmware_deploy_hardware_memory }}"
       num_cpus: 16 #"{{ vmware_deploy_hardware_cpus }}"
