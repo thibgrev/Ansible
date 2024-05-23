@@ -1,7 +1,9 @@
-- name: Deploiement de la VM nommee "{{ VMname }}"
+- name: Deploiement de la VM nommee tg-aaaaaaaaaaaaaaa
   hosts: localhost
   gather_facts: no
   become: no
+  vars:
+    name_vm: tg-aaaaaaaaaaaaaaa
   vars_files:
     - ../../Vault/secret.yml
 
@@ -13,7 +15,7 @@
         username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
         validate_certs: False
-        name: tg-aaaaaaaaaaaaaaaaaa
+        name: "{{ name_vm }}"
         template: tg-template-rhel_9
         datacenter: DCA
         folder: "/DCA/vm/Environnement/tgrevellec"
@@ -30,5 +32,5 @@
           domain: thibgrev.fr
           domainadmin: administrateur@THIBGREV.FR
           domainadminpassword: "azerty@12345"
-          hostname: "{{ VMname }}"
+          hostname: "{{ name_vm }}"
           joindomain: thibgrev.fr
