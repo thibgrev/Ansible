@@ -17,7 +17,7 @@
   connection: local
   gather_facts: no  
   vars_files:
-    - ../vault_file.yml 
+    - ../../Vault/secret.yml
 
   roles:
-    - ../Roles/vmware-RHEL_remove/
+    - ../../Roles/9-Old/vmware-RHEL_remove
