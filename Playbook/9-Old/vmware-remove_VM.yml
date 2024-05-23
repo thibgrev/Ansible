@@ -2,6 +2,8 @@
   hosts: "{{ nomVM }}.THIBGREV.FR"
   ignore_errors: yes
   gather_facts: no
+  vars_files:
+    - ../../Vault/secret.yml
   tasks:
 
    - name: Suppression de l entree "{{ nomVM }}" dans le RHN
