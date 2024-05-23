@@ -12,6 +12,7 @@
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_hostname }}"
         password: "{{ vault_vmware_password }}"
+        validate_certs: no
         dvswitch: 'tgrevellec'
       delegate_to: localhost
   
