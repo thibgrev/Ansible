@@ -3,7 +3,7 @@
       name: "{{ VMname }}"
       ansible_connection: "ssh"
       ansible_user: "{{ vault_ansible_user_for_linux }}"
-      ansible_password: "{{ vault_ansible_user_for_linux_password }}"
+      ansible_ssh_pass: "{{ vault_ansible_user_for_linux_password }}"
 
 #- name: Analyse of the target to receive the service facts
   #service_facts:

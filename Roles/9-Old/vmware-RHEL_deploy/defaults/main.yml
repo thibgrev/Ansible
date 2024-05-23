@@ -36,6 +36,6 @@ vmware_deploy_type: A
 vmware_deploy_zone: "{{ vault_domain_name }}"
 #Variables for adding the new VM in the Microsoft Domain
 vmware_deploy_domain: "{{ vault_domain_name }}"
-vmware_deploy_domain_join_AD_user: "{{ vault_AD_user_add_computer }}"
-vmware_deploy_domain_join_AD_user_password: "{{ vault_AD_user_add_computer_password }}"
+vmware_deploy_domain_join_AD_user: "{{ vault_ansible_user_for_windows }}"
+vmware_deploy_domain_join_AD_user_password: "{{ vault_ansible_user_for_windows_password }}"
 vmware_deploy_computer_Linux_OU: "OU=Linux,OU=TG-Ordinateurs,DC=thibgrev,DC=fr"
