@@ -1,6 +1,6 @@
 - name: Add the new VM named "{{ VMname }}" in the memory inventory file
   add_host:
-      name: "{{ VMname }}.BSCLAB.LOCAL"
+      name: "{{ VMname }}.{{ vault_domain_name }}"
       group: "{{ vmware_deploy_group_for_VM }}"
 
 #- name: Analyse of the target to receive the service facts
