@@ -1,5 +1,5 @@
 - name: Suppression de la machine "{{ nomVM }}" dans le RHN
-  hosts: "{{ nomVM }}"
+  hosts: "{{ nomVM }}.THIBGREV.FR"
   ignore_errors: yes
   gather_facts: no
   tasks:
