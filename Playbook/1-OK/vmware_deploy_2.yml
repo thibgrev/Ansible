@@ -26,3 +26,9 @@
           num_cpu_cores_per_socket: 2
           hotadd_cpu: true
           hotadd_memory: true
+        customization:
+          domain: thibgrev.fr
+          domainadmin: administrateur@THIBGREV.FR
+          domainadminpassword: "azerty@12345"
+          hostname: "{{ VMname }}"
+          joindomain: thibgrev.fr
