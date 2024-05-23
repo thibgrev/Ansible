@@ -17,3 +17,4 @@
         folder: "/DCA/vm/Environnement/tgrevellec"
         name: "{{ VMname }}"
         state: absent
+        force: true
