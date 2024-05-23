@@ -2,6 +2,8 @@
   hosts: localhost
   gather_facts: no
   become: no
+  vars:
+    VMname: "tg-00000"
   vars_files:
     - ../../Vault/secret.yml
 
@@ -14,7 +16,11 @@
         password: "{{ vault_vmware_password }}"
         datacenter: "DCA"
         validate_certs: no
-        folder: "/DCA/vm/Environnement/tgrevellec"
+        folder: "{{ vault_vmware_folder }}"
         name: "{{ VMname }}"
         state: absent
         force: true
+
+    - name: Affichage du resultat
+      ansible.builtin.debug:
+        msg: "La VM nommee {{ VMname }} a ete supprimee avec succe."
