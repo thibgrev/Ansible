@@ -1,6 +1,6 @@
 ---
 - name: Update all Linux servers
-  hosts: *linux*
+  hosts: "{{ VM }}"
   become: yes
   gather_facts: yes
 
