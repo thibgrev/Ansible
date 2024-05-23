@@ -15,7 +15,7 @@
         dvswitch: 'tgrevellec'
       delegate_to: localhost
   
-  - name: Creation de la VM
+    - name: Creation de la VM
       community.vmware.vmware_guest:
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
