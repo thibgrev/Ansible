@@ -14,5 +14,4 @@
   become: true
   reboot:
   #The operation has to be done on the target
-  delegate_to: "{{ VMname }}" 
-  when: vmware_deploy_reboot is true
+  delegate_to: "{{ VMname }}"

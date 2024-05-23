@@ -24,8 +24,6 @@ vmware_deploy_root_password: "{{ vault_root_user_for_linux_password }}"
 vmware_deploy_public_key_root: /root/.ssh/root.pub
 vmware_deploy_public_key_ansible_user: /root/.ssh/ansible_user.pub
 vmware_deploy_sudoers_file: /root/Ansible/Roles/vmware-RHEL_deploy/files/99-Ansible_user
-#Variables for the hostname change of the new VM
-vmware_deploy_reboot: true
 #Variables for adding the new VM in Red Hat account
 vmware_deploy_RH_account: "{{ vault_redhat_RHN_account }}"
 vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
