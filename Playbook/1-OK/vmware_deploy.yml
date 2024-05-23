@@ -44,12 +44,12 @@
         name: "{{ VMname }}"
         state: poweredon
         template: tg-template-rhel_9
-        customization:
-          domain: thibgrev.fr
-          domainadmin: administrateur@THIBGREV.FR
-          domainadminpassword: "azerty@12345"
-          hostname: "{{ VMname }}"
-          joindomain: thibgrev.fr
+        #customization:
+          #domain: thibgrev.fr
+          #domainadmin: administrateur@THIBGREV.FR
+          #domainadminpassword: "azerty@12345"
+          #hostname: "{{ VMname }}"
+          #joindomain: thibgrev.fr
         hardware:
           memory_mb: 2048
           num_cpus: 2
@@ -57,8 +57,13 @@
           hotadd_cpu: true
           hotremove_cpu: true
           hotadd_memory: false
-        networks:
-        - name: DCA\tgrevellec
+        #networks:
+        #- name: DCA\tgrevellec
           #device_type: vmxnet3
-          connected: true
+          #connected: true
         wait_for_ip_address: true
+
+    - name: set hostname
+      ansible.builtin.hostname:
+        name: "{{ VMname }}"
+      delegate_to: "{{ VMname }}"
