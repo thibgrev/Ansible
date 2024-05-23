@@ -1,31 +1,43 @@
 - name: Sync inventory using AAP API with encrypted username and password
   hosts: localhost
-  gather_facts: no
-  vars_files:
-    - ../../Vault/secret.yml
+  gather_facts: false
   vars:
     aap_api_url: "https://tg-aap.thibgrev.fr/api/v2"
     inventory_id: "8"
     aap_username: admin
-    aap_password: azerty@12345
-
+    aap_password: "azerty@12345"
   tasks:
-    - name: Encode username and password
+    - name: Obtain authentication token
+      uri:
+        url: "{{ aap_api_url }}/authtoken/"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body_format: json
+        body:
+          username: "{{ aap_username }}"
+          password: "{{ aap_password }}"
+        return_content: yes
+        validate_certs: no
+      register: auth_response
+
+    - name: Set auth token
       set_fact:
-        auth_header: "Basic {{ (aap_username + ':' + aap_password) | b64encode }}"
+        auth_token: "{{ auth_response.json.token }}"
 
     - name: Trigger inventory sync
       uri:
         url: "{{ aap_api_url }}/inventory_sources/{{ inventory_id }}/update/"
         method: POST
         headers:
-          Authorization: "{{ auth_header }}"
+          Authorization: "Token {{ auth_token }}"
           Content-Type: "application/json"
         status_code: 202
         body_format: json
         return_content: yes
+        validate_certs: no
       register: sync_response
 
     - name: Debug sync response
       debug:
-        var: sync_response.json
+        var: sync_response.json  
