@@ -10,7 +10,7 @@
     - name: Get all portgroups in dvswitch vDS
       community.vmware.vmware_dvs_portgroup_find:
         hostname: "{{ vault_vmware_hostname }}"
-        username: "{{ vault_vmware_hostname }}"
+        username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
         validate_certs: no
         dvswitch: 'tgrevellec'
