@@ -22,4 +22,4 @@
     - ../../Vault/secret.yml
 
   roles:
-    - ../../Roles/9-Old/vmware-RHEL_remove
+    - ../../Roles/1-OK/vmware-RHEL_remove
