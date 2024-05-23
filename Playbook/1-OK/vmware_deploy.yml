@@ -32,7 +32,7 @@
           hotremove_cpu: true
           hotadd_memory: false
         networks:
-        - name: tgrevellec
+        - name: DCA\tgrevellec
           #device_type: vmxnet3
           connected: true
         wait_for_ip_address: true
