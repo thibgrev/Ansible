@@ -19,6 +19,19 @@
     - name: affichage
       ansible.builtin.debug:
         var: all_hosts_vswitch_info
+
+    - name: Recup info portgroup
+      community.vmware.vmware_portgroup_info:
+        hostname: "{{ vault_vmware_hostname }}"
+        username: "{{ vault_vmware_username }}"
+        password: "{{ vault_vmware_password }}"
+        cluster_name: "PROD"
+        validate_certs: no
+      register: all_hosts_portgroup_info
+
+    - name: affichage
+      ansible.builtin.debug:
+        var: all_hosts_portgroup_info
   
     - name: Creation de la VM
       community.vmware.vmware_guest:
