@@ -3,7 +3,7 @@ vmware_deploy_vcenter_hotname: "{{ vault_vmware_hostname }}"
 vmware_deploy_vcenter_username: "{{ vault_vmware_username }}"
 vmware_deploy_vcenter_password: "{{ vault_vmware_password }}"
 vmware_deploy_vcenter_datacenter: "{{ vault_vmware_datacenter }}"
-vmware_deploy_template: RHEL9
+vmware_deploy_template: "tg-template-rhel_9"
 vmware_deploy_folder: "{{ vault_vmware_folder }}"
 vmware_deploy_hardware_memory: 4096
 vmware_deploy_hardware_cpus: 4
