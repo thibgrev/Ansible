@@ -3,6 +3,8 @@
   hosts: "{{ VM }}"
   become: yes
   gather_facts: yes
+  vars_files:
+    - ../../Vault/secret.yml
 
   tasks:
     - name: Update package manager cache and upgrade packages on RedHat-based systems
