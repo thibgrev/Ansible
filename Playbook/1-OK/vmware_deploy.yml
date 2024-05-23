@@ -35,7 +35,7 @@
       ansible.builtin.hostname:
         name: "{{ VMname }}"
       delegate_to: "{{ VMname }}"
-      ignore_errors:
+      ignore_errors: yes
 
     - name: Affichage du resultat
       ansible.builtin.debug:
