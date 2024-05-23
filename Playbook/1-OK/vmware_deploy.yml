@@ -5,7 +5,7 @@
   vars:
     VMname: "tg-00000"
     template_of_VM: "tg-template-rhel_9"
-    nbr_cpu: 2
+    nbr_cpu: 4
     nbr_ram: 4096
   vars_files:
     - ../../Vault/secret.yml
