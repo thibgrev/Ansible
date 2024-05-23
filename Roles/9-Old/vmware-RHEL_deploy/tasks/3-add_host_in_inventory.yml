@@ -2,6 +2,10 @@
   add_host:
       name: "{{ VMname }}.{{ vault_domain_name }}"
       group: "{{ vmware_deploy_group_for_VM }}"
+      ansible_connection: "ssh"
+      ansible_user: "root"
+      ansible_password: "azerty@12345"
+
 
 #- name: Analyse of the target to receive the service facts
   #service_facts:
