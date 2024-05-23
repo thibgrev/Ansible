@@ -1,0 +1,22 @@
+- name: Deploiement de la VM nommee "{{ VMname }}"
+  hosts: localhost
+  gather_facts: no
+  become: no
+  vars_files:
+    - ../../Vault/secret.yml
+
+  tasks:
+
+    - name: Clone the template
+      vmware_guest:
+        hostname: "{{ vault_vmware_hostname }}"
+        username: "{{ vault_vmware_username }}"
+        password: "{{ vault_vmware_password }}"
+        validate_certs: False
+        name: tg-aaaaaaaaaaaaaaaaaa
+        template: tg-template-rhel_9
+        datacenter: DCA
+        folder: "/DCA/vm/Environnement/tgrevellec"
+        state: poweredon
+        cluster: "PROD"
+        wait_for_ip_address: yes
