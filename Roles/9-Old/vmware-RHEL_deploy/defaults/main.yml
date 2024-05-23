@@ -4,8 +4,7 @@ vmware_deploy_vcenter_username: "{{ vault_vmware_username }}"
 vmware_deploy_vcenter_password: "{{ vault_vmware_password }}"
 vmware_deploy_vcenter_datacenter: "{{ vault_vmware_datacenter }}"
 vmware_deploy_template: RHEL9
-vmware_deploy_folder: "Red Hat"  
-vmware_deploy_ressource_pool: "Red Hat"
+vmware_deploy_folder: "{{ vault_vmware_folder }}"
 vmware_deploy_hardware_memory: 4096
 vmware_deploy_hardware_cpus: 4
 vmware_deploy_hardware_memory_hot_add: true
@@ -33,12 +32,12 @@ vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
 #Variables for the update of the new VM
 vmware_deploy_update_state: latest
 #Variables for operations on DHCP server
-vmware_deploy_domain_controller: srvAD1.BSCLAB.LOCAL
+vmware_deploy_domain_controller: "{{ vault_domain_controller }}"
 #Variables for operations on DNS server
 vmware_deploy_type: A
-vmware_deploy_zone: bsclab.local
+vmware_deploy_zone: "{{ vault_domain_name }}"
 #Variables for adding the new VM in the Microsoft Domain
-vmware_deploy_domain: bsclab.local
+vmware_deploy_domain: "{{ vault_domain_name }}"
 vmware_deploy_domain_join_AD_user: "{{ vault_AD_user_add_computer }}"
 vmware_deploy_domain_join_AD_user_password: "{{ vault_AD_user_add_computer_password }}"
 vmware_deploy_computer_Linux_OU: "OU=Linux,OU=Servers,DC=bsclab,DC=local"
