@@ -1,20 +1,31 @@
-- hosts: "{{ VM }}"
+- name: Sync inventory using AAP API with encrypted username and password
+  hosts: localhost
   gather_facts: no
   vars_files:
     - ../../Vault/secret.yml
-  
+  vars:
+    aap_api_url: "https://tg-aap.thibgrev.fr/api/v2"
+    inventory_id: "8"
+    aap_username: admin
+    aap_password: azerty@12345
+
   tasks:
+    - name: Encode username and password
+      set_fact:
+        auth_header: "Basic {{ (aap_username + ':' + aap_password) | b64encode }}"
 
-    - name: Recuperation du nom de fichier de l interface reseau
-      register: fichier_reseau_a_modifier
-      ansible.builtin.find:
-        paths: /etc/NetworkManager/system-connections
-        patterns: 'ens*.nmconnection'
+    - name: Trigger inventory sync
+      uri:
+        url: "{{ aap_api_url }}/inventory_sources/{{ inventory_id }}/update/"
+        method: POST
+        headers:
+          Authorization: "{{ auth_header }}"
+          Content-Type: "application/json"
+        status_code: 202
+        body_format: json
+        return_content: yes
+      register: sync_response
 
-    - name: Affichage des donnees liees a la recup du fichier reseau
-      ansible.builtin.debug:
-        var: fichier_reseau_a_modifier
-
-    - name: Affichage 2
-      ansible.builtin.debug:
-        msg: "{{ fichier_reseau_a_modifier.ansible_verbose_always }}"
+    - name: Debug sync response
+      debug:
+        var: sync_response.json

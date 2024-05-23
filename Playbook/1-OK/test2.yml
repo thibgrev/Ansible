@@ -1,0 +1,42 @@
+---
+- name: Update all Linux servers
+  hosts: *linux*
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update package manager cache and upgrade packages on RedHat-based systems
+      yum:
+        name: "*"
+        state: latest
+      when: ansible_facts['os_family'] == "RedHat"
+      register: redhat_update
+
+    - name: Update package manager cache and upgrade packages on Debian-based systems
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_facts['os_family'] == "Debian"
+      register: debian_update
+
+    - name: Check if reboot is required (RedHat-based systems)
+      command: needs-restarting -r
+      register: redhat_reboot_check
+      changed_when: false
+      failed_when: false
+      when: ansible_facts['os_family'] == "RedHat"
+
+    - name: Reboot if needed (RedHat-based systems)
+      reboot:
+      when: ansible_facts['os_family'] == "RedHat" and redhat_reboot_check.rc == 1
+
+    - name: Check if reboot is required (Debian-based systems)
+      stat:
+        path: /var/run/reboot-required
+      register: debian_reboot_check
+      changed_when: false
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Reboot if needed (Debian-based systems)
+      reboot:
+      when: ansible_facts['os_family'] == "Debian" and debian_reboot_check.stat.exists
