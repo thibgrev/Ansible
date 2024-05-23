@@ -29,8 +29,4 @@
           hotadd_cpu: true
           hotadd_memory: true
         customization:
-          domain: thibgrev.fr
-          domainadmin: administrateur@THIBGREV.FR
-          domainadminpassword: "azerty@12345"
           hostname: "{{ name_vm }}"
-          joindomain: thibgrev.fr
