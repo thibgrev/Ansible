@@ -2,38 +2,17 @@
   hosts: localhost
   gather_facts: no
   become: no
+  vars:
+    VMname: "tg-00000"
+    template_of_VM: "tg-template-rhel_9"
+    nbr_cpu: 2
+    nbr_ram: 4096
   vars_files:
     - ../../Vault/secret.yml
 
   tasks:
 
-    - name: Recup info
-      community.vmware.vmware_vswitch_info:
-        hostname: "{{ vault_vmware_hostname }}"
-        username: "{{ vault_vmware_username }}"
-        password: "{{ vault_vmware_password }}"
-        cluster_name: "PROD"
-        validate_certs: no
-      register: all_hosts_vswitch_info
-
-    - name: affichage
-      ansible.builtin.debug:
-        var: all_hosts_vswitch_info
-
-    - name: Recup info portgroup
-      community.vmware.vmware_portgroup_info:
-        hostname: "{{ vault_vmware_hostname }}"
-        username: "{{ vault_vmware_username }}"
-        password: "{{ vault_vmware_password }}"
-        cluster_name: "PROD"
-        validate_certs: no
-      register: all_hosts_portgroup_info
-
-    - name: affichage
-      ansible.builtin.debug:
-        var: all_hosts_portgroup_info
-  
-    - name: Creation de la VM
+    - name: Deploiement a partir du template VMWare
       community.vmware.vmware_guest:
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
@@ -43,27 +22,21 @@
         folder: "/DCA/vm/Environnement/tgrevellec"
         name: "{{ VMname }}"
         state: poweredon
-        template: tg-template-rhel_9
-        #customization:
-          #domain: thibgrev.fr
-          #domainadmin: administrateur@THIBGREV.FR
-          #domainadminpassword: "azerty@12345"
-          #hostname: "{{ VMname }}"
-          #joindomain: thibgrev.fr
+        template: "{{ template_of_VM }}"
         hardware:
-          memory_mb: 2048
-          num_cpus: 2
+          memory_mb: "{{ nbr_ram }}"
+          num_cpus: "{{ nbr_cpu }}"
           num_cpu_cores_per_socket: 2
           hotadd_cpu: true
-          hotremove_cpu: true
           hotadd_memory: false
-        #networks:
-        #- name: DCA\tgrevellec
-          #device_type: vmxnet3
-          #connected: true
         wait_for_ip_address: true
 
     - name: set hostname
       ansible.builtin.hostname:
         name: "{{ VMname }}"
       delegate_to: "{{ VMname }}"
+      ignore_errors:
+
+    - name: Affichage du resultat
+      ansible.builtin.debug:
+        msg: "La VM nommee {{ VMname }} a ete deployee avec succes en utilisant le template nomme {{ template_of_VM }}."
