@@ -16,6 +16,6 @@
   #lineinfile:
     #line: "{{ VMname }}.BSCLAB.LOCAL"
     #path: "{{ vmware_deploy_ansible_inventory_file }}"
-    vstate: present
-    vinsertafter: "{{ vmware_deploy_group_for_VM }}"
+    #vstate: present
+    #vinsertafter: "{{ vmware_deploy_group_for_VM }}"
   #when: '"{{ vmware_deploy_service_AAP }}" not in ansible_facts.services'
