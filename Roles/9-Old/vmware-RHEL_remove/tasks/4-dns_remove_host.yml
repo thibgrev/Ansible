@@ -1,6 +1,0 @@
-- name: Suppression de la machine "{{ nomVM }}" dans le groupe fichier hosts "{{ vmware_remove_etc_hosts_file }}"
-  lineinfile:
-      search_string: "{{ nomVM }}"
-      path: "{{ vmware_remove_etc_hosts_file }}"
-      state: absent
-  ignore_errors: yes

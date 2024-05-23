@@ -7,6 +7,4 @@
   vars:
     #IP addresse needed to delete the DNS entry
     - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
-- include_tasks: 4-dns_remove_host.yml
-- include_tasks: 5-inventory_remove_host.yml
 - include_tasks: 6-vmware_remove_VM.yml

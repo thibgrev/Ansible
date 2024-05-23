@@ -1,6 +1,0 @@
-- name: Suppression de la machine "{{ nomVM }}" dans l inventaire "{{ vmware_remove_ansible_inventory_file }}"
-  lineinfile:
-      line: "{{ nomVM }}"
-      path: "{{ vmware_remove_ansible_inventory_file }}"
-      state: absent
-  ignore_errors: yes
