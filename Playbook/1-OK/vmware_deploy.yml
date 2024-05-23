@@ -12,6 +12,7 @@
         hostname: "{{ vault_vmware_hostname }}"
         username: "{{ vault_vmware_username }}"
         password: "{{ vault_vmware_password }}"
+        cluster_name: "PROD"
         validate_certs: no
       register: all_hosts_vswitch_info
 
