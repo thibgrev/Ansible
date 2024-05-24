@@ -4,20 +4,3 @@
       ansible_connection: "ssh"
       ansible_user: "{{ vault_ansible_user_for_linux }}"
       ansible_ssh_pass: "{{ vault_ansible_user_for_linux_password }}"
-
-#- name: Analyse of the target to receive the service facts
-  #service_facts:
-  #delegate_to: "{{ VMname }}"
-
-#- name: AAP service named "{{ vmware_deploy_service_AAP }}" is not found, it is a Ansible machine
-  #debug:
-    #msg: "Service {{ vmware_deploy_service_AAP }} not found, inventory file {{ vmware_deploy_ansible_inventory_file }} will be used"
-  #when: '"{{ vmware_deploy_service_AAP }}" not in ansible_facts.services'
-
-#- name: Add the new VM named "{{ VMname }}" in the Ansible inventory file "{{ vmware_deploy_ansible_inventory_file }}", in the group named "{{ vmware_deploy_group_for_VM }}" because AAP service wasn't found
-  #lineinfile:
-    #line: "{{ VMname }}.BSCLAB.LOCAL"
-    #path: "{{ vmware_deploy_ansible_inventory_file }}"
-    #vstate: present
-    #vinsertafter: "{{ vmware_deploy_group_for_VM }}"
-  #when: '"{{ vmware_deploy_service_AAP }}" not in ansible_facts.services'

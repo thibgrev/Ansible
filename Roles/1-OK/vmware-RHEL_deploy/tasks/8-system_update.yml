@@ -6,3 +6,4 @@
     name: "*"
   #The operation has to be done on the target
   delegate_to: "{{ VMname }}"
+  when: vmware_deploy_patching_to_do is true
