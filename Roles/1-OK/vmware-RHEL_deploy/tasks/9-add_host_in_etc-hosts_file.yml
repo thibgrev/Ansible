@@ -1,7 +1,0 @@
-#Add the new entry of the VM in the inventory file for Ansible
-- name: Add "{{ VMname }}" in the file "{{ vmware_deploy_etc_hosts_file }}"
-  lineinfile:
-    line: "{{ipVM}} {{ VMname }}"
-    path: "{{ vmware_deploy_etc_hosts_file }}"
-    state: present
-  when: vmware_deploy_etc_hosts_file_change_needed == "true"

@@ -1,6 +1,6 @@
 #1-Deploymnet of the new VM on VCenter system
 - include_tasks: 1-deploy_VM.yml
-#2-Add the new entry in the /etc/hosts file
+#2-Add the new entry in the DNS server
 - include_tasks: 2-add_DNS_domain_entry.yml
   vars:
     #IP addresse needed to ad the entry in /etc/hosts file
@@ -18,10 +18,5 @@
 - include_tasks: 7-add_host_in_website.yml
 #8-Upgrade of the system
 - include_tasks: 8-system_update.yml
-#9-Creation of the entry in the DNS of the domain
-- include_tasks: 9-add_host_in_etc-hosts_file.yml
-  vars:
-    #IP addresse needed to add in the DNS entry
-    - ipVM: "{{ listeInfoVM.instance.ipv4 }}"
 #10-Join the new VM in the Microsoft domain
 - include_tasks: 10-join_Microsoft_domain.yml
