@@ -1,4 +1,4 @@
-- name: Update of the new VM named "{{ VMname }}" using module YUM, state "{{ vmware_deploy_update_state }}" and target "*"
+- name: Update of the new VM named "{{ VMname }}" using module YUM, state "{{ vmware_deploy_update_state }}" and target "*" if vmware_deploy_patching_to_do is true
   #SSH connexion use because the operation will ba set on the target
   connection: ssh
   yum:
@@ -6,4 +6,4 @@
     name: "*"
   #The operation has to be done on the target
   delegate_to: "{{ VMname }}"
-  when: vmware_deploy_patching_to_do is true
+  when: mware_deploy_patching_to_do == "yes"
