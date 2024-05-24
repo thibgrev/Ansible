@@ -29,7 +29,7 @@ vmware_deploy_RH_account: "{{ vault_redhat_RHN_account }}"
 vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
 #Variables for the update of the new VM
 vmware_deploy_update_state: latest
-vmware_deploy_patching_to_do: yes
+vmware_deploy_patching_to_do: "yes"
 #Variables for operations on DHCP server
 vmware_deploy_domain_controller: "{{ vault_domain_controller }}"
 #Variables for operations on DNS server
