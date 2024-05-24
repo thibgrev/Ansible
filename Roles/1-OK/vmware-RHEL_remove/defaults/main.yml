@@ -3,10 +3,6 @@ vmware_remove_vcenter_hotname: "{{ vault_vmware_hostname }}"
 vmware_remove_vcenter_username: "{{ vault_vmware_username }}"
 vmware_remove_vcenter_password: "{{ vault_vmware_password }}"
 vmware_remove_vcenter_datacenter: "{{ vault_vmware_datacenter }}"
-#Variables for the hosts file /etc/hosts
-#vmware_remove_etc_hosts_file: /etc/hosts
-#Variables for the Ansible inventory file
-#vmware_remove_ansible_inventory_file: /root/Ansible/inventory_ansible
 #Variables for operations on DNS server
 vmware_remove_type: A
 vmware_remove_zone: "{{ vault_domain_name }}"
