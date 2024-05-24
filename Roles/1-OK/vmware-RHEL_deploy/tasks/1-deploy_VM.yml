@@ -8,6 +8,7 @@
       - "->Hot add for CPUs: {{ vmware_deploy_hardware_cpus_hot_add }}."
       - "->Hot add for memory: {{ vmware_deploy_hardware_memory_hot_add }}."
       - "->Patching of the VM: {{ vmware_deploy_update_state }}."
+      - "->Patching to do: {{ vmware_deploy_patching_to_do }}."
       - "------------------------------------------------------------------------ "
       - "Information:"
       - "->Deployment will wait the VM to response before continue to other step."
