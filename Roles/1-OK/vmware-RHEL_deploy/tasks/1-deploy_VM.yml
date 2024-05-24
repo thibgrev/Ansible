@@ -25,7 +25,7 @@
     state: poweredon
     wait_for_ip_address: yes
     hardware:
-      memory_mb: 65536 #"{{ vmware_deploy_hardware_memory }}"
-      num_cpus: 16 #"{{ vmware_deploy_hardware_cpus }}"
+      memory_mb: "{{ vmware_deploy_hardware_memory }}"
+      num_cpus: "{{ vmware_deploy_hardware_cpus }}"
       hotadd_memory: "{{ vmware_deploy_hardware_memory_hot_add }}"
       hotadd_cpu: "{{ vmware_deploy_hardware_cpus_hot_add }}"
