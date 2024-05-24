@@ -1,4 +1,4 @@
-#Variables for VCenter
+#Deploymnent on VMWare platform
 vmware_deploy_vcenter_hotname: "{{ vault_vmware_hostname }}"
 vmware_deploy_vcenter_username: "{{ vault_vmware_username }}"
 vmware_deploy_vcenter_password: "{{ vault_vmware_password }}"
@@ -9,32 +9,19 @@ vmware_deploy_hardware_memory: 4096
 vmware_deploy_hardware_cpus: 4
 vmware_deploy_hardware_memory_hot_add: true
 vmware_deploy_hardware_cpus_hot_add: true
-#Variables for the hosts file /etc/hosts
-vmware_deploy_etc_hosts_file: /etc/hosts
-vmware_deploy_etc_hosts_file_change_needed: false
-#Variables for the Ansible inventory file
-vmware_deploy_service_AAP: "automation-controller.service"
-vmware_deploy_ansible_inventory_file: /root/Ansible/inventory_Fujitsu
-vmware_deploy_group_for_VM: red_hat
-#Variables for the OS configuration of the new VM
-vmware_deploy_ansible_user: "{{ vault_ansible_user_for_linux }}"
-vmware_deploy_ansible_user__password: "{{ vault_ansible_user_for_linux_password }}"
-vmware_deploy_root_account: "{{ vault_root_user_for_linux }}"
-vmware_deploy_root_password: "{{ vault_root_user_for_linux_password }}"
-vmware_deploy_public_key_root: /root/.ssh/root.pub
-vmware_deploy_public_key_ansible_user: /root/.ssh/ansible_user.pub
-vmware_deploy_sudoers_file: /root/Ansible/Roles/vmware-RHEL_deploy/files/99-Ansible_user
+#Add in DNS server
+vmware_deploy_type: A
+vmware_deploy_zone: "{{ vault_domain_name }}"
+vmware_deploy_domain_controller: "{{ vault_domain_controller }}"
+#Add host in inventory
+vault_ansible_user_for_linux: "{{ vault_ansible_user_for_linux }}"
+vault_ansible_user_for_linux_password: "{{ vault_ansible_user_for_linux_password }}"
 #Variables for adding the new VM in Red Hat account
 vmware_deploy_RH_account: "{{ vault_redhat_RHN_account }}"
 vmware_deploy_RH_password: "{{ vault_redhat_RHN_password }}"
 #Variables for the update of the new VM
 vmware_deploy_update_state: latest
 vmware_deploy_patching_to_do: "yes"
-#Variables for operations on DHCP server
-vmware_deploy_domain_controller: "{{ vault_domain_controller }}"
-#Variables for operations on DNS server
-vmware_deploy_type: A
-vmware_deploy_zone: "{{ vault_domain_name }}"
 #Variables for adding the new VM in the Microsoft Domain
 vmware_deploy_domain: "{{ vault_domain_name }}"
 vmware_deploy_domain_join_AD_user: "{{ vault_ansible_user_for_windows }}"
