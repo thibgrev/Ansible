@@ -10,7 +10,7 @@ vmware_deploy_hardware_cpus: 4
 vmware_deploy_hardware_memory_hot_add: true
 vmware_deploy_hardware_cpus_hot_add: true
 vmware_deploy_hardware_disk_size: 100
-vmware_deploy_hardware_disk_type: thin
+vmware_deploy_hardware_disk_type: "thin"
 vmware_deploy_hardware_datastore_name: "GOLD-SF-ISCSI-87"
 #Add in DNS server
 vmware_deploy_type: A
