@@ -5,4 +5,4 @@
   notify:
     sshd_service_restart
   when: 
-    ansible_host is not "tg-centreon"
+    "{{ ansible_host }}" is not "tg-centreon"
