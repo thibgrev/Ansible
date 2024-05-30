@@ -29,7 +29,7 @@
     disk:
     - size_gb: 100
       type: thin
-      #datastore: g73_datastore
+      datastore: GOLD-SF-ISCSI-87
     hardware:
       memory_mb: "{{ vmware_deploy_hardware_memory }}"
       num_cpus: "{{ vmware_deploy_hardware_cpus }}"
