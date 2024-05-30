@@ -9,6 +9,8 @@ vmware_deploy_hardware_memory: 4096
 vmware_deploy_hardware_cpus: 4
 vmware_deploy_hardware_memory_hot_add: true
 vmware_deploy_hardware_cpus_hot_add: true
+vmware_deploy_hardware_disk_size: 100
+vmware_deploy_hardware_disk_type: thin
 #Add in DNS server
 vmware_deploy_type: A
 vmware_deploy_zone: "{{ vault_domain_name }}"
