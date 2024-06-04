@@ -1,0 +1,12 @@
+---
+- name: Remove host from Centreon
+  uri:
+    url: "{{ centreon_api_url }}/{{ host_name }}"
+    method: DELETE
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer {{ centreon_api_token }}"
+  register: remove_host_result
+
+- debug:
+    var: remove_host_result

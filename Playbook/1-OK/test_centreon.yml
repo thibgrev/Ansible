@@ -1,0 +1,23 @@
+- name: Ajouter une VM à la supervision Centreon
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Ajouter la VM dans Centreon
+      uri:
+        url: "https://tg-centreon.thibgrev.fr/centreon/api/v4/objects/hosts"
+        method: GET
+        headers:
+          Content-Type: "application/json"
+          CentreonAuth: "MbSeXyqrR34t0c/7yvIfhA+fzqIrfQmOC2aSC3bFvqDLUvrtSe9jJB2OtSdy/glm"
+        body_format: json
+        body:
+          name: "tg-stellite.thibgrev.fr"
+          address: "tg-stellite.thibgrev.fr"
+          alias: "tg-stellite.thibgrev.fr"
+          template_ids: [1]  # ID du template à associer
+      register: add_host_result
+
+    - debug:
+        var: add_host_result
