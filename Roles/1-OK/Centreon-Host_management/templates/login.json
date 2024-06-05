@@ -1,0 +1,8 @@
+{
+    "security": {
+      "credentials": {
+        "login": "admin",
+        "password": "Centreon!123"
+      }
+    }
+  }

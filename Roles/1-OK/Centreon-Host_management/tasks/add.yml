@@ -1,19 +1,21 @@
 - name: Add host to Centreon
   uri:
-    url: "{{ centreon_api_url }}"
-    method: GET
-    headers:
-      Content-Type: "application/json"
-      Centreon-Token: "{{ centreon_api_token }}"
+    url: "{{ centreon_api_url }}/{{ centreon_api_endpoint }}"
+    method: POST
+    body: "{{ lookup('template', 'login.json') }}"
     body_format: json
-    body:
-      name: "{{ host_name }}"
-      address: "{{ host_name }}"
-    body:
-      action: "add"
-      host_name: "{{ host_name }}"
-      host_address: "{{ host_name }}"
   register: add_host_result
 
 - debug:
     var: add_host_result
+
+- name: Add host to Centreon
+  uri:
+    url: "{{ centreon_api_url }}/configuration/hosts"
+    method: POST
+    body: "{{ lookup('template', 'add.json') }}"
+    body_format: json
+    status_code: 201
+    headers:
+      X-AUTH-TOKEN: "{{ add_host_result.json.security.token }}"
+  register: add_host_result
