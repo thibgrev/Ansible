@@ -1,5 +1,7 @@
 - hosts: localhost
   gather_facts: no
+  vars_files:
+    - ../../Vault/secret.yml
   tasks:
     - name: Add host "{{ ajouter }}" to Centreon
       include_role:
@@ -7,14 +9,12 @@
       vars:
         action: "add"
         host_name: "tg-srvNFS.thibgrev.fr"
-        host_address: "tg-srvNFS.thibgrev.fr"
         centreon_api_url: "http://tg-centreon.thibgrev.fr/centreon/api/latest"
-        centreon_api_endpoint: "login"
-        centreon_api_token: "MbSeXyqrR34t0c/7yvIfhA+fzqIrfQmOC2aSC3bFvqDLUvrtSe9jJB2OtSdy/glm"
 
-    #- name: Remove host "ajouter" from Centreon
-      #include_role:
-        #name: ../../Roles/1-OK/centreon_add_host
-      #vars:
-        #action: "remove"
-        #host_name: "ajouter"
+    - name: Remove host "ajouter" from Centreon
+      include_role:
+        name: /home/thibgrev/Ansible/Roles/1-OK/Centreon-Host_management/
+      vars:
+        action: "remove"
+        host_name: "tg-srvNFS.thibgrev.fr"
+        centreon_api_url: "http://tg-centreon.thibgrev.fr/centreon/api/latest"

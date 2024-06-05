@@ -1,12 +1,20 @@
----
-- name: Remove host from Centreon
+- name: Centreon loging to API 
   uri:
-    url: "{{ centreon_api_url }}/{{ host_name }}"
-    method: DELETE
-    headers:
-      Content-Type: "application/json"
-      Authorization: "Bearer {{ centreon_api_token }}"
-  register: remove_host_result
+    url: "{{ centreon_api_url }}/{{ login_endpoint }}"
+    method: POST
+    body: "{{ lookup('template', 'login.json') }}"
+    body_format: json
+  register: add_host_result
 
-- debug:
-    var: remove_host_result
+#DELETE: complique car il faut recuperer le vrai ID dans centreon poursupprimer la machine
+
+#- name: "Delete host {{ host_name }} to Centreon system"
+  #uri:
+    #url: "{{ centreon_api_url }}/{{ remove_host_endpoint }}"
+    #method: DELETE
+    #body: "{{ lookup('template', 'add.json') }}"
+    #body_format: json
+    #status_code: 201
+    #headers:
+      #X-AUTH-TOKEN: "{{ add_host_result.json.security.token }}"
+  #register: add_host_result

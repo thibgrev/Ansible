@@ -1,5 +1,5 @@
 {
   "monitoring_server_id": 1,
-  "name": "tg-ubuntu.thibgrev.fr",
-  "address": "tg-ubuntu.thibgrev.fr"
+  "name": "{{ host_name }}",
+  "address": "{{ host_name }}"
 }

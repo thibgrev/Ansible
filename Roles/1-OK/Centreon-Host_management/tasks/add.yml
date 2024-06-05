@@ -1,17 +1,14 @@
 - name: Add host to Centreon
   uri:
-    url: "{{ centreon_api_url }}/{{ centreon_api_endpoint }}"
+    url: "{{ centreon_api_url }}/{{ login_endpoint }}"
     method: POST
     body: "{{ lookup('template', 'login.json') }}"
     body_format: json
   register: add_host_result
 
-- debug:
-    var: add_host_result
-
 - name: Add host to Centreon
   uri:
-    url: "{{ centreon_api_url }}/configuration/hosts"
+    url: "{{ centreon_api_url }}/{{ add_host_endpoint }}"
     method: POST
     body: "{{ lookup('template', 'add.json') }}"
     body_format: json

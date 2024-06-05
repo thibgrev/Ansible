@@ -1,8 +1,8 @@
 {
     "security": {
       "credentials": {
-        "login": "admin",
-        "password": "Centreon!123"
+        "login": "{{ vault_centreon_username }}",
+        "password": "{{ vault_centreon_username_password }}"
       }
     }
   }

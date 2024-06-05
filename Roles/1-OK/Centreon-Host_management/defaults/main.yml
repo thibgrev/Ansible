@@ -1,17 +1,6 @@
----
-# Variables par défaut pour le rôle centreon_add_host
-
-# Action à effectuer : 'add' pour ajouter un hôte, 'remove' pour le supprimer
 action: "add"
-
-# Nom de l'hôte à ajouter ou supprimer
 host_name: "hote_a_ajouter"
-
-# Adresse de l'hôte à ajouter ou supprimer
-host_address: "ajouter"
-
-# URL de l'API Centreon
 centreon_api_url: "https://url_of_api"
-
-# Token d'authentification de l'API Centreon
-centreon_api_token: "api_tokenpourconnexion"
+login_endpoint: "login"
+add_host_endpoint: "configuration/hosts"
+remove_host_endpoint: "configuration/hosts"
