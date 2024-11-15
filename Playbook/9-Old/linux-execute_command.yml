@@ -3,7 +3,7 @@
   hosts: "{{ serverName }}"
   gather_facts: no
   vars_files:
-    - ../../Vault/vault_file.yml
+    - ../../Vault/secret.yml
   tasks:
     - name: execution of the command "{{ command_to_execute }}" on  the server named "{{ serverName }}"
       command: "{{ command_to_execute }}"
